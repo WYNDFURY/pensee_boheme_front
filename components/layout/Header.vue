@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold">Pensée Bohème</h1>
         <nav class="hidden md:flex space-x-4">
           <NuxtLink to="/" class="hover:text-[#C3E8D7]">Accueil</NuxtLink>
-          <NuxtLink :to="{ name: 'products' }" class=" hover:text-[#C3E8D7]">products</NuxtLink>
+          <NuxtLink :to="{ name: 'products' }" class=" hover:text-[#C3E8D7]">Produits</NuxtLink>
         </nav>
       </div>
       <div class="hidden md:flex items-center space-x-4">
@@ -22,7 +22,7 @@
     <div v-if="isMenuOpen" class="md:hidden bg-[#204534] text-[#fafafa] py-2">
       <nav class="flex flex-col items-center space-y-2">
         <NuxtLink to="/" class="hover:text-[#C3E8D7]" @click="toggleMenu">Accueil</NuxtLink>
-        <NuxtLink :to="{ name: 'products' }" class="hover:text-[#C3E8D7]" @click="toggleMenu">products</NuxtLink>
+        <NuxtLink :to="{ name: 'products' }" class="hover:text-[#C3E8D7]" @click="toggleMenu">Produits</NuxtLink>
         <NuxtLink to="/cart" class="hover:text-[#C3E8D7]" @click="toggleMenu">Panier</NuxtLink>
         <NuxtLink :to="{ name: 'signin' }" class="hover:text-[#C3E8D7]" @click="toggleMenu">S'enregistrer</NuxtLink>
         <NuxtLink :to="{ name: 'login' }" class="hover:text-[#C3E8D7]" @click="toggleMenu">Connexion</NuxtLink>

@@ -1,8 +1,8 @@
 <template>
-  <FormsLoginLayout title="Create your account">
+  <FormsLoginLayout title="Enregistrez-vous">
     <form class="space-y-6" action="/register" method="POST" @submit.prevent="loginService.register">
       <div>
-        <label for="firstName" class="block text-sm font-medium leading-6 text-[#204534]">First Name</label>
+        <label for="firstName" class="block text-sm font-medium leading-6 text-[#204534]">Nom</label>
         <div class="mt-2">
           <input id="firstName" name="firstName" type="text" autocomplete="given-name" required
             class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
@@ -10,7 +10,7 @@
       </div>
 
       <div>
-        <label for="lastName" class="block text-sm font-medium leading-6 text-[#204534]">Last Name</label>
+        <label for="lastName" class="block text-sm font-medium leading-6 text-[#204534]">Prénom</label>
         <div class="mt-2">
           <input id="lastName" name="lastName" type="text" autocomplete="family-name" required
             class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
@@ -18,7 +18,7 @@
       </div>
 
       <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-[#204534]">Email address</label>
+        <label for="email" class="block text-sm font-medium leading-6 text-[#204534]">Adresse e-mail</label>
         <div class="mt-2">
           <input id="email" name="email" type="email" autocomplete="email" required
             class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
@@ -26,7 +26,7 @@
       </div>
 
       <div>
-        <label for="password" class="block text-sm font-medium leading-6 text-[#204534]">Password</label>
+        <label for="password" class="block text-sm font-medium leading-6 text-[#204534]">Mot de passe</label>
         <div class="mt-2">
           <input id="password" name="password" type="password" autocomplete="current-password" required
             class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
@@ -35,14 +35,14 @@
 
       <div class="grid grid-cols-3 gap-4">
         <div class="col-span-2">
-          <label for="street" class="block text-sm font-medium leading-6 text-[#204534]">Street</label>
+          <label for="street" class="block text-sm font-medium leading-6 text-[#204534]">Rue</label>
           <div class="mt-2">
             <input id="street" name="street" type="text" autocomplete="address-line1" required
               class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
           </div>
         </div>
         <div class="col-span-1">
-          <label for="number" class="block text-sm font-medium leading-6 text-[#204534]">Number</label>
+          <label for="number" class="block text-sm font-medium leading-6 text-[#204534]">Numéro</label>
           <div class="mt-2">
             <input id="number" name="number" type="text" autocomplete="address-line2" required
               class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6">
@@ -67,7 +67,7 @@
       </div>
 
       <div>
-        <label for="country" class="block text-sm font-medium leading-6 text-[#204534]">Country</label>
+        <label for="country" class="block text-sm font-medium leading-6 text-[#204534]">Pays</label>
         <div class="mt-2">
           <input id="country" name="country" type="text" autocomplete="country" required
             class="block w-full rounded-md border-0 p-1.5 text-[#fafafa] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#5C937A] sm:text-sm sm:leading-6"
