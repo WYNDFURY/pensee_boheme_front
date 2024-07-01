@@ -6,7 +6,7 @@
       <p class="text-gray-600 mt-2">{{ product.description }}</p>
       <div class="flex items-center justify-between mt-4">
         <span class="text-lg font-bold text-[#204534]">{{ product.price }}€</span>
-        <button @click="addToCart(product)"
+        <button @click="updateCart(product)"
           class="bg-[#204534] text-[#fafafa] py-2 px-4 rounded-lg hover:bg-[#176333] transition-colors duration-300">Ajouter
           au panier</button>
       </div>
@@ -16,30 +16,15 @@
 
 
 <script lang="ts" setup>
-import { useUtilsService } from '~/composables/utils/useUtilsService';
-
+import { useCartService } from '~/composables/useCartService';
+import type { Product } from '~/types/models';
 
 
 const props = defineProps<{
-  product: {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-  };
+  product: Product;
 }>();
 
-
-const addToCart = (product: {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}) => {
-  useUtilsService().addToCart(product);
-};
+const { updateCart } = useCartService();
 
 
 </script>

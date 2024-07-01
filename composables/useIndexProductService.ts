@@ -1,6 +1,15 @@
-import indexProductService from "~/services/indexProductService";
+import PenseeBohemeCredentials from "~/api/pensee_boheme/PenseeBohemeCredentials";
+import type { Product } from "~/types/models";
 
 export const useIndexProductService = () => {
-  const service = reactive(new indexProductService());
-  return service;
+  const apiKey = new PenseeBohemeCredentials().apiKey;
+
+  // console.log("filter", filter);
+  const getProducts = () => {
+    return useFetch<{ data: Product[] }>(`${apiKey}/products`);
+  };
+
+  return {
+    getProducts,
+  };
 };

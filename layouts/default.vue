@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#E9C8C3] min-h-screen flex flex-col font-serif">
+  <div class="bg-[#E9C8C3] text-[#204534] min-h-screen flex flex-col font-serif">
     <LayoutHeader />
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />

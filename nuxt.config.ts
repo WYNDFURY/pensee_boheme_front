@@ -7,4 +7,11 @@ export default defineNuxtConfig({
     },
   },
   modules: ["@nuxt/ui", "@nuxtjs/google-fonts", "@nuxtjs/tailwindcss"],
+  ssr: false,
+  runtimeConfig: {
+    public: {
+      stripeApiKey: "",
+      baseUrl: "",
+    },
+  },
 });

@@ -15,19 +15,15 @@
 </template>
 
 <script lang="ts" setup>
+import type { Product } from '~/types/models';
+
 
 const props = defineProps<{
-  products: {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-  }[];
+  products: Product[];
 }>();
 
 const page = ref(1);
-const pageCount = 5;
+const pageCount = 6;
 
 const rows = computed(() => {
   return props.products.slice((page.value - 1) * pageCount, (page.value) * pageCount)
