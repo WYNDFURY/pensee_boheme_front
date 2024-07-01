@@ -10,7 +10,6 @@ export const useCartService = () => {
   // fetch the cart if the user is authenticated or if a anonymous id is set
   const fetchCart = async () => {
     // Get the auth headers
-
     // If user, check if there is a cart for the user
     const response = await useFetch<{ cart: Cart }>(`${apiKey}/me/cart`, {
       headers: getHeaders(),
