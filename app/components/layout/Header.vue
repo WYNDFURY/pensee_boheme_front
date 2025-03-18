@@ -11,6 +11,7 @@
       <!-- Desktop Navigation - Hidden on mobile, will shrink -->
       <UNavigationMenu
         highlight
+        highlight-color="primary"
         :items="items"
         class="hidden md:flex font-['Josefin_Slab']"
       />
@@ -42,10 +43,7 @@
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div
-      v-if="mobileMenuOpen"
-      class="fixed inset-0 bg-black/90 text-white flex flex-col"
-    >
+    <div v-if="mobileMenuOpen" class="fixed inset-0 bg-black/90 text-white flex flex-col">
       <!-- Logo in mobile menu -->
       <div class="flex flex-col items-center justify-center gap-5 p-5 relative">
         <button
@@ -90,75 +88,75 @@
 </template>
 
 <script setup lang="ts">
-import { UNavigationMenu } from "#components";
+  import { UNavigationMenu } from '#components'
 
-const mobileMenuOpen = ref(false);
-const mobileDropdownOpen = ref(false);
+  const mobileMenuOpen = ref(false)
+  const mobileDropdownOpen = ref(false)
 
-// Navigation items for desktop menu
-const items = ref([
-  [
-    {
-      label: "Présentation",
-      to: "/home",
-    },
-    {
-      label: "Engagement",
-      to: "/engagement",
-    },
-    {
-      label: "Galerie",
-      to: "/galerie",
-    },
-    {
-      label: "Mon Univers Floral",
+  // Navigation items for desktop menu
+  const items = ref([
+    [
+      {
+        label: 'Présentation',
+        to: '/home',
+      },
+      {
+        label: 'Engagement',
+        to: '/engagement',
+      },
+      {
+        label: 'Galerie',
+        to: '/galerie',
+      },
+      {
+        label: 'Mon Univers Floral',
 
-      children: [
-        {
-          label: "Accessoires Fleurs Séchées",
-          to: "/univers/accessoires",
-        },
-        {
-          label: "Mariages",
-          to: "/univers/mariages",
-        },
-        {
-          label: "Cadeaux invités et détails personnalisés",
-          to: "/univers/cadeaux",
-        },
-        {
-          label: "Professionnels",
-          to: "/univers/professionnels",
-        },
-        {
-          label: "Ateliers Créatifs",
-          to: "/ateliers",
-        },
-      ],
-    },
-    {
-      label: "Infos Pratiques",
-      to: "/infos-pratiques",
-    },
-  ],
-]);
+        children: [
+          {
+            label: 'Accessoires Fleurs Séchées',
+            to: '/univers/accessoires',
+          },
+          {
+            label: 'Mariages',
+            to: '/univers/mariages',
+          },
+          {
+            label: 'Cadeaux invités et détails personnalisés',
+            to: '/univers/cadeaux',
+          },
+          {
+            label: 'Professionnels',
+            to: '/univers/professionnels',
+          },
+          {
+            label: 'Ateliers Créatifs',
+            to: '/ateliers',
+          },
+        ],
+      },
+      {
+        label: 'Infos Pratiques',
+        to: '/infos-pratiques',
+      },
+    ],
+  ])
 
-// Close mobile menu when route changes
-const route = useRoute();
-watch(
-  () => route.path,
-  () => {
-    mobileMenuOpen.value = false;
-    mobileDropdownOpen.value = false;
-  }
-);
+  // Close mobile menu when route changes
+  const route = useRoute()
+  watch(
+    () => route.path,
+    () => {
+      mobileMenuOpen.value = false
+      mobileDropdownOpen.value = false
+    }
+  )
 
-// Prevent scrolling when mobile menu is open
-watch(mobileMenuOpen, (isOpen) => {
-  if (isOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
-});
+  // Prevent scrolling when mobile menu is open
+  watch(mobileMenuOpen, (isOpen) => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  })
 </script>

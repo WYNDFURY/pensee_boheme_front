@@ -1,10 +1,11 @@
-@import "tailwindcss" theme(static);
-@import "@nuxt/ui";
+@import 'tailwindcss' theme(static);
+@import '@nuxt/ui';
 
 @theme static {
   --ui-bg: #fff9f2;
   --ui-border: #603e65;
-  --font-sans: "Public Sans", sans-serif;
+  --ui-text-highlighted: #603e65;
+  --font-sans: 'Public Sans', sans-serif;
   --color-bgcolor: #fff9f2;
   --color-primary_green: #e6eedc;
   --color-secondary_green: #adba9e;
