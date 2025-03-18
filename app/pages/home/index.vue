@@ -3,24 +3,24 @@
     <!-- First section - Hero -->
     <section class="">
       <div class="mx-auto">
-        <div class="flex flex-col md:flex-row-reverse items-center">
+        <div class="flex flex-col lg:flex-row-reverse items-center">
           <h1
-            class="text-3xl text-center md:text-5xl md:w-1/2 font-extrabold leading-tight px-16 py-20 bg-gradient-to-tl from-[#A37847] to-[#3A3025] text-transparent bg-clip-text"
+            class="text-3xl text-center lg:text-5xl lg:w-1/2 font-extrabold leading-tight px-16 py-20 bg-gradient-to-tl from-[#A37847] to-[#3A3025] text-transparent bg-clip-text"
           >
             Chaque création, <br />
             est une ode à la beauté de la nature et à l'imagination
           </h1>
-          <div class="md:w-1/2">
+          <div class="lg:w-1/2">
             <NuxtImg
               src="/home/landpage_1.jpg"
               alt="Pensée Bohème création florale"
-              class="rounded-b-4xl md:rounded-none"
+              class="rounded-b-4xl lg:rounded-none"
               fit="cover"
               format="webp"
               quality="90"
               loading="lazy"
-              width="700"
-              height="700"
+              width="1024"
+              height="800"
             />
           </div>
         </div>
@@ -29,7 +29,7 @@
 
     <!-- Second section - About -->
     <section class="">
-      <div class="flex flex-col md:flex-row-reverse items-center px-10">
+      <div class="flex flex-col lg:flex-row-reverse items-center px-10">
         <h2 class="text-3xl mb-6 leading-normal text-center text-accent-500 my-10">
           Je suis Cécile, <br />
           créatrice de Pensée Bohème fleuriste passionnée et engagée
@@ -50,11 +50,11 @@
             dans une démarche
             <NuxtLink
               to="/engagement"
-              class="font-semibold text-accent-500 border-b border-dotted border-accent-500 md:border-none relative group"
+              class="font-semibold text-accent-500 border-b border-dotted border-accent-500 lg:border-none relative group"
             >
               éco-responsable.
               <span
-                class="absolute left-0 bottom-0 w-0 h-px bg-accent-500 transition-all duration-300 md:group-hover:w-full hidden md:block"
+                class="absolute left-0 bottom-0 w-0 h-px bg-accent-500 transition-all duration-300 lg:group-hover:w-full hidden lg:block"
               ></span>
             </NuxtLink>
           </p>
@@ -62,9 +62,9 @@
             Je vous accueille sur
             <NuxtLink
               to="/contact"
-              class="font-semibold text-accent-500 border-b border-dotted border-accent-500 md:border-none relative group"
+              class="font-semibold text-accent-500 border-b border-dotted border-accent-500 lg:border-none relative group"
               >rendez-vous<span
-                class="absolute left-0 bottom-0 w-0 h-px bg-accent-500 transition-all duration-300 md:group-hover:w-full hidden md:block"
+                class="absolute left-0 bottom-0 w-0 h-px bg-accent-500 transition-all duration-300 lg:group-hover:w-full hidden lg:block"
               ></span>
             </NuxtLink>
             dans mon atelier à Beuzeville-la-Grenier; petit village Normand situé entre Le Havre et

@@ -1,5 +1,5 @@
 <template>
-  <UApp class="bg-red-700">
+  <UApp>
     <LayoutHeader />
     <NuxtPage class="bg-bgcolor" />
     <LayoutFooter />

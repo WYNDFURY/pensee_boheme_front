@@ -1,10 +1,12 @@
 <template>
-  <header class="bg-secondary_green text-black relative">
-    <div class="mx-auto px-10 py-4 flex items-center justify-between">
+  <header class="">
+    <div
+      class="mx-auto px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
+    >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
-      <div class="md:text-left w-full md:w-auto flex-shrink-0 text-center">
+      <div class="lg:text-left w-full lg:w-auto flex-shrink-0 text-center">
         <NuxtLink to="/home">
-          <img src="/logo.svg" alt="Pensée Bohème" class="h-16" />
+          <img src="/logo.svg" alt="Pensée Bohème" class="h-14 px-4" />
         </NuxtLink>
       </div>
 
@@ -13,13 +15,13 @@
         highlight
         highlight-color="primary"
         :items="items"
-        class="hidden md:flex font-['Josefin_Slab']"
+        class="hidden lg:flex font-['Josefin_Slab']"
       />
 
       <!-- Hamburger Icon - Visible only on mobile when menu is closed -->
       <div>
         <button
-          class="md:hidden flex justify-end"
+          class="lg:hidden flex justify-end"
           @click="mobileMenuOpen = !mobileMenuOpen"
           aria-label="Menu"
           v-if="!mobileMenuOpen"
@@ -47,7 +49,7 @@
       <!-- Logo in mobile menu -->
       <div class="flex flex-col items-center justify-center gap-5 p-5 relative">
         <button
-          class="md:hidden absolute right-0 top-0 py-10 px-5"
+          class="lg:hidden absolute right-0 top-0 py-10 px-5"
           @click="mobileMenuOpen = !mobileMenuOpen"
           aria-label="Close Menu"
           v-if="mobileMenuOpen"
@@ -80,7 +82,8 @@
         :items="items"
         class="font-['Josefin_Slab'] p-5"
         :ui="{
-          link: 'text-2xl font-light',
+          link: 'text-sm lg:text-xs lg:text-lg font-light min-w-0',
+          linkLabel: 'truncate',
         }"
       />
     </div>
@@ -114,7 +117,7 @@
         children: [
           {
             label: 'Accessoires Fleurs Séchées',
-            to: '/univers/accessoires',
+            to: '/univers/AFS',
           },
           {
             label: 'Mariages',
@@ -122,17 +125,17 @@
           },
           {
             label: 'Cadeaux invités et détails personnalisés',
-            to: '/univers/cadeaux',
+            to: '/univers/cadeaux-details',
           },
           {
             label: 'Professionnels',
             to: '/univers/professionnels',
           },
-          {
-            label: 'Ateliers Créatifs',
-            to: '/ateliers',
-          },
         ],
+      },
+      {
+        label: 'Ateliers Créatifs',
+        to: '/ateliers-creatifs',
       },
       {
         label: 'Infos Pratiques',

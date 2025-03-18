@@ -13,9 +13,9 @@ export default defineAppConfig({
     },
     navigationMenu: {
       slots: {
-        link: 'text-md',
         childLinkLabel: 'text-md',
       },
+
       compoundVariants: [
         {
           orientation: 'horizontal',
