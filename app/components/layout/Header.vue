@@ -11,12 +11,14 @@
       </div>
 
       <!-- Desktop Navigation - Hidden on mobile, will shrink -->
-      <UNavigationMenu
-        highlight
-        highlight-color="primary"
-        :items="items"
-        class="hidden lg:flex font-['Josefin_Slab']"
-      />
+      <ClientOnly>
+        <UNavigationMenu
+          highlight
+          highlight-color="primary"
+          :items="items"
+          class="hidden lg:flex font-['Josefin_Slab']"
+        />
+      </ClientOnly>
 
       <!-- Hamburger Icon - Visible only on mobile when menu is closed -->
       <div>
@@ -77,17 +79,19 @@
       </div>
 
       <!-- Mobile Navigation -->
-      <UNavigationMenu
-        color="neutral"
-        highlight
-        orientation="vertical"
-        :items="items"
-        class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
-        :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
-        :ui="{
-          link: 'text-lg font-light min-w-0',
-        }"
-      />
+      <ClientOnly>
+        <UNavigationMenu
+          color="neutral"
+          highlight
+          orientation="vertical"
+          :items="items"
+          class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
+          :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
+          :ui="{
+            link: 'text-lg font-light min-w-0',
+          }"
+        />
+      </ClientOnly>
     </div>
   </header>
 </template>
@@ -109,12 +113,14 @@
   )
 
   // Prevent scrolling when mobile menu is open
-  watch(mobileMenuOpen, (isOpen) => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+  onMounted(() => {
+    watch(mobileMenuOpen, (isOpen) => {
+      if (isOpen) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    })
   })
 
   // Navigation items for desktop menu

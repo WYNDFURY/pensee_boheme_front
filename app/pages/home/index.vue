@@ -130,11 +130,13 @@
             guide ma créativité !
           </p>
           <div class="mx-auto w-2/3">
-            <USeparator
-              orientation="horizontal"
-              class="h-10"
-              :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
-            />
+            <ClientOnly>
+              <USeparator
+                orientation="horizontal"
+                class="h-10"
+                :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
+              />
+            </ClientOnly>
           </div>
           <p class="italic text-xl font-medium leading-relaxed">
             Bienvenue dans cet espace où chaque projet, chaque création, est une ode à la beauté de
