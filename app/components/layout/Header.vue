@@ -6,7 +6,7 @@
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
       <div class="lg:text-left w-full lg:w-auto flex-shrink-0 text-center">
         <NuxtLink to="/home">
-          <img src="/logo.svg" alt="Pensée Bohème" class="h-14 px-4" />
+          <NuxtImg src="/logo.svg" alt="Pensée Bohème" class="h-14 px-4" />
         </NuxtLink>
       </div>
 
@@ -44,15 +44,17 @@
       </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div v-if="mobileMenuOpen" class="fixed inset-0 bg-black/90 text-white flex flex-col">
+    <!-- Mobile Menu Overlay with transition -->
+    <div
+      class="fixed inset-0 bg-black/90 text-white flex flex-col transition-all duration-300 ease-in-out"
+      :class="mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+    >
       <!-- Logo in mobile menu -->
       <div class="flex flex-col items-center justify-center gap-5 p-5 relative">
         <button
           class="lg:hidden absolute right-0 top-0 py-10 px-5"
           @click="mobileMenuOpen = !mobileMenuOpen"
           aria-label="Close Menu"
-          v-if="mobileMenuOpen"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,10 +82,10 @@
         highlight
         orientation="vertical"
         :items="items"
-        class="font-['Josefin_Slab'] p-5"
+        class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
+        :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
         :ui="{
-          link: 'text-sm lg:text-xs lg:text-lg font-light min-w-0',
-          linkLabel: 'truncate',
+          link: 'text-lg font-light min-w-0',
         }"
       />
     </div>
@@ -95,6 +97,25 @@
 
   const mobileMenuOpen = ref(false)
   const mobileDropdownOpen = ref(false)
+
+  // Close mobile menu when route changes
+  const route = useRoute()
+  watch(
+    () => route.path,
+    () => {
+      mobileMenuOpen.value = false
+      mobileDropdownOpen.value = false
+    }
+  )
+
+  // Prevent scrolling when mobile menu is open
+  watch(mobileMenuOpen, (isOpen) => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  })
 
   // Navigation items for desktop menu
   const items = ref([
@@ -143,23 +164,4 @@
       },
     ],
   ])
-
-  // Close mobile menu when route changes
-  const route = useRoute()
-  watch(
-    () => route.path,
-    () => {
-      mobileMenuOpen.value = false
-      mobileDropdownOpen.value = false
-    }
-  )
-
-  // Prevent scrolling when mobile menu is open
-  watch(mobileMenuOpen, (isOpen) => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-  })
 </script>
