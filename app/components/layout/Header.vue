@@ -17,6 +17,9 @@
           highlight-color="primary"
           :items="items"
           class="hidden lg:flex font-['Josefin_Slab']"
+          :ui="{
+            link: 'text-lg',
+          }"
         />
       </ClientOnly>
 
