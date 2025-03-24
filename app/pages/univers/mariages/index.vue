@@ -1,6 +1,10 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold">MARIAGES</h1>
-    <p>This is a MARIAGES placeholder page.</p>
+  <div>
+    <PagesBanner
+      class="md:text-right"
+      :banner-image="'/mariages/mariages_Banner.jpg'"
+      :alt="'Mariages bannière'"
+      >Mariages</PagesBanner
+    >
   </div>
 </template>

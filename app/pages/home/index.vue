@@ -4,7 +4,7 @@
     <section class="h-[calc(100vh-80px)]">
       <div class="flex h-full flex-col items-center md:flex-row-reverse">
         <h1
-          class="flex flex-1 items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:text-left md:my-auto md:w-1/2 md:text-5xl px-10 md:px-20 xl:px-36 text-[4vh] md:text-[8vh] 2xl:text-[10vh]"
+          class="flex flex-1 items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:text-left md:my-auto md:w-1/2 px-10 md:px-20 xl:px-36 text-[4vh] lg:text-[6vh] xl:text-[8vh] 2xl:text-[10vh]"
         >
           Chaque création, <br />
           est une ode à la beauté de la nature et à l'imagination

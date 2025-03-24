@@ -1,6 +1,15 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold">CADEAUX INVITES DETAILS PERSOS</h1>
-    <p>This is a CADEAUX INVITES DETAILS PERSOS placeholder page.</p>
+  <div>
+    <PagesBanner
+      class="md:text-left justify-start"
+      :banner-image="'/DPCI/DPCI_Banner.jpg'"
+      :alt="'Détails personnalisés et cadeaux invités bannière'"
+      :text-placement="'md:justify-start'"
+      >Détails <br />
+      personnalisés <br />
+      & <br />
+      cadeaux <br />
+      invités
+    </PagesBanner>
   </div>
 </template>

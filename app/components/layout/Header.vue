@@ -154,7 +154,7 @@
             to: '/univers/mariages',
           },
           {
-            label: 'Cadeaux invités et détails personnalisés',
+            label: ' Détails Personnalisés & Cadeaux Invités',
             to: '/univers/cadeaux-details',
           },
           {
