@@ -92,7 +92,7 @@
           </p>
 
           <NuxtLink
-            to="/contact"
+            href="https://app.collectifdelafleurfrancaise.com/annuaire/membre/pensee-boheme-1"
             class="w-fit relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
             >En savoir plus<span
               class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
