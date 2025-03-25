@@ -30,7 +30,9 @@
     <!-- Second section -->
     <section>
       <div class="flex flex-col items-center gap-10 md:flex-row-reverse">
-        <h2 class="text-center text-3xl leading-normal text-accent-500 md:hidden">
+        <h2
+          class="text-center px-5 font-semibold text-3xl leading-normal text-accent-500 md:hidden"
+        >
           Je suis Cécile, <br />
           créatrice de Pensée Bohème fleuriste passionnée et engagée
         </h2>
@@ -46,7 +48,7 @@
 
         <div class="text-center text-xl font-light leading-relaxed px-10">
           <h2
-            class="hidden md:block my-10 text-center text-3xl 2xl:text-4xl leading-normal text-accent-500"
+            class="hidden md:block my-10 font-semibold text-center text-3xl 2xl:text-4xl leading-normal text-accent-500"
           >
             Je suis Cécile, <br />
             créatrice de Pensée Bohème fleuriste passionnée et engagée
@@ -118,7 +120,7 @@
         </div>
 
         <div class="bg-primary_pink px-10 py-8">
-          <h2 class="mb-10 text-center text-2xl text-accent-500 2xl:text-4xl">
+          <h2 class="mb-10 font-semibold text-center text-2xl text-accent-500 2xl:text-4xl">
             Derrière le nom Pensée Bohème se cache l'essence même de mon travail.
           </h2>
           <p class="mb-4 text-xl font-light leading-relaxed 2xl:text-2xl">

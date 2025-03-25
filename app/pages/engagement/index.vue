@@ -20,13 +20,13 @@
             </figcaption>
           </figure>
         </div>
-        <div class="bg-primary_green px-10 py-8 mt-15">
-          <h2 class="mb-15 text-center font text-2xl text-accent-500">
+        <div class="bg-primary_green px-10 lg:px-20 py-8 mt-15">
+          <h2 class="mb-15 font-bold text-center font text-2xl text-accent-500">
             Pensée Bohème, c'est plus de 70% de végétaux issus d'une production raisonnée
           </h2>
           <div class="flex flex-col gap-4 text-xl font-light leading-relaxed">
             <div>
-              <p>
+              <p class="mb-2">
                 Après mon apprentissage dans une boutique "classique" en 2016, je fais face aux deux
                 réalités de ce métier :
               </p>
@@ -41,11 +41,11 @@
                 </li>
               </ul>
             </div>
-            <p class="text-xl text-center lg:text-left font-light leading-relaxed">
+            <p class="text-xl text-left font-light leading-relaxed">
               C'est en me confrontant à ce milieu que je me suis rendu compte qu'il y avait
               forcément une façon de fleurir vos événements de façon plus éthique.
             </p>
-            <p class="text-xl text-center lg:text-left font-light leading-relaxed">
+            <p class="text-xl text-left font-light leading-relaxed">
               Je travaille main dans la main avec des floricultrices passionnées qui me fournissent
               en fleurs locales une grande partie de l'année pour fleurir vos événements.
             </p>

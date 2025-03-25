@@ -1,10 +1,11 @@
 <template>
   <div>
     <PagesBanner
-      class="md:text-right"
-      :banner-image="'/professionnels/pro_Banner.jpg'"
+      :img-class="'opacity-100 '"
+      :text-class="'text-black bottom-1/4 tracking-[0.5em]'"
+      :banner-image="'/professionnels/pro_banner.jpg'"
       :alt="'Professionnels bannière'"
-      >Professionnels</PagesBanner
-    >
+      >Professionnels
+    </PagesBanner>
   </div>
 </template>

@@ -1,7 +1,14 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold">ATELIERS CREATIFS</h1>
-    <p>This is a ATELIERS CREATIFS placeholder page.</p>
+  <div class="">
+    <PagesBanner
+      class=""
+      :img-class="' '"
+      :text-class="' justify-end items-end mb-10 mr-10'"
+      :banner-image="'/ateliers-creatifs/ateliers_banner.png'"
+      :alt="'Professionnels bannière'"
+      >Ateliers <br />
+      Créatifs
+    </PagesBanner>
   </div>
 </template>
 

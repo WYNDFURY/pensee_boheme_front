@@ -2,9 +2,9 @@
   <div>
     <PagesBanner
       class="md:text-left justify-start"
+      :text-class="'md:justify-start md:ml-10'"
       :banner-image="'/DPCI/DPCI_Banner.jpg'"
       :alt="'Détails personnalisés et cadeaux invités bannière'"
-      :text-placement="'md:justify-start'"
       >Détails <br />
       personnalisés <br />
       & <br />

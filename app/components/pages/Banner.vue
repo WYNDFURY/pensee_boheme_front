@@ -1,14 +1,14 @@
 <template>
-  <div
-    class="relative text-white text-center font-light font-['Source_Serif_4'] uppercase italic leading-tight tracking-[0.5em]"
-  >
+  <div class="relative text-white">
     <NuxtImg
       :src="bannerImage"
       :alt="alt"
       class="w-full h-[20vh] md:h-[50vh] opacity-80 object-cover object-center"
+      :class="imgClass"
     />
     <div
-      class="text-[3vh] md:text-[6vh] lg:text-[8vh] absolute md:mr-10 inset-0 flex items-center justify-center"
+      class="text-[3vh] md:text-[6vh] lg:text-[8vh] absolute inset-0 flex items-center justify-center font-light font-['Source_Serif_4'] uppercase italic leading-tight tracking-[0.5em] drop-shadow-sm"
+      :class="textClass"
     >
       <slot></slot>
     </div>
@@ -27,9 +27,13 @@
       type: String,
       default: 'Banner image',
     },
-    textPlacement: {
+    textClass: {
       type: String,
-      default: 'justify-end',
+      default: '',
+    },
+    imgClass: {
+      type: String,
+      default: '',
     },
   })
 </script>
