@@ -2,7 +2,7 @@
   <div class="">
     <PagesBanner
       class=""
-      :img-class="' '"
+      :img-class="''"
       :text-class="' justify-end items-end mb-10 mr-10'"
       :banner-image="'/ateliers-creatifs/ateliers_banner.png'"
       :alt="'Professionnels bannière'"
