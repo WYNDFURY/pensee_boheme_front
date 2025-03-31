@@ -9,9 +9,9 @@
       Fleurs <br />
       Séchées</PagesBanner
     >
-    <section class="flex flex-col items-center">
+    <section class="flex flex-col items-center font-['Josefin_Slab']">
       <div
-        class="my-10 text-center text-2xl 2xl:text-4xl font-light leading-relaxed px-10 md:px-20 font-['Josefin_Slab']"
+        class="my-10 text-center text-2xl 2xl:text-4xl font-light leading-relaxed px-10 md:px-20"
       >
         <p class="2xl:text-3xl">
           Passionnée par la beauté et la pérennité des fleurs séchées, je vous invite à découvrir
@@ -46,35 +46,32 @@
           loading="lazy"
         />
       </div>
-      <!-- <div class="px-5 md:px-10 w-full">
-        <div class="grid grid-cols-3 md:gap-5">
-          <NuxtImg
-            src="/AFS/AFS_1.jpg"
-            alt="Accessoires Fleurs Séchées"
-            class="w-full aspect-[3/4] object-cover"
-            format="webp"
-            quality="90"
-            loading="lazy"
-          />
-          <NuxtImg
-            src="/AFS/AFS_2.jpg"
-            alt="Accessoires Fleurs Séchées"
-            class="w-full aspect-[3/4] object-cover"
-            format="webp"
-            quality="90"
-            loading="lazy"
-          />
-          <NuxtImg
-            src="/AFS/AFS_3.jpg"
-            alt="Accessoires Fleurs Séchées "
-            class="w-full aspect-[3/4] object-cover"
-            format="webp"
-            quality="90"
-            loading="lazy"
-          />
+    </section>
+    <div class="mx-auto py-8 w-2/3">
+      <ClientOnly>
+        <USeparator
+          orientation="horizontal"
+          class="h-10"
+          :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
+        />
+      </ClientOnly>
+    </div>
+    <section class="flex flex-col gap-10 font-['Josefin_Slab'] text-center">
+      <div class="px-20">
+        <h2 class="font-semibold text-2xl text-accent-500 2xl:text-4xl">Le souci du détail</h2>
+        <p class="text-xl font-light leading-relaxed 2xl:text-2xl">
+          Pour la mariée ou son cortège, pour un événement particulier ou simplement pour vous faire
+          plaisir. Je mets tout en œuvre pour que vos accessoires se marient parfaitement avec vos
+          envies. Tous les accessoires sont créés sur mesure, selon les couleurs que vous désirez.
+        </p>
+      </div>
 
-        </div>
-      </div> -->
+      <ProductsList v-if="data" :products="data" />
     </section>
   </div>
 </template>
+
+<script lang="ts" setup>
+  const { getProducts } = useIndexProductService()
+  const { data } = getProducts()
+</script>
