@@ -9,9 +9,13 @@
       >Ateliers <br />
       Créatifs
     </PagesBanner>
+    <ProductsList v-if="data" :page="data.data" />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script setup lang="ts">
+  const { getPageProducts } = useShowPageProductsService()
+  const { data } = getPageProducts()
+</script>
 
 <style></style>

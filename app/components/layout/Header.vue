@@ -76,7 +76,7 @@
             />
           </svg>
         </button>
-        <NuxtLink to="/" @click="mobileMenuOpen = false">
+        <NuxtLink to="/home" @click="mobileMenuOpen = false">
           <img src="/logo.svg" alt="Pensée Bohème" class="h-16 invert" />
         </NuxtLink>
       </div>
@@ -147,7 +147,7 @@
         children: [
           {
             label: 'Accessoires Fleurs Séchées',
-            to: '/univers/AFS',
+            to: '/univers/accessoires-fleurs-sechees',
           },
           {
             label: 'Mariages',

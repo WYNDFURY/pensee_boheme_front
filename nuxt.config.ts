@@ -15,6 +15,11 @@ export default defineNuxtConfig({
     preference: 'light',
   },
 
+  devServer: {
+    port: 3000,
+    host: '0.0.0.0', // This allows connections from any IP
+  },
+
   app: {
     head: {
       link: [

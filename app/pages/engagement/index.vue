@@ -87,8 +87,16 @@
           </p>
           <p class="">
             De plus, vous pourrez retrouver une large gamme d'éléments de décoration disponible à la
-            location; ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en
-            faisant des économies.
+            <NuxtLink
+              to="/locations"
+              class="relative border-b border-dotted border-accent-500 font-semibold text-accent-500 group md:border-none"
+            >
+              location
+              <span
+                class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
+              ></span></NuxtLink
+            >; ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en faisant
+            des économies.
           </p>
 
           <NuxtLink

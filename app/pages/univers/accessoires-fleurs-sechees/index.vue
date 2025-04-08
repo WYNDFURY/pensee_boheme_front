@@ -56,8 +56,8 @@
         />
       </ClientOnly>
     </div>
-    <section class="flex flex-col gap-10 font-['Josefin_Slab'] text-center">
-      <div class="px-20">
+    <section class="flex flex-col gap-10 font-['Josefin_Slab']">
+      <div class="px-20 text-center">
         <h2 class="font-semibold text-2xl text-accent-500 2xl:text-4xl">Le souci du détail</h2>
         <p class="text-xl font-light leading-relaxed 2xl:text-2xl">
           Pour la mariée ou son cortège, pour un événement particulier ou simplement pour vous faire
@@ -66,12 +66,12 @@
         </p>
       </div>
 
-      <ProductsList v-if="data" :products="data" />
+      <ProductsList v-if="data" :page="data.data" />
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
-  const { getProducts } = useIndexProductService()
-  const { data } = getProducts()
+  const { getPageProducts } = useShowPageProductsService()
+  const { data } = getPageProducts()
 </script>

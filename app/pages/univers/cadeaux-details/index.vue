@@ -11,5 +11,11 @@
       cadeaux <br />
       invités
     </PagesBanner>
+    <ProductsList v-if="data" :page="data.data" />
   </div>
 </template>
+
+<script setup lang="ts">
+  const { getPageProducts } = useShowPageProductsService()
+  const { data } = getPageProducts()
+</script>
