@@ -155,7 +155,7 @@
           },
           {
             label: ' Détails Personnalisés & Cadeaux Invités',
-            to: '/univers/cadeaux-details',
+            to: '/univers/cadeaux-invites',
           },
           {
             label: 'Professionnels',

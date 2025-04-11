@@ -1,9 +1,9 @@
 <template>
   <div v-for="category in page.categories" :key="category.id" class="my-10">
     <!-- Container for alignment consistency -->
-    <div class="w-full max-w-7xl mx-auto px-4 md:px-8">
+    <div class="w-full max-w-7xl mx-auto px-4 md:px-8 font-[Josefin_Slab]">
       <!-- Heading with same constraints as product grid -->
-      <h2 class="text-left text-2xl md:text-3xl font-medium mb-6">{{ category.name }} -</h2>
+      <h2 class="text-left text-2xl md:text-3xl font-light mb-6">{{ category.name }} -</h2>
 
       <!-- Product grid with same width constraints -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-4">
