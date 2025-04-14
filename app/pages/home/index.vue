@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-20 font-[Josefin_Slab] text-neutral-800">
+  <div class="flex flex-col gap-20 text-neutral-800">
     <!-- First section -->
     <section class="h-[calc(100vh-80px)]">
       <div class="flex h-full flex-col items-center md:flex-row-reverse">
