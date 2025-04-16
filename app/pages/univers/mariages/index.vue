@@ -7,9 +7,9 @@
       ><h1>Mariages</h1></PagesBanner
     >
 
-    <div class="flex flex-col gap-8 text-pretty lg:px-16">
+    <div class="flex flex-col gap-8 text-pretty">
       <!-- first section -->
-      <section class="flex flex-col mt-16 md:mt-32">
+      <section class="flex flex-col mt-16 md:mt-32 lg:mx-16">
         <div class="grid grid-cols-2">
           <blockquote class="mx-8 my-auto -translate-y-10 font-['Source_Serif_Pro'] italic">
             <h1 class="mb-2 text-left font-serif md:text-xl lg:text-4xl">
@@ -26,13 +26,13 @@
             format="webp"
             quality="90"
             loading="lazy"
-            class="opacity-90"
+            class="opacity-90 pr-5 lg:pr-0"
           />
         </div>
         <NuxtImg
           src="/mariages/mariages_2.jpg"
           alt="Pensée Bohème - Mariages2"
-          class="w-3/4 -translate-y-1/3 self-center md:w-1/2"
+          class="w-4/6 -translate-y-1/3 self-center md:w-1/2"
           format="webp"
           quality="90"
           loading="lazy"
@@ -48,7 +48,7 @@
           </h2>
           <hr class="h-px w-24 mx-auto rounded-full bg-accent-500" />
           <div
-            class="flex flex-col text-left md:text-center gap-4 px-8 text-xl font-light leading-relaxed text-pretty md:mx-0"
+            class="flex flex-col text-left md:text-center gap-4 text-xl font-light leading-relaxed text-pretty mx-10 xl:mx-28 2xl:mx-68"
           >
             <p>
               Je m'efforce de mettre en valeur chaque détail de votre décoration, et je conçois des
@@ -75,7 +75,7 @@
             loading="lazy"
           />
           <div
-            class="mx-auto flex flex-col gap-4 px-16 py-4 text-base font-light leading-relaxed text-center max-h-3/4 lg:col-span-2 lg:px-4 lg:py-0 lg:text-right xl:text-xl 2xl:text-2xl"
+            class="mx-auto flex flex-col gap-4 px-16 py-4 text-base font-light leading-relaxed text-center max-h-3/4 lg:col-span-2 lg:px-4 lg:py-8 lg:text-right xl:text-xl 2xl:text-2xl"
           >
             <p class="text-pretty">
               La personnalisation est au cœur de ma démarche. Je propose des accessoires sur mesure

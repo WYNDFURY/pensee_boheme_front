@@ -10,7 +10,7 @@
 
     <section class="relative flex flex-col text-pretty mt-16 gap-16 mb-40 md:mb-60 lg:mb-80">
       <h2 class="sr-only">Pour les professionnels</h2>
-      <div class="flex flex-col gap-8 text-center text-xl px-16 lg:px-24 md:mx-0">
+      <div class="flex flex-col gap-8 text-center text-xl mx-10 xl:mx-28 2xl:mx-68">
         <p>
           Amis professionnels, vous cherchez à donner un coup d'éclat à la décoration de votre
           boutique ? Je serais ravie de discuter avec vous de votre projet!

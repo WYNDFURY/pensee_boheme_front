@@ -123,12 +123,12 @@
           <h2 class="mb-10 font-semibold text-center text-2xl text-accent-500 2xl:text-4xl">
             Derrière le nom Pensée Bohème se cache l'essence même de mon travail.
           </h2>
-          <p class="mb-4 text-xl font-light leading-relaxed 2xl:text-2xl">
+          <p class="mb-4 text-xl font-light leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
             Enfant j'ai été émerveillée par la beauté de la Pensée; cette fleur qui symbolise la
             douceur et la créativité; c'est une des premières fleurs dont j'ai le souvenir de
             découvrir dans le jardin de mes parents.
           </p>
-          <p class="text-xl font-light leading-relaxed 2xl:text-2xl">
+          <p class="text-xl font-light leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
             L'esprit Bohème quant à lui évoque pour moi une esthétique sauvage et poétique. C'est
             cette fusion entre la beauté naturelle de la Pensée et l'audace de la vie Bohème qui
             guide ma créativité !
