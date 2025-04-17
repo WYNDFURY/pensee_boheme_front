@@ -12,7 +12,7 @@
       </h1>
     </PagesBanner>
 
-    <div class="bg-primary_orange px-20 py-8 text-pretty">
+    <div class="bg-primary_orange px-10 lg:px-20 py-8 text-pretty">
       <h2 class="font-bold text-center font text-2xl text-accent-500">
         Vous voulez organiser un EVJF et cherchez une idée originale ?
       </h2>

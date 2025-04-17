@@ -3,25 +3,23 @@
     <p class="text-center text-5xl font-light text-accent-500 my-24">
       {{ page?.categories?.[0]?.products?.length }} Ateliers vous sont proposés
     </p>
-
+    <!-- for desktop -->
     <div v-if="isDesktop">
-      <div v-for="category in page.categories" :key="category.id" class="my-10">
-        <AteliersCardDesktop
-          v-for="product in category.products"
-          :key="product.id"
-          :product="product"
-        />
-      </div>
+      <AteliersCardDesktop
+        v-for="(product, index) in page?.categories?.[0]?.products"
+        :key="index"
+        :product="product"
+        :is-even="index % 2 === 0"
+      />
     </div>
 
+    <!-- for mobile -->
     <div v-if="!isDesktop">
-      <div v-for="category in page.categories" :key="category.id" class="my-10">
-        <AteliersCardMobile
-          v-for="product in category.products"
-          :key="product.id"
-          :product="product"
-        />
-      </div>
+      <AteliersCardMobile
+        v-for="(product, index) in page?.categories?.[0]?.products"
+        :key="index"
+        :product="product"
+      />
     </div>
   </div>
 </template>
