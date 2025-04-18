@@ -57,8 +57,10 @@
             <p>
               Mon rôle ne se limite pas à la simple création ; je me consacre également à
               l'installation sur le lieu de réception, afin que chaque fleur soit parfaitement
-              disposée pour ce jour particulier. Je vous accompagne pour fleurir vos événements
-              partout en Normandie et aux alentours.
+              disposée pour ce jour particulier.
+            </p>
+            <p>
+              Je vous accompagne pour fleurir vos événements partout en Normandie et aux alentours.
             </p>
           </div>
         </div>
@@ -108,7 +110,7 @@
         <div
           class="bg-primary_green rounded-lg shadow-md p-8 flex flex-col items-center gap-6 max-w-xl mx-auto"
         >
-          <IconsBannerLogo class="w-16 md:w-20 xl:w-24 h-full text-accent-500" />
+          <IconsBannerLogo class="w-12 md:w-16 h-full text-accent-500" />
 
           <p class="text-center text-lg md:text-xl leading-relaxed">
             Je propose également mes services pour animer des ateliers fleuris dans vos entreprises

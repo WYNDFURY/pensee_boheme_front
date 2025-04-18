@@ -13,7 +13,7 @@
       <div class="flex flex-col gap-8 text-center text-xl mx-10 xl:mx-28 2xl:mx-68">
         <p>
           Amis professionnels, vous cherchez à donner un coup d'éclat à la décoration de votre
-          boutique ? Je serais ravie de discuter avec vous de votre projet!
+          boutique ? <br />Je serais ravie de discuter avec vous de votre projet !
         </p>
 
         <p>
@@ -36,7 +36,7 @@
 
         <p class="text-center text-sm md:text-xl leading-relaxed text-pretty">
           Je propose également mes services pour animer <br />
-          des ateliers fleuris dans vos entreprises
+          des ateliers fleuris dans vos entreprises,
           <br />
           <NuxtLink
             to="/ateliers-creatifs"
