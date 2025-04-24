@@ -16,7 +16,7 @@
             class="bg-primary_orange absolute text-center inset-x-0 top-1/2 -translate-y-1/2 py-2"
           >
             <div class="w-1/2 ml-auto">
-              <div class="pr-[10vw] text-pretty text-slate-900 space-y-2">
+              <div class="pr-[10vw] text-balance text-slate-900 space-y-2">
                 <p class="font-light text-xl lg:text-2xl">{{ product.price }} € par personne</p>
                 <div>
                   <p
@@ -45,6 +45,7 @@
             <NuxtImg
               :src="product.media[0]?.url"
               :alt="product.name"
+              placeholder=""
               class="object-cover w-full h-full rounded-sm drop-shadow-md opacity-80"
               loading="lazy"
             />

@@ -7,7 +7,7 @@
       ><h1>Mariages</h1></PagesBanner
     >
 
-    <div class="flex flex-col gap-8 text-pretty">
+    <div class="flex flex-col gap-8 text-balance">
       <!-- first section -->
       <section class="flex flex-col mt-16 md:mt-32 lg:mx-16">
         <div class="grid grid-cols-2">
@@ -23,10 +23,11 @@
           <NuxtImg
             src="/mariages/mariages_1.jpg"
             alt="Pensée Bohème - Mariages1"
+            class="opacity-90 pr-5 lg:pr-0"
             format="webp"
+            placeholder=""
             quality="90"
             loading="lazy"
-            class="opacity-90 pr-5 lg:pr-0"
           />
         </div>
         <NuxtImg
@@ -34,6 +35,7 @@
           alt="Pensée Bohème - Mariages2"
           class="w-4/6 -translate-y-1/3 self-center md:w-1/2"
           format="webp"
+          placeholder=""
           quality="90"
           loading="lazy"
         />
@@ -41,14 +43,14 @@
 
       <!-- second section -->
       <section class="mt-16">
-        <div class="flex flex-col gap-8 text-center">
-          <h2 class="text-2xl md:mx-0">
+        <div class="flex flex-col gap-8 text-center text-pretty mx-10 xl:mx-28 2xl:mx-68">
+          <h2 class="text-2xl lg:text-3xl md:mx-0 text-balance">
             En tant que fleuriste événementielle spécialisée dans les mariages,<br />
             j'ai à cœur de créer des ambiances uniques et mémorables.
           </h2>
           <hr class="h-px w-24 mx-auto rounded-full bg-accent-500" />
           <div
-            class="flex flex-col text-left md:text-center gap-4 text-xl font-light leading-relaxed text-pretty mx-10 xl:mx-28 2xl:mx-68"
+            class="flex flex-col text-left md:text-center gap-4 text-lg lg:text-xl leading-relaxed mx-10 xl:mx-28 2xl:mx-68"
           >
             <p>
               Je m'efforce de mettre en valeur chaque détail de votre décoration, et je conçois des
@@ -72,19 +74,20 @@
             src="/mariages/mariages_3.jpg"
             alt="Pensée Bohème - Mariages personnalisés"
             class="mx-auto w-3/4 object-cover lg:col-span-2"
+            placeholder=""
             format="webp"
             quality="90"
             loading="lazy"
           />
           <div
-            class="mx-auto flex flex-col gap-4 px-16 py-4 text-base font-light leading-relaxed text-center max-h-3/4 lg:col-span-2 lg:px-4 lg:py-8 lg:text-right xl:text-xl 2xl:text-2xl"
+            class="flex flex-col justify-center text-pretty gap-4 px-16 my-8 text-base md:text-xl leading-relaxed text-center max-h-3/4 lg:col-span-2 lg:px-8 lg:text-right xl:text-xl 2xl:text-2xl"
           >
-            <p class="text-pretty">
+            <p class="">
               La personnalisation est au cœur de ma démarche. Je propose des accessoires sur mesure
               d'après les couleurs que vous me demandez, mais aussi des éléments décoratifs avec les
               inscriptions que vous désirez, ainsi que des cadeaux floraux uniques pour vos invités.
             </p>
-            <p class="text-pretty">
+            <p class="">
               Je considère chaque projet comme une mission, et je mets un point d'honneur à vous
               offrir une prestation qui respecte vos envies ainsi que votre budget. Confiez-moi
               votre rêve, et ensemble, nous ferons de votre mariage une journée inoubliable.
@@ -101,6 +104,7 @@
           src="/mariages/mariages_4.jpg"
           alt="Pensée Bohème - Décoration florale mariage"
           class="w-full lg:w-1/2 lg:-translate-y-1/4 lg:translate-x-1/4"
+          placeholder=""
           format="webp"
           quality="90"
           loading="lazy"

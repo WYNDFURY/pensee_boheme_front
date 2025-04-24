@@ -1,5 +1,5 @@
 <template>
-  <div class="py-20 text-pretty">
+  <div class="py-20 text-balance">
     <!-- infos  -->
     <section class="relative flex flex-col gap-20 mb-52">
       <h1
@@ -11,6 +11,7 @@
         src="/infos-pratiques/infos_pratiques_1.jpg"
         alt="Pensée Bohème - Infos pratiques 1"
         class="w-full md:w-3/4 lg:w-1/2 mx-auto rounded-sm drop-shadow-lg opacity-80"
+        placeholder=""
         loading="lazy"
       />
       <aside
@@ -20,7 +21,7 @@
           Horaire d'ouverture rendez vous:
         </h2>
         <ul
-          class="text-left text-sm md:text-lg lg:text-xl font-light leading-relaxed text-pretty list-disc pl-7 mb-4"
+          class="text-left text-sm md:text-lg lg:text-xl font-light leading-relaxed text-balance list-disc pl-7 mb-4"
         >
           <li>Du lundi au vendredi de 9h à 16h</li>
           <li>Fermé le mercredi</li>

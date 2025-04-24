@@ -12,7 +12,7 @@
       </h1></PagesBanner
     >
 
-    <section class="flex flex-col items-center text-pretty">
+    <section class="flex flex-col items-center text-balance">
       <div class="my-10 text-center font-light leading-relaxed px-10 md:px-20">
         <p class="text-xl 2xl:text-2xl xl:mx-28 2xl:mx-68">
           Passionnée par la beauté et la pérennité des fleurs séchées, je vous invite à découvrir
@@ -62,8 +62,9 @@
         <h2 class="font-semibold text-2xl text-accent-500 2xl:text-4xl">Le souci du détail</h2>
         <p class="text-xl font-light leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
           Pour la mariée ou son cortège, pour un événement particulier ou simplement pour vous faire
-          plaisir. Je mets tout en œuvre pour que vos accessoires se marient parfaitement avec vos
-          envies. Tous les accessoires sont créés sur mesure, selon les couleurs que vous désirez.
+          plaisir. <br />Je mets tout en œuvre pour que vos accessoires se marient parfaitement avec
+          vos envies. <br />Tous les accessoires sont créés sur mesure, selon les couleurs que vous
+          désirez.
         </p>
       </div>
 

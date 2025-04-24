@@ -8,7 +8,7 @@
       ><h1>Professionnels</h1>
     </PagesBanner>
 
-    <section class="relative flex flex-col text-pretty mt-16 gap-16 mb-40 md:mb-60 lg:mb-80">
+    <section class="relative flex flex-col text-balance mt-16 gap-16 mb-40 md:mb-60 lg:mb-80">
       <h2 class="sr-only">Pour les professionnels</h2>
       <div class="flex flex-col gap-8 text-center text-xl mx-10 xl:mx-28 2xl:mx-68">
         <p>
@@ -34,7 +34,7 @@
       >
         <IconsIdea class="w-12 md:w-20 xl:w-24 text-accent-500 mb-8 lg:mb-12" />
 
-        <p class="text-center text-sm md:text-xl leading-relaxed text-pretty">
+        <p class="text-center text-sm md:text-xl leading-relaxed text-balance">
           Je propose également mes services pour animer <br />
           des ateliers fleuris dans vos entreprises,
           <br />

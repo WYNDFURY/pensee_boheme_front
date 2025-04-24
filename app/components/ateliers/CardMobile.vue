@@ -9,14 +9,15 @@
     <NuxtImg
       :src="product.media[0]?.url"
       :alt="product.name"
-      class="object-cover w-full border-1 border-gray-700 rounded-sm drop-shadow-md opacity-80"
+      placeholder=""
+      class="object-cover w-full rounded-sm drop-shadow-md opacity-80"
       loading="lazy"
     />
     <div class="my-4">
       <p
         v-for="(sentence, index) in formattedDescription"
         :key="index"
-        class="w-3/4 mx-auto text-center text-xl md:text-2xl font-light leading-relaxed"
+        class="w-3/4 mx-auto text-center text-xl md:text-2xl font-light leading-relaxed text-pretty"
       >
         {{ sentence }}
       </p>

@@ -4,12 +4,12 @@
 @theme static {
   --ui-bg: #fff9f2;
   --ui-border: #603e65;
-  --ui-text-highlighted: #603e65;
+  --ui-text-highlighted: #6e4f72;
   --font-sans: 'Public Sans', sans-serif;
   --color-bgcolor: #fff9f2;
   --color-primary_green: #e6eedc;
   --color-secondary_green: #adba9e;
-  --color-accent-500: #603e65;
+  --color-accent-500: #6e4f72;
   --color-primary_orange: #ffecd6;
   --color-primary_pink: #ffe9eb;
   --header-height: 80px;

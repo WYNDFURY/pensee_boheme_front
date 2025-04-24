@@ -43,6 +43,7 @@
     <NuxtImg
       src="/ateliers-creatifs/ateliers_1.jpg"
       alt="Pensée Bohème - Professionnels 1"
+      placeholder=""
       class="mx-auto rounded-sm drop-shadow-lg opacity-80"
       loading="lazy"
     />

@@ -1,7 +1,7 @@
 <template>
   <header class="">
     <div
-      class="mx-auto px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
+      class="px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
     >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
       <div class="lg:text-left w-full lg:w-auto flex-shrink-0 text-center">

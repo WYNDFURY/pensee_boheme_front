@@ -6,11 +6,4 @@
     <LayoutFooter />
   </UApp>
 </template>
-<script setup lang="ts">
-  // const { updateSlugFromRoute } = useCurrentSlugService()
-
-  // watch(
-  //   () => useRoute().path,
-  //   () => updateSlugFromRoute()
-  // )
-</script>
+<script setup lang="ts"></script>
