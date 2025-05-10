@@ -9,11 +9,10 @@ export const useShowPageProductsService = () => {
     updateSlugFromRoute()
     const slug = useState<string>('current-page-slug').value
 
-    // Make the API call
     return useFetch<Page>(`${apiKey}/pages/${slug}`, {
-      key: `page-${slug}`, // Add a unique key for caching
-      server: false, // Run this on client side
-      lazy: true, // Don't block page transition for this fetch
+      key: `page-${slug}`,
+      server: false,
+      lazy: true,
     })
   }
 

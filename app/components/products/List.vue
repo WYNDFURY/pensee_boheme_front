@@ -16,8 +16,16 @@
           réalisée sur mesure et personnalisée pour votre occasion.
         </p>
         <p>
-          Il est encouragé de remplir le formulaire de demande afin que nous puissions collaborer
-          ensemble à la conception de votre pièce unique.
+          Il est encouragé de remplir le
+          <NuxtLink
+            to="/contact"
+            class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
+            >formulaire de demande
+            <span
+              class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
+            ></span>
+          </NuxtLink>
+          afin que nous puissions collaborer ensemble à la conception de votre pièce unique.
         </p>
       </div>
 
@@ -25,7 +33,7 @@
         v-if="category.name === 'Cadeaux invités'"
         class="flex flex-col text-center text-xl leading-relaxed text-pretty mb-8"
       >
-        <p>A la recherche du cadeau d'invités parfait ?</p>
+        <p>À la recherche du cadeau d'invités parfait ?</p>
         <p>
           Pour un baptême, un anniversaire ou un mariage, un cadeau fleuri fera plaisir à vos
           invités et leur permettra de garder un souvenir impérissable de cette belle journée passée

@@ -41,6 +41,15 @@ export type ProductOption = {
   price_formatted: string | null
 }
 
+export type InstagramMedia = {
+  id: number
+  media_type: 'IMAGE' | 'CAROUSEL_ALBUM'
+  media_url: string
+  permalink: string
+  caption?: string
+  timestamp: string
+}
+
 export type ApiResponse<T> = {
   data: T
 }

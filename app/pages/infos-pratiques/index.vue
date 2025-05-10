@@ -39,6 +39,7 @@
       >
         Me Contacter
       </h2>
+      <div class="flex"><PagesEventContactForm /> <PagesDetailContactForm /></div>
       <div
         class="flex flex-col lg:flex-row-reverse gap-8 items-center justify-center mx-4 md:mx-16"
       >
@@ -46,7 +47,6 @@
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2209.4139441244038!2d0.4137516889308236!3d49.59050861790701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e047af26add8bb%3A0x81708df81afa1644!2zcGVuc8OpZSBib2jDqG1l!5e0!3m2!1sfr!2sbe!4v1744975436273!5m2!1sfr!2sbe"
             class="w-full h-full border-0"
-            allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           />
@@ -61,30 +61,30 @@
             Grenier
           </div>
           <div class="flex items-center gap-2">
-            <AkInstagramFill class="text-xl" /> @penseeboheme
-          </div>
-          <div class="flex items-center gap-2">
             <DeFacebookPlain class="text-xl" /> Pensée Bohème
           </div>
         </div>
       </div>
     </section>
 
-    <!-- google reviews -->
-    <section></section>
     <!-- instagram feed  -->
-    <section></section>
+    <section>
+      <InstagramFeed v-if="data" :instagram-medias="data" />
+    </section>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import { InstagramFeed } from '#components'
   import {
     AkPhone,
     MdTwoToneMailOutline,
     AkLocation,
-    AkInstagramFill,
     DeFacebookPlain,
   } from '@kalimahapps/vue-icons'
+
+  const { getInstagramMedias } = useFetchInstagramMediasService()
+  const { data } = getInstagramMedias()
 </script>
 
 <style></style>

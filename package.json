@@ -18,7 +18,8 @@
     "@nuxt/image": "1.9.0",
     "@nuxt/ui": "^3.0.0",
     "nuxt": "^3.16.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "^2.3.0",
