@@ -4,7 +4,7 @@
       :src="product.media[0]?.url"
       placeholder=""
       alt="Product Image"
-      class="bg-slate-300 aspect-square object-cover opacity-90"
+      class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full"
     />
     <div class="flex text-sm lg:text-lg justify-between gap-1 my-2">
       <p>{{ product.name }}</p>

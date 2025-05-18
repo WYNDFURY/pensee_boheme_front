@@ -138,8 +138,8 @@
         to: '/engagement',
       },
       {
-        label: 'Galerie',
-        to: '/galerie',
+        label: 'Galeries',
+        to: '/galeries',
       },
       {
         label: 'Mon Univers Floral',

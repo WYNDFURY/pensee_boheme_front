@@ -50,6 +50,17 @@ export type InstagramMedia = {
   timestamp: string
 }
 
+export type Gallery = {
+  id: number
+  name: string
+  slug: string
+  description: string | null
+  is_published: boolean
+  cover_image: Media[] | null
+  order: number
+  media?: Media[] | []
+}
+
 export type ApiResponse<T> = {
   data: T
 }
