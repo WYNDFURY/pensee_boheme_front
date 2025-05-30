@@ -71,7 +71,7 @@
           <p class="2xl:text-2xl">
             Je vous accueille sur
             <NuxtLink
-              to="/contact"
+              to="/infos_pratiques"
               class="relative border-b border-dotted border-accent-500 font-semibold text-accent-500 group md:border-none"
               >rendez-vous<span
                 class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"

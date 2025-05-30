@@ -18,7 +18,7 @@
         <p>
           Il est encouragé de remplir le
           <NuxtLink
-            to="/contact"
+            to="/infos_pratiques"
             class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
             >formulaire de demande
             <span
