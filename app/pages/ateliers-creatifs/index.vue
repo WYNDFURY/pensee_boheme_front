@@ -6,7 +6,8 @@
       :text-class="' justify-end items-end mb-10 mr-10'"
       :banner-image="'/ateliers-creatifs/ateliers_banner.jpg'"
       :alt="'Professionnels bannière'"
-      ><h1>
+    >
+      <h1>
         Ateliers <br />
         Créatifs
       </h1>
