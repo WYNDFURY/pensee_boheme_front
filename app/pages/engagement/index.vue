@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-20 font-[Josefin_Slab] text-neutral-800">
+  <div class="flex flex-col gap-20 text-pretty">
     <!-- First section -->
     <section>
       <div class="flex flex-col mx-auto text-left md:flex-col-reverse md:gap-10">
@@ -20,11 +20,11 @@
             </figcaption>
           </figure>
         </div>
-        <div class="bg-primary_green px-10 lg:px-20 py-8 mt-15">
+        <div class="bg-primary_green px-10 lg:px-20 py-8 md:mt-15">
           <h2 class="mb-15 font-bold text-center font text-2xl text-accent-500">
             Pensée Bohème, c'est plus de 70% de végétaux issus d'une production raisonnée
           </h2>
-          <div class="flex flex-col gap-4 text-xl font-light leading-relaxed">
+          <div class="flex flex-col gap-4 text-xl font-light leading-relaxed xl:mx-28 2xl:mx-68">
             <div>
               <p class="mb-2">
                 Après mon apprentissage dans une boutique "classique" en 2016, je fais face aux deux
@@ -58,17 +58,17 @@
 
     <!-- Second section -->
     <section>
-      <div class="flex flex-col items-center px-15 gap-10 md:flex-row-reverse">
+      <div class="flex flex-col items-center px-10 lg:px-20 gap-10 lg:flex-row-reverse">
         <NuxtImg
           src="/engagement/engagement_2.svg"
           alt="Cécile - Pensée Bohème"
-          class="mx-auto w-full md:w-1/3"
+          class="flex-auto w-3/4 md:w-1/2 lg:w-1/3"
           quality="90"
           loading="lazy"
         />
 
         <div
-          class="text-left text-2xl font-light leading-relaxed flex flex-col justify-center items-center xl:px-10 gap-10"
+          class="text-left text-xl lg:mx-12 font-light leading-relaxed flex flex-col justify-center items-center gap-10"
         >
           <h2
             class="hidden font-bold md:block my-10 text-center text-3xl leading-normal text-accent-500"
@@ -87,8 +87,17 @@
           </p>
           <p class="">
             De plus, vous pourrez retrouver une large gamme d'éléments de décoration disponible à la
-            location; ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en
-            faisant des économies.
+            <NuxtLink
+              to="/locations"
+              class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
+            >
+              location;
+              <span
+                class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
+              ></span
+            ></NuxtLink>
+            ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en faisant
+            des économies.
           </p>
 
           <NuxtLink

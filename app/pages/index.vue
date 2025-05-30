@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts" setup>
-navigateTo({
-  name: "home",
-});
+  navigateTo({
+    name: 'home',
+  })
 </script>
 
 <style></style>

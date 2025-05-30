@@ -1,7 +1,7 @@
 <template>
   <header class="">
     <div
-      class="mx-auto px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
+      class="px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
     >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
       <div class="lg:text-left w-full lg:w-auto flex-shrink-0 text-center">
@@ -53,6 +53,7 @@
     <div
       class="fixed inset-0 bg-black/90 text-white flex flex-col transition-all duration-300 ease-in-out"
       :class="mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+      @click="mobileMenuOpen = !mobileMenuOpen"
     >
       <!-- Logo in mobile menu -->
       <div class="flex flex-col items-center justify-center gap-5 p-5 relative">
@@ -76,7 +77,7 @@
             />
           </svg>
         </button>
-        <NuxtLink to="/" @click="mobileMenuOpen = false">
+        <NuxtLink to="/home" @click="mobileMenuOpen = false">
           <img src="/logo.svg" alt="Pensée Bohème" class="h-16 invert" />
         </NuxtLink>
       </div>
@@ -138,8 +139,8 @@
         to: '/engagement',
       },
       {
-        label: 'Galerie',
-        to: '/galerie',
+        label: 'Galeries',
+        to: '/galeries',
       },
       {
         label: 'Mon Univers Floral',
@@ -147,7 +148,7 @@
         children: [
           {
             label: 'Accessoires Fleurs Séchées',
-            to: '/univers/AFS',
+            to: '/univers/accessoires-fleurs-sechees',
           },
           {
             label: 'Mariages',
@@ -155,7 +156,7 @@
           },
           {
             label: ' Détails Personnalisés & Cadeaux Invités',
-            to: '/univers/cadeaux-details',
+            to: '/univers/cadeaux-invites',
           },
           {
             label: 'Professionnels',

@@ -1,0 +1,171 @@
+<template>
+  <!-- Main content area with sidebar and gallery display -->
+  <div class="max-w-8xl w-full px-4 md:px-8 flex flex-row">
+    <!-- Sidebar with gallery titles -->
+    <aside class="w-52 hidden lg:block mx-8 my-8">
+      <ul class="space-y-3">
+        <li v-for="(item, index) in galleryItems.data" :key="item.id">
+          <button
+            class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
+            :class="[
+              index === currentIndex
+                ? 'text-accent-500 bg-primary_green/20 font-semibold'
+                : 'text-gray-600 hover:text-accent-500 hover:cursor-pointer',
+            ]"
+            @click="currentIndex = index"
+          >
+            {{ item.name }}
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Gallery display area -->
+    <main
+      class="flex flex-col sticky top-0 h-[calc(100vh-80px)] w-full text-center justify-evenly items-center transition-all duration-500 ease-in-out"
+    >
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-light py-8 w-full font-['Kumbh_sans'] uppercase"
+      >
+        {{ currentGallery?.name }}
+      </h1>
+      <!-- Gallery navigation and display -->
+      <div class="flex items-center justify-evenly w-full">
+        <!-- Previous button -->
+        <UButton
+          class="hover:scale-105 active:scale-95 hover:cursor-pointer"
+          color="primary"
+          size="xl"
+          icon="i-heroicons-arrow-left"
+          :disabled="isFirstGallery"
+          @click="prevGallery"
+        />
+
+        <!-- Gallery cards display -->
+        <div
+          :key="currentIndex"
+          class="flex justify-center items-center py-8 transition-all duration-500 ease-in-out"
+        >
+          <!-- Carousel/gallery images -->
+          <div class="relative flex items-center">
+            <div
+              v-if="currentGallery?.media"
+              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-6 md:translate-x-10 translate-y-6 md:translate-y-8 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+            >
+              <NuxtImg
+                :src="currentGallery?.media[0]?.url || '/images/placeholder.jpg'"
+                :alt="currentGallery?.media[0]?.name || 'Gallery image'"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+              />
+            </div>
+
+            <a
+              v-if="currentGallery?.media"
+              :href="`/galeries/${currentGallery.slug}`"
+              class="aspect-[3/4] w-36 md:w-60 z-10 shadow-xl overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
+            >
+              <NuxtImg
+                :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
+                :alt="currentGallery?.media[1]?.name || 'Gallery image'"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+              />
+              <div
+                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300"
+              >
+                <span
+                  class="opacity-0 group-hover:opacity-100 text-white font-semibold px-4 py-2 border border-white/50 rounded bg-black/30 backdrop-blur-sm transition-opacity duration-300"
+                >
+                  Visiter la gallerie
+                </span>
+              </div>
+            </a>
+
+            <div
+              v-if="currentGallery?.media"
+              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-6 md:-translate-x-10 -translate-y-2 md:-translate-y-4 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+            >
+              <NuxtImg
+                :src="currentGallery?.media[2]?.url || '/media/placeholder.jpg'"
+                :alt="currentGallery?.media[2]?.name || 'Gallery image'"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Next button -->
+        <UButton
+          class="hover:scale-105 active:scale-95 hover:cursor-pointer"
+          color="primary"
+          size="xl"
+          icon="i-heroicons-arrow-right"
+          :disabled="isLastGallery"
+          @click="nextGallery"
+        />
+      </div>
+
+      <!-- Gallery pagination indicators -->
+      <div class="flex justify-center gap-2 py-6">
+        <button
+          v-for="(item, index) in galleryItems.data"
+          :key="item.id"
+          :class="
+            index === currentIndex
+              ? 'bg-accent-500 scale-125 shadow-md'
+              : 'bg-gray-300 hover:bg-gray-400 hover:scale-110 hover:cursor-pointer'
+          "
+          class="h-2 w-2 md:h-3 md:w-3 rounded-full transition-all duration-300 ease-in-out"
+          @click="currentIndex = index"
+        />
+      </div>
+    </main>
+  </div>
+</template>
+
+<script lang="ts" setup>
+  import { UButton } from '#components'
+  import type { Galleries } from '~/types/models'
+
+  const props = defineProps<{
+    galleryItems: Galleries
+  }>()
+
+  // Current gallery index
+  const currentIndex = ref(0)
+
+  // Computed values for current gallery and navigation state
+  const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
+  const isFirstGallery = computed(() => currentIndex.value === 0)
+  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
+
+  // Navigation functions
+  function nextGallery() {
+    if (!isLastGallery.value) {
+      currentIndex.value++
+    }
+  }
+
+  function prevGallery() {
+    if (!isFirstGallery.value) {
+      currentIndex.value--
+    }
+  }
+
+  onMounted(() => {
+    window.addEventListener('keydown', handleKeyDown)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeyDown)
+  })
+
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === 'ArrowRight') {
+      nextGallery()
+    } else if (e.key === 'ArrowLeft') {
+      prevGallery()
+    }
+  }
+</script>
+
+<style></style>

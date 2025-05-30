@@ -4,6 +4,7 @@ export default defineAppConfig({
     colors: {
       primary: 'accent',
       neutral: 'bg-primary_pink',
+      error: 'bg-red-500',
     },
     button: {
       defaultVariants: {

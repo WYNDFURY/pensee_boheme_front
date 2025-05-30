@@ -1,9 +1,10 @@
 <template>
-  <div class="relative text-white">
+  <div class="relative bg-bgcolor text-white">
     <NuxtImg
       :src="bannerImage"
       :alt="alt"
-      class="w-full h-[20vh] md:h-[50vh] opacity-80 object-cover object-center"
+      placeholder=""
+      class="w-full h-[20vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] opacity-80 object-cover"
       :class="imgClass"
     />
     <div

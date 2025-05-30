@@ -1,13 +1,14 @@
 <template>
-  <div class="flex flex-col gap-20 font-[Josefin_Slab] text-neutral-800">
+  <div class="flex flex-col gap-20 text-neutral-800 text-balance">
     <!-- First section -->
     <section class="h-[calc(100vh-80px)]">
       <div class="flex h-full flex-col items-center md:flex-row-reverse">
         <h1
-          class="flex flex-1 items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:text-left md:my-auto md:w-1/2 px-10 md:px-20 xl:px-36 text-[4vh] lg:text-[6vh] xl:text-[8vh] 2xl:text-[10vh]"
+          class="flex flex-1 text-pretty items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh]"
         >
           Chaque création, <br />
-          est une ode à la beauté de la nature et à l'imagination
+          est une ode à la beauté <br />
+          de la nature et à l'imagination
         </h1>
         <figure class="relative h-1/2 w-full md:h-full md:w-1/2">
           <NuxtImg
@@ -40,20 +41,20 @@
         <NuxtImg
           src="/home/landpage_2.jpg"
           alt="Cécile - Pensée Bohème"
-          class="mx-auto w-1/2 max-h-1/12"
+          class="mx-auto w-full md:w-1/2 max-h-1/12"
           format="webp"
           quality="90"
           loading="lazy"
         />
 
-        <div class="text-center text-xl font-light leading-relaxed px-10">
+        <div class="text-center text-xl font-light leading-relaxed px-10 text-pretty">
           <h2
-            class="hidden md:block my-10 font-semibold text-center text-3xl 2xl:text-4xl leading-normal text-accent-500"
+            class="hidden md:block my-10 text-balance font-semibold text-center text-3xl 2xl:text-4xl leading-normal text-accent-500"
           >
             Je suis Cécile, <br />
             créatrice de Pensée Bohème fleuriste passionnée et engagée
           </h2>
-          <p class="my-5 2xl:text-3xl">
+          <p class="my-5 2xl:text-2xl">
             Passionnée de nature et soucieuse de l'environnement qui m'entoure, je fais le choix de
             me tourner vers des valeurs qui me ressemblent. C'est pourquoi je travaille sur commande
             dans une démarche
@@ -67,7 +68,7 @@
               ></span>
             </NuxtLink>
           </p>
-          <p class="2xl:text-3xl">
+          <p class="2xl:text-2xl">
             Je vous accueille sur
             <NuxtLink
               to="/contact"
@@ -123,12 +124,12 @@
           <h2 class="mb-10 font-semibold text-center text-2xl text-accent-500 2xl:text-4xl">
             Derrière le nom Pensée Bohème se cache l'essence même de mon travail.
           </h2>
-          <p class="mb-4 text-xl font-light leading-relaxed 2xl:text-2xl">
+          <p class="mb-4 text-xl font-light leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
             Enfant j'ai été émerveillée par la beauté de la Pensée; cette fleur qui symbolise la
             douceur et la créativité; c'est une des premières fleurs dont j'ai le souvenir de
             découvrir dans le jardin de mes parents.
           </p>
-          <p class="text-xl font-light leading-relaxed 2xl:text-2xl">
+          <p class="text-xl font-light leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
             L'esprit Bohème quant à lui évoque pour moi une esthétique sauvage et poétique. C'est
             cette fusion entre la beauté naturelle de la Pensée et l'audace de la vie Bohème qui
             guide ma créativité !
