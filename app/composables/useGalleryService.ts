@@ -1,12 +1,12 @@
 import PenseeBohemeCredentials from '~/api/PenseeBohemeCredentials'
-import type { Gallery } from '~/types/models'
+import type { Galleries, Gallery } from '~/types/models'
 
 export const useGalleryService = () => {
   const apiKey = new PenseeBohemeCredentials().apiKey
   const { updateSlugFromRoute } = useCurrentSlugService()
 
   const getIndexOfGalleries = () => {
-    return useFetch<Gallery[]>(`${apiKey}/galleries`, {
+    return useFetch<Galleries>(`${apiKey}/galleries`, {
       server: false,
       lazy: true,
     })

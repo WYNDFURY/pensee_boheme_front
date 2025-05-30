@@ -53,6 +53,7 @@
     <div
       class="fixed inset-0 bg-black/90 text-white flex flex-col transition-all duration-300 ease-in-out"
       :class="mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+      @click="mobileMenuOpen = !mobileMenuOpen"
     >
       <!-- Logo in mobile menu -->
       <div class="flex flex-col items-center justify-center gap-5 p-5 relative">

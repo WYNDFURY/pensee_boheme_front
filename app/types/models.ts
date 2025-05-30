@@ -50,7 +50,7 @@ export type InstagramMedia = {
   timestamp: string
 }
 
-export type Gallery = {
+export type GalleryData = {
   id: number
   name: string
   slug: string
@@ -64,5 +64,8 @@ export type Gallery = {
 export type ApiResponse<T> = {
   data: T
 }
+
+export type Gallery = ApiResponse<GalleryData>
+export type Galleries = ApiResponse<GalleryData[]>
 
 export type Page = ApiResponse<PageData>

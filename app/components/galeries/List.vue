@@ -4,7 +4,7 @@
     <!-- Sidebar with gallery titles -->
     <aside class="w-52 hidden lg:block mx-8 my-8">
       <ul class="space-y-3">
-        <li v-for="(item, index) in galleryItems" :key="item.id">
+        <li v-for="(item, index) in galleryItems.data" :key="item.id">
           <button
             class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
             :class="[
@@ -59,8 +59,9 @@
               />
             </div>
 
-            <div
+            <a
               v-if="currentGallery?.media"
+              :href="`/galeries/${currentGallery.slug}`"
               class="aspect-[3/4] w-36 md:w-60 z-10 shadow-xl overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
             >
               <NuxtImg
@@ -77,7 +78,7 @@
                   Visiter la gallerie
                 </span>
               </div>
-            </div>
+            </a>
 
             <div
               v-if="currentGallery?.media"
@@ -106,7 +107,7 @@
       <!-- Gallery pagination indicators -->
       <div class="flex justify-center gap-2 py-6">
         <button
-          v-for="(item, index) in galleryItems"
+          v-for="(item, index) in galleryItems.data"
           :key="item.id"
           :class="
             index === currentIndex
@@ -123,19 +124,19 @@
 
 <script lang="ts" setup>
   import { UButton } from '#components'
-  import type { Gallery } from '~/types/models'
+  import type { Galleries } from '~/types/models'
 
   const props = defineProps<{
-    galleryItems: Gallery[]
+    galleryItems: Galleries
   }>()
 
   // Current gallery index
   const currentIndex = ref(0)
 
   // Computed values for current gallery and navigation state
-  const currentGallery = computed(() => props.galleryItems[currentIndex.value])
+  const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
   const isFirstGallery = computed(() => currentIndex.value === 0)
-  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.length - 1)
+  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
 
   // Navigation functions
   function nextGallery() {

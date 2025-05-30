@@ -41,7 +41,7 @@
         <NuxtImg
           src="/home/landpage_2.jpg"
           alt="Cécile - Pensée Bohème"
-          class="mx-auto w-1/2 max-h-1/12"
+          class="mx-auto w-full md:w-1/2 max-h-1/12"
           format="webp"
           quality="90"
           loading="lazy"

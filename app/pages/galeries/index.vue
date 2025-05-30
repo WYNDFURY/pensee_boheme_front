@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GalleriesList v-if="data" :gallery-items="data" />
+    <GaleriesList v-if="data" :gallery-items="data" />
   </div>
 </template>
 
