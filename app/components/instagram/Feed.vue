@@ -9,7 +9,7 @@
           Instagram
         </h2>
       </div>
-      <div class="flex items-center gap-2">@penseeboheme</div>
+      <div class="flex items-center gap-2">@pensee-boheme</div>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 md:px-20">
       <div v-for="(instagramMedia, index) in displayedMedias" :key="index">

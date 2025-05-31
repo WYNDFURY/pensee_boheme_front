@@ -79,7 +79,7 @@
         </UForm>
       </template>
       <template #footer>
-        <UButton type="button" label="Submit" color="primary" form="eventForm" />
+        <UButton type="button" label="Envoyer" color="primary" form="eventForm" />
       </template>
     </UModal>
   </div>
@@ -106,15 +106,15 @@
   type Schema = z.output<typeof schema>
   const formRef = ref(null)
 
-  const state = reactive<Partial<Schema>>({
-    email: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    phone: undefined,
-    eventDate: undefined,
-    eventLocation: undefined,
-    themeColors: undefined,
-    message: undefined,
+  const state = ref<Partial<Schema>>({
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    eventDate: '',
+    eventLocation: '',
+    themeColors: '',
+    message: '',
   })
 
   const toast = useToast()

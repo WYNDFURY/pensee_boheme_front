@@ -2,7 +2,7 @@
   <div class="px-4 mx-auto">
     <UModal
       v-model:open="open"
-      title="Formulaire pour détails personnalisés"
+      title="Formulaire pour créations personnalisées"
       :close="{
         color: 'primary',
         variant: 'outline',
@@ -16,7 +16,7 @@
       @submit="onSubmit"
     >
       <UButton
-        label="Formulaire pour détails personnalisés"
+        label="Formulaire pour créations personnalisées"
         color="primary"
         size="xl"
         block
@@ -48,7 +48,7 @@
             <UTextarea
               v-model="state.message"
               autoresize
-              placeholder="Décrivez votre idée de base et vos envies pour la création du détail personnalisé."
+              placeholder="Décrivez votre idée de base et vos envies pour votre commande personalisée."
               class="w-full"
               :rows="5"
               :maxrows="5"
@@ -57,7 +57,7 @@
         </UForm>
       </template>
       <template #footer>
-        <UButton type="submit" label="Submit" color="primary" @click="open = false" />
+        <UButton type="submit" label="Envoyer" color="primary" @click="open = false" />
       </template>
     </UModal>
   </div>
@@ -82,15 +82,15 @@
 
   type Schema = z.output<typeof schema>
 
-  const state = reactive<Partial<Schema>>({
-    email: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    phone: undefined,
-    eventDate: undefined,
-    eventLocation: undefined,
-    themeColors: undefined,
-    message: undefined,
+  const state = ref<Partial<Schema>>({
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    eventDate: '',
+    eventLocation: '',
+    themeColors: '',
+    message: '',
   })
   const open = ref(false)
 

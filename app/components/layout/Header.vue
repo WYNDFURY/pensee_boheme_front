@@ -4,7 +4,7 @@
       class="px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
     >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
-      <div class="lg:text-left w-full lg:w-auto flex-shrink-0 text-center">
+      <div class="lg:text-left lg:w-auto flex-shrink-0 text-center">
         <NuxtLink to="/home">
           <NuxtImg src="/logo.svg" alt="Pensée Bohème" class="h-14 px-4" />
         </NuxtLink>
@@ -53,14 +53,17 @@
     <div
       class="fixed inset-0 bg-black/90 text-white flex flex-col transition-all duration-300 ease-in-out"
       :class="mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
-      @click="mobileMenuOpen = !mobileMenuOpen"
+      @click.self="mobileMenuOpen = false"
     >
       <!-- Logo in mobile menu -->
-      <div class="flex flex-col items-center justify-center gap-5 p-5 relative">
+      <div
+        class="flex flex-col items-center justify-center gap-5 p-5 relative"
+        @click.self="mobileMenuOpen = false"
+      >
         <button
           class="lg:hidden absolute right-0 top-0 py-10 px-5"
-          @click="mobileMenuOpen = !mobileMenuOpen"
           aria-label="Close Menu"
+          @click="mobileMenuOpen = false"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,19 +86,18 @@
       </div>
 
       <!-- Mobile Navigation -->
-      <ClientOnly>
-        <UNavigationMenu
-          color="neutral"
-          highlight
-          orientation="vertical"
-          :items="items"
-          class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
-          :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
-          :ui="{
-            link: 'text-lg font-light min-w-0',
-          }"
-        />
-      </ClientOnly>
+
+      <UNavigationMenu
+        color="neutral"
+        highlight
+        orientation="vertical"
+        :items="items"
+        class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
+        :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
+        :ui="{
+          link: 'text-lg font-light min-w-0',
+        }"
+      />
     </div>
   </header>
 </template>

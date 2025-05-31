@@ -5,6 +5,8 @@
       :alt="alt"
       placeholder=""
       class="w-full h-[20vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] opacity-80 object-cover"
+      loading="eager"
+      fetchpriority="high"
       :class="imgClass"
     />
     <div

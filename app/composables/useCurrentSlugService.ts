@@ -15,7 +15,6 @@ export const useCurrentSlugService = () => {
 
     // Update the slug state
     currentSlug.value = lastPart || ''
-    console.log('Current slug:', currentSlug.value)
   }
 
   // Call once initially
