@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-  
 
   modules: [
     '@nuxt/ui',
@@ -50,8 +49,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: 'https://api.pensee-boheme.com/api' // pour appeler Laravel
-      },
+      apiBaseUrl: process.env.API_BASE_URL,
+    },
     head: {
       title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Beuzeville-la-Grenier',
       meta: [
@@ -113,20 +112,12 @@ export default defineNuxtConfig({
         },
         { rel: 'canonical', href: 'https://pensee-boheme.fr' },
       ],
-
-    
-
+    },
   },
 
   nitro: {
     prerender: {
       routes: ['/home', '/galeries', '/engagement', '/infos-pratiques'],
-    },
-  },
-
-  runtimeConfig: {
-    public: {
-      apiBaseUrl: process.env.API_BASE_URL,
     },
   },
 

@@ -25,7 +25,7 @@
       class="flex flex-col sticky top-0 h-[calc(100vh-80px)] w-full text-center justify-evenly items-center transition-all duration-500 ease-in-out"
     >
       <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-light py-8 w-full font-['Kumbh_sans'] uppercase"
+        class="text-3xl md:text-4xl lg:text-5xl font-light py-8 w-full font-['Kumbh_Sans'] uppercase"
       >
         {{ currentGallery?.name }}
       </h1>

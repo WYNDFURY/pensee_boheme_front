@@ -4,7 +4,7 @@
       <div class="flex items-center gap-2 mb-4">
         <AkInstagramFill class="text-3xl lg:text-4xl" />
         <h2
-          class="uppercase font-light text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_sans']"
+          class="uppercase font-light text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_Sans']"
         >
           Instagram
         </h2>

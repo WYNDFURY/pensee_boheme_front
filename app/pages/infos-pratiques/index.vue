@@ -18,7 +18,7 @@
       <header>
         <h1
           id="infos-title"
-          class="uppercase font-light text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_sans']"
+          class="uppercase font-light text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_Sans']"
           itemprop="name"
         >
           infos pratiques
@@ -71,7 +71,7 @@
       <header>
         <h2
           id="contact-title"
-          class="uppercase font-light text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_sans']"
+          class="uppercase font-light text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_Sans']"
         >
           Me Contacter
         </h2>

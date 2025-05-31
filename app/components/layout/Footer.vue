@@ -2,7 +2,7 @@
   <footer class="bg-secondary_green text-white py-8 font-['Josefin_Slab']">
     <div class="container mx-auto px-4 md:px-8">
       <div class="flex flex-row justify-evenly items-center gap-6">
-        <NuxtLink to="/CGV" class="hover:text-accent-500 transition-colors"> CGV </NuxtLink>
+        <NuxtLink to="/cgv" class="hover:text-accent-500 transition-colors"> CGV </NuxtLink>
         <div class="hidden sm:flex flex-col items-start gap-6 text-sm">
           <div class="flex items-center gap-2">
             <a

@@ -250,7 +250,7 @@
     ogDescription:
       'Consultez les conditions générales de vente de Pensée Bohème : modalités de commande, livraison et prestations pour vos créations florales en Normandie.',
     ogImage: 'https://pensee-boheme.fr/logo.svg',
-    ogUrl: 'https://pensee-boheme.fr/CGV',
+    ogUrl: 'https://pensee-boheme.fr/cgv',
 
     twitterCard: 'summary',
     twitterTitle: 'CGV Pensée Bohème - Conditions Générales de Vente',
@@ -269,7 +269,7 @@
       name: 'Conditions Générales de Vente - Pensée Bohème',
       description:
         'Conditions générales de vente pour les créations florales et accessoires de mariage',
-      url: 'https://pensee-boheme.fr/CGV',
+      url: 'https://pensee-boheme.fr/cgv',
       inLanguage: 'fr-FR',
       isPartOf: {
         '@type': 'WebSite',
@@ -316,7 +316,7 @@
   useSchemaOrg([
     defineBreadcrumb([
       { name: 'Accueil', item: 'https://pensee-boheme.fr/home' },
-      { name: 'CGV', item: 'https://pensee-boheme.fr/CGV' },
+      { name: 'CGV', item: 'https://pensee-boheme.fr/cgv' },
     ]),
   ])
 </script>

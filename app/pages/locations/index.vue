@@ -16,7 +16,7 @@
       <header>
         <h1
           id="locations-title"
-          class="uppercase font-light text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_sans']"
+          class="uppercase font-light text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_Sans']"
           itemprop="name"
         >
           Locations
