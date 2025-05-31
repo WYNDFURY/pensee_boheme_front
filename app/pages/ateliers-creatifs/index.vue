@@ -11,14 +11,8 @@
       :img-class="''"
       :text-class="' justify-end items-end mb-10 mr-10'"
       :banner-image="'/ateliers-creatifs/ateliers_banner.jpg'"
-<<<<<<< HEAD
-      :alt="'Professionnels bannière'"
-    >
-      <h1>
-=======
       :alt="'Bannière ateliers créatifs EVJF Pensée Bohème - animation atelier fleurs séchées enterrement vie jeune fille Normandie'"
       ><h1 id="ateliers-title" itemscope itemtype="https://schema.org/Service" itemprop="name">
->>>>>>> develop
         Ateliers <br />
         Créatifs
       </h1>
