@@ -50,12 +50,16 @@
           <div class="relative flex items-center">
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-6 md:translate-x-10 translate-y-6 md:translate-y-8 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-16 md:translate-x-10 translate-y-6 md:translate-y-8 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
                 :src="currentGallery?.media[0]?.url || '/images/placeholder.jpg'"
-                :alt="currentGallery?.media[0]?.name || 'Gallery image'"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+                :alt="`${currentGallery?.name} - Image 1 - Pensée Bohème création florale`"
+                loading="eager"
+                :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
+                format="webp"
+                sizes="(max-width: 768px) 112px, 192px"
+                class="w-full h-full object-cover"
               />
             </div>
 
@@ -66,14 +70,18 @@
             >
               <NuxtImg
                 :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
-                :alt="currentGallery?.media[1]?.name || 'Gallery image'"
+                :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
+                loading="eager"
+                fetchpriority="high"
+                format="webp"
+                sizes="(max-width: 768px) 144px, 240px"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
               />
               <div
                 class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300"
               >
                 <span
-                  class="opacity-0 group-hover:opacity-100 text-white font-semibold px-4 py-2 border border-white/50 rounded bg-black/30 backdrop-blur-sm transition-opacity duration-300"
+                  class="opacity-0 group-hover:opacity-100 text-white font-semibold p-1 md:px-4 md:py-2 border border-white/50 rounded bg-black/30 backdrop-blur-sm hover:scale-105 transition-all duration-300"
                 >
                   Visiter la gallerie
                 </span>
@@ -82,12 +90,16 @@
 
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-6 md:-translate-x-10 -translate-y-2 md:-translate-y-4 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-8 md:-translate-x-10 -translate-y-2 md:-translate-y-4 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
                 :src="currentGallery?.media[2]?.url || '/media/placeholder.jpg'"
-                :alt="currentGallery?.media[2]?.name || 'Gallery image'"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+                :alt="`${currentGallery?.name} - Image 3 - Pensée Bohème création florale`"
+                loading="eager"
+                :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
+                format="webp"
+                sizes="(max-width: 768px) 112px, 192px"
+                class="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -133,12 +145,12 @@
   // Current gallery index
   const currentIndex = ref(0)
 
-  // Computed values for current gallery and navigation state
+  // Computed values
   const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
   const isFirstGallery = computed(() => currentIndex.value === 0)
   const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
 
-  // Navigation functions
+  // Simple navigation
   function nextGallery() {
     if (!isLastGallery.value) {
       currentIndex.value++
@@ -151,6 +163,13 @@
     }
   }
 
+  // Keyboard navigation
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === 'ArrowRight') nextGallery()
+    else if (e.key === 'ArrowLeft') prevGallery()
+  }
+
+  // Lifecycle
   onMounted(() => {
     window.addEventListener('keydown', handleKeyDown)
   })
@@ -158,14 +177,6 @@
   onUnmounted(() => {
     window.removeEventListener('keydown', handleKeyDown)
   })
-
-  function handleKeyDown(e: KeyboardEvent) {
-    if (e.key === 'ArrowRight') {
-      nextGallery()
-    } else if (e.key === 'ArrowLeft') {
-      prevGallery()
-    }
-  }
 </script>
 
 <style></style>

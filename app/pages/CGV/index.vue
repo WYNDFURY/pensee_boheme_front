@@ -1,14 +1,31 @@
 <template>
-  <div class="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-gray-800 font-['Josefin_Slab']">
-    <h1
-      class="uppercase font-light text-4xl md:text-5xl xl:text-6xl mb-8 text-center font-['Kumbh_sans']"
-    >
-      conditions générales de vente
-    </h1>
+  <main
+    role="main"
+    class="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-gray-800 font-['Josefin_Slab']"
+  >
+    <div class="sr-only">
+      Conditions générales de vente Pensée Bohème : modalités de commande, livraison, paiement et
+      prestations pour créations florales et accessoires de mariage en Normandie par Cécile Devaux.
+    </div>
 
-    <div class="space-y-4">
+    <header itemscope itemtype="https://schema.org/WebPage">
+      <h1
+        id="cgv-title"
+        class="uppercase font-light text-4xl md:text-5xl xl:text-6xl mb-8 text-center font-['Kumbh_sans']"
+        itemprop="name"
+      >
+        conditions générales de vente
+      </h1>
+    </header>
+
+    <article
+      class="space-y-4"
+      itemscope
+      itemtype="https://schema.org/TermsOfService"
+      aria-labelledby="cgv-title"
+    >
       <!-- Section 1 -->
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">1. Objet du Contrat</h2>
         <p class="italic">
           1.1 - Les présentes conditions générales ont pour objet de définir les modalités de vente
@@ -18,7 +35,7 @@
       </section>
 
       <!-- Section 2 -->
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">2. Commandes</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -32,7 +49,7 @@
       </section>
 
       <!-- Section 3 -->
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">3. Prix et Paiement</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -49,7 +66,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">4. Livraison</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -62,7 +79,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">
           5. Prestation de Service et Installation sur le Lieu de Réception
         </h2>
@@ -79,7 +96,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">6. Acompte et Devis</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -97,7 +114,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">
           7. Chèque de Caution pour Éléments à la Location
         </h2>
@@ -113,7 +130,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">8. Révision des Prix</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -127,7 +144,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">9. Versement du Solde</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -140,7 +157,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">10. Réclamations</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -150,7 +167,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">11. Responsabilité</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -160,7 +177,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">12. Droit à l'Image</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -175,7 +192,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">
           13. Protection des Données Personnelles
         </h2>
@@ -187,7 +204,7 @@
         </div>
       </section>
 
-      <section class="p-4">
+      <section class="p-4" itemprop="text">
         <h2 class="text-xl font-semibold mb-3 text-accent-500">14. Droit Applicable et Litiges</h2>
         <div class="space-y-2">
           <p class="italic">
@@ -199,8 +216,8 @@
         </div>
       </section>
 
-      <div class="text-center p-4 bg-primary_green rounded-lg">
-        <p class="font-medium">
+      <footer class="text-center p-4 bg-primary_green rounded-lg" role="contentinfo">
+        <p class="font-medium" itemprop="text">
           En acceptant une commande, le client reconnaît avoir pris connaissance et accepté
           l'ensemble des présentes conditions générales. Ces conditions peuvent être modifiées par
           Cécile Devaux à tout moment, et la version en vigueur sera celle applicable à la date de
@@ -208,15 +225,100 @@
         </p>
         <p class="mt-2">
           Pour toute question, contactez-moi à
-          <a href="mailto:penseeboheme76@gmail.com" class="text-accent-500 hover:underline"
-            >penseeboheme76@gmail.com</a
+          <a
+            href="mailto:penseeboheme76@gmail.com"
+            class="text-accent-500 hover:underline"
+            itemprop="email"
           >
+            penseeboheme76@gmail.com
+          </a>
         </p>
-      </div>
-    </div>
-  </div>
+      </footer>
+    </article>
+  </main>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  useSeoMeta({
+    title: 'Conditions Générales de Vente - Pensée Bohème | CGV Créations Florales Normandie',
+    description:
+      'Conditions générales de vente de Pensée Bohème : modalités de commande, livraison, paiement et prestations pour créations florales et accessoires de mariage. CGV Cécile Devaux Normandie.',
+    keywords:
+      'conditions générales vente, cgv pensée bohème, modalités commande fleurs, cgv créations florales, conditions vente mariage normandie',
+
+    ogTitle: 'CGV Pensée Bohème - Conditions Générales de Vente Créations Florales',
+    ogDescription:
+      'Consultez les conditions générales de vente de Pensée Bohème : modalités de commande, livraison et prestations pour vos créations florales en Normandie.',
+    ogImage: 'https://pensee-boheme.fr/logo.svg',
+    ogUrl: 'https://pensee-boheme.fr/CGV',
+
+    twitterCard: 'summary',
+    twitterTitle: 'CGV Pensée Bohème - Conditions Générales de Vente',
+    twitterDescription:
+      'Conditions générales de vente pour les créations florales et accessoires de mariage Pensée Bohème',
+    twitterImage: 'https://pensee-boheme.fr/logo.svg',
+
+    robots: 'index, follow',
+    author: 'Cécile Devaux - Pensée Bohème',
+  })
+
+  // Structured data for terms of service and organization
+  useSchemaOrg([
+    {
+      '@type': 'WebPage',
+      name: 'Conditions Générales de Vente - Pensée Bohème',
+      description:
+        'Conditions générales de vente pour les créations florales et accessoires de mariage',
+      url: 'https://pensee-boheme.fr/CGV',
+      inLanguage: 'fr-FR',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'Pensée Bohème',
+        url: 'https://pensee-boheme.fr',
+      },
+      about: {
+        '@type': 'LocalBusiness',
+        name: 'Pensée Bohème',
+        founder: {
+          '@type': 'Person',
+          name: 'Cécile Devaux',
+        },
+      },
+    },
+    {
+      '@type': 'TermsOfService',
+      name: 'Conditions Générales de Vente Pensée Bohème',
+      text: 'Conditions générales définissant les modalités de vente et de prestation de services entre Pensée Bohème et ses clients',
+      dateModified: '2025-05-31',
+      inLanguage: 'fr-FR',
+      provider: {
+        '@type': 'LocalBusiness',
+        name: 'Pensée Bohème',
+        founder: {
+          '@type': 'Person',
+          name: 'Cécile Devaux',
+        },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: "316 route du Parc d'Anxtot",
+          addressLocality: 'Beuzeville-la-Grenier',
+          postalCode: '76210',
+          addressRegion: 'Normandie',
+          addressCountry: 'FR',
+        },
+        email: 'penseeboheme76@gmail.com',
+        url: 'https://pensee-boheme.fr',
+      },
+    },
+  ])
+
+  // Breadcrumb Schema
+  useSchemaOrg([
+    defineBreadcrumb([
+      { name: 'Accueil', item: 'https://pensee-boheme.fr/home' },
+      { name: 'CGV', item: 'https://pensee-boheme.fr/CGV' },
+    ]),
+  ])
+</script>
 
 <style></style>
