@@ -7,6 +7,7 @@ export const useShowPageProductsService = () => {
 
   const getPageProducts = () => {
     updateSlugFromRoute()
+
     const slug = useState<string>('current-page-slug').value
 
     return useFetch<Page>(`${apiKey}/pages/${slug}`, {

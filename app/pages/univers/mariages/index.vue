@@ -37,9 +37,9 @@
 
           <figure class="relative w-full">
             <NuxtImg
-              src="/mariages/mariages_1.jpg"
+              src="/mariages/mariages_1.webp"
               alt="Décoration florale mariage bohème Pensée Bohème - composition sur-mesure avec fleurs champêtres en Normandie"
-              class="opacity-90 pr-5 lg:pr-0"
+              class="opacity-90 pr-5 lg:pr-0 nuxt-img-loading"
               format="webp"
               placeholder=""
               loading="eager"
@@ -54,10 +54,10 @@
         </div>
         <figure class="relative w-4/6 -translate-y-1/3 self-center md:w-1/2">
           <NuxtImg
-            src="/mariages/mariages_2.jpg"
+            src="/mariages/mariages_2.webp"
             alt="Bouquet de mariée Pensée Bohème - création florale artisanale pour mariage romantique en Normandie"
             format="webp"
-            placeholder=""
+            class="nuxt-img-loading"
             loading="eager"
             itemprop="image"
           />
@@ -119,9 +119,8 @@
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-4">
           <figure class="relative mx-auto w-3/4 lg:col-span-2">
             <NuxtImg
-              src="/mariages/mariages_3.jpg"
+              src="/mariages/mariages_3.webp"
               alt="Décoration mariage personnalisée Pensée Bohème - centre de table floral élégant pour réception de mariage en Normandie"
-              class=""
               placeholder=""
               format="webp"
               quality="90"
@@ -165,7 +164,7 @@
         </div>
         <figure class="relative w-full lg:w-1/2 lg:-translate-y-1/4 lg:translate-x-1/4">
           <NuxtImg
-            src="/mariages/mariages_4.jpg"
+            src="/mariages/mariages_4.webp"
             alt="Installation décoration florale mariage Pensée Bohème - mise en place professionnelle sur lieu de réception Normandie"
             class=""
             placeholder=""

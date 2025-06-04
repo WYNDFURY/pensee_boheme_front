@@ -11,7 +11,7 @@
     <header itemscope itemtype="https://schema.org/WebPage">
       <h1
         id="cgv-title"
-        class="uppercase font-light text-4xl md:text-5xl xl:text-6xl mb-8 text-center font-['Kumbh_sans']"
+        class="uppercase font-light text-4xl md:text-5xl xl:text-6xl mb-8 text-center font-['Kumbh_Sans']"
         itemprop="name"
       >
         conditions générales de vente

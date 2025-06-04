@@ -29,6 +29,7 @@
           src="/infos-pratiques/infos_pratiques_1.jpg"
           alt="Atelier Pensée Bohème à Beuzeville-la-Grenier - espace de création florale et accueil sur rendez-vous avec Cécile Devaux"
           class="w-full rounded-sm drop-shadow-lg opacity-80"
+          placeholder=""
           format="webp"
           quality="90"
           loading="eager"

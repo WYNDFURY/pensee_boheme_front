@@ -4,7 +4,7 @@
     <!-- Sidebar with gallery titles -->
     <aside class="w-52 hidden lg:block mx-8 my-8">
       <ul class="space-y-3">
-        <li v-for="(item, index) in galleryItems.data" :key="item.id">
+        <li v-for="(gallery, index) in galleryItems.data" :key="index">
           <button
             class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
             :class="[
@@ -14,7 +14,7 @@
             ]"
             @click="currentIndex = index"
           >
-            {{ item.name }}
+            {{ gallery.name }}
           </button>
         </li>
       </ul>
@@ -24,11 +24,19 @@
     <main
       class="flex flex-col sticky top-0 h-[calc(100vh-80px)] w-full text-center justify-evenly items-center transition-all duration-500 ease-in-out"
     >
-      <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-light py-8 w-full font-['Kumbh_Sans'] uppercase"
-      >
-        {{ currentGallery?.name }}
-      </h1>
+      <div class="space-y-2">
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-light w-full font-['Kumbh_Sans'] uppercase"
+        >
+          {{ currentGallery?.name }}
+        </h1>
+        <h2
+          v-if="currentGallery?.photographer"
+          class="text-xl md:text-2xl lg:text-3xl font-light w-full font-['Kumbh_Sans'] uppercase"
+        >
+          {{ currentGallery?.photographer }}
+        </h2>
+      </div>
       <!-- Gallery navigation and display -->
       <div class="flex items-center justify-evenly w-full">
         <!-- Previous button -->
@@ -56,14 +64,13 @@
                 :src="currentGallery?.media[0]?.url || '/images/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image 1 - Pensée Bohème création florale`"
                 loading="eager"
+                placeholder=""
                 :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
-                format="webp"
-                sizes="(max-width: 768px) 112px, 192px"
                 class="w-full h-full object-cover"
               />
             </div>
 
-            <a
+            <NuxtLink
               v-if="currentGallery?.media"
               :href="`/galeries/${currentGallery.slug}`"
               class="aspect-[3/4] w-36 md:w-60 z-10 shadow-xl overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
@@ -73,8 +80,7 @@
                 :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
                 loading="eager"
                 fetchpriority="high"
-                format="webp"
-                sizes="(max-width: 768px) 144px, 240px"
+                placeholder=""
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
               />
               <div
@@ -86,7 +92,7 @@
                   Visiter la gallerie
                 </span>
               </div>
-            </a>
+            </NuxtLink>
 
             <div
               v-if="currentGallery?.media"
@@ -95,10 +101,9 @@
               <NuxtImg
                 :src="currentGallery?.media[2]?.url || '/media/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image 3 - Pensée Bohème création florale`"
+                placeholder=""
                 loading="eager"
                 :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
-                format="webp"
-                sizes="(max-width: 768px) 112px, 192px"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -119,8 +124,8 @@
       <!-- Gallery pagination indicators -->
       <div class="flex justify-center gap-2 py-6">
         <button
-          v-for="(item, index) in galleryItems.data"
-          :key="item.id"
+          v-for="(gallery, index) in galleryItems.data"
+          :key="index"
           :class="
             index === currentIndex
               ? 'bg-accent-500 scale-125 shadow-md'

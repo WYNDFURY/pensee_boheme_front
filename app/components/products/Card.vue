@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product.media !== null" class="w-1/2 mx-auto border-b-1">
+  <div v-if="product.media[0]" class="w-1/2 mx-auto border-b-1">
     <NuxtImg
       :src="product.media[0]?.url"
       placeholder=""

@@ -53,6 +53,7 @@ export type InstagramMedia = {
 export type GalleryData = {
   id: number
   name: string
+  photographer: string | null
   slug: string
   description: string | null
   is_published: boolean

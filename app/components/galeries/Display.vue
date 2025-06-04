@@ -3,6 +3,9 @@
     <h1 class="text-3xl md:text-4xl lg:text-5xl text-center mt-8">
       {{ gallery.data.name }}
     </h1>
+    <h2 v-if="gallery.data.photographer" class="text-xl md:text-2xl lg:text-3xl text-center mt-4">
+      {{ gallery.data.photographer }}
+    </h2>
     <div class="columns-2 md:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 p-4 md:p-8">
       <div
         v-for="(galleryMedia, index) in gallery.data.media"
@@ -23,7 +26,7 @@
         />
         <meta :content="generateImageAlt(galleryMedia.name, index)" itemprop="description" />
         <meta :content="gallery.data.name" itemprop="name" />
-        <meta content="Cécile Devaux - Pensée Bohème" itemprop="author" />
+        <meta :content="author" itemprop="author" />
       </div>
     </div>
   </div>
@@ -32,9 +35,13 @@
 <script lang="ts" setup>
   import type { Gallery } from '~/types/models'
 
-  defineProps<{
+  const props = defineProps<{
     gallery: Gallery
   }>()
+
+  const author = computed(() => {
+    return props.gallery.data.photographer || 'Cécile Devaux - Pensée Bohème'
+  })
 
   // SEO helper functions for image optimization
   const generateImageAlt = (originalName: string, index: number): string => {
@@ -46,6 +53,6 @@
 
   const generateImageTitle = (originalName: string): string => {
     const cleanName = originalName.replace(/\.(jpg|jpeg|png|webp)$/i, '')
-    return `${cleanName} par Cécile Devaux - Pensée Bohème`
+    return `${cleanName} par ${author.value} - Pensée Bohème`
   }
 </script>
