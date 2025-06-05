@@ -87,7 +87,6 @@
 
 <script lang="ts" setup>
   import { UModal, UForm, UFormField, UInput, UButton, UTextarea } from '#components'
-  import {} from '@kalimahapps/vue-icons'
   import * as z from 'zod'
   import type { FormSubmitEvent } from '@nuxt/ui'
   const open = ref(false)

@@ -58,31 +58,35 @@
           <div class="relative flex items-center">
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-16 md:translate-x-10 translate-y-6 md:translate-y-8 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-16 md:translate-x-10 translate-y-6 md:translate-y-8 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
+                v-show="!pending"
+                loading="eager"
                 :src="currentGallery?.media[0]?.url || '/images/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image 1 - Pensée Bohème création florale`"
-                loading="eager"
-                placeholder=""
-                :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
+                :class="{ 'opacity-0 ': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
+                quality="75"
               />
             </div>
 
             <NuxtLink
               v-if="currentGallery?.media"
               :href="`/galeries/${currentGallery.slug}`"
-              class="aspect-[3/4] w-36 md:w-60 z-10 shadow-xl overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
+              class="aspect-[3/4] w-36 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
             >
+              <PagesLottieLoader v-show="pending" />
               <NuxtImg
+                v-show="!pending"
+                loading="eager"
                 :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
-                loading="eager"
-                fetchpriority="high"
-                placeholder=""
+                :class="{ 'opacity-0': pending, 'opacity-100 shadow-xl': !pending }"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+                quality="75"
               />
+
               <div
                 class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300"
               >
@@ -96,15 +100,16 @@
 
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-8 md:-translate-x-10 -translate-y-2 md:-translate-y-4 shadow-lg overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-8 md:-translate-x-10 -translate-y-2 md:-translate-y-4 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
+                v-show="!pending"
+                loading="eager"
                 :src="currentGallery?.media[2]?.url || '/media/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image 3 - Pensée Bohème création florale`"
-                placeholder=""
-                loading="eager"
-                :fetchpriority="currentIndex === 0 ? 'high' : 'auto'"
+                :class="{ 'opacity-0': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
+                quality="75"
               />
             </div>
           </div>
@@ -140,12 +145,27 @@
 </template>
 
 <script lang="ts" setup>
-  import { UButton } from '#components'
+  import { PagesLottieLoader, UButton } from '#components'
   import type { Galleries } from '~/types/models'
 
   const props = defineProps<{
     galleryItems: Galleries
   }>()
+
+  const pending = ref(true)
+
+  onMounted(() => {
+    setTimeout(() => {
+      pending.value = false
+    }, 500)
+  })
+
+  function resetTimer() {
+    pending.value = true
+    setTimeout(() => {
+      pending.value = false
+    }, 500)
+  }
 
   // Current gallery index
   const currentIndex = ref(0)
@@ -158,12 +178,14 @@
   // Simple navigation
   function nextGallery() {
     if (!isLastGallery.value) {
+      resetTimer()
       currentIndex.value++
     }
   }
 
   function prevGallery() {
     if (!isFirstGallery.value) {
+      resetTimer()
       currentIndex.value--
     }
   }

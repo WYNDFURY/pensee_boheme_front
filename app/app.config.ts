@@ -6,12 +6,6 @@ export default defineAppConfig({
       neutral: 'bg-primary_pink',
       error: 'bg-red-500',
     },
-    button: {
-      defaultVariants: {
-        // Set default button color to neutral
-        // color: 'neutral'
-      },
-    },
     navigationMenu: {
       slots: {
         childLinkLabel: 'text-md',

@@ -6,21 +6,23 @@ export const useGalleryService = () => {
   const { updateSlugFromRoute } = useCurrentSlugService()
 
   const getIndexOfGalleries = () => {
-    return useFetch<Galleries>(`${apiKey}/galleries`, {
+    const { data } = useFetch<Galleries>(`${apiKey}/galleries`, {
       key: 'galleries-index',
-      lazy: true,
       server: false,
     })
+
+    return { data }
   }
 
   const getShowOfGallery = (slug: string) => {
     updateSlugFromRoute()
 
-    return useFetch<Gallery>(`${apiKey}/galleries/${slug}`, {
+    const { data } = useFetch<Gallery>(`${apiKey}/galleries/${slug}`, {
       key: `gallery-${slug}`,
-      lazy: true,
       server: false,
     })
+
+    return { data }
   }
 
   return {

@@ -43,7 +43,11 @@
 
       <!-- Product grid with same width constraints -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-4">
-        <ProductsCard v-for="product in category.products" :key="product.id" :product="product" />
+        <ProductsCard
+          v-for="(product, index) in category.products"
+          :key="index"
+          :product="product"
+        />
       </div>
     </div>
   </div>

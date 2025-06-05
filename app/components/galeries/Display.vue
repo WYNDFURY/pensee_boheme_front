@@ -10,23 +10,16 @@
       <div
         v-for="(galleryMedia, index) in gallery.data.media"
         :key="galleryMedia.id"
-        class="w-full rounded-xl shadow"
-        itemscope
-        itemtype="https://schema.org/ImageObject"
+        class="w-full rounded-xl shadow relative overflow-hidden bg-gray-100"
       >
         <NuxtImg
-          class="h-auto max-w-full rounded-lg"
-          :src="galleryMedia.url"
           :alt="generateImageAlt(galleryMedia.name, index)"
           :title="generateImageTitle(galleryMedia.name)"
-          :loading="index < 4 ? 'eager' : 'lazy'"
-          :fetchpriority="index < 2 ? 'high' : 'auto'"
-          itemprop="contentUrl"
-          format="webp"
+          loading="lazy"
+          :src="galleryMedia.url"
+          class="h-auto max-w-full rounded-lg transition-all duration-500 ease-out"
+          width="800"
         />
-        <meta :content="generateImageAlt(galleryMedia.name, index)" itemprop="description" />
-        <meta :content="gallery.data.name" itemprop="name" />
-        <meta :content="author" itemprop="author" />
       </div>
     </div>
   </div>
@@ -43,7 +36,7 @@
     return props.gallery.data.photographer || 'Cécile Devaux - Pensée Bohème'
   })
 
-  // SEO helper functions for image optimization
+  // SEO helper functions
   const generateImageAlt = (originalName: string, index: number): string => {
     const cleanName = originalName.replace(/\.(jpg|jpeg|png|webp)$/i, '')
     return `${cleanName} - Création florale Pensée Bohème ${

@@ -2,7 +2,7 @@
   <div v-if="product.media[0]" class="w-1/2 mx-auto border-b-1">
     <NuxtImg
       :src="product.media[0]?.url"
-      placeholder=""
+      :loading="'lazy'"
       alt="Product Image"
       class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full"
     />
