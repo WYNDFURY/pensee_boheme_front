@@ -77,10 +77,10 @@
           Me Contacter
         </h2>
       </header>
-      <!-- <div class="flex" role="group" aria-label="Formulaires de contact">
+      <div class="flex" role="group" aria-label="Formulaires de contact">
         <PagesEventContactForm />
-        <PagesDetailContactForm />
-      </div> -->
+        <PagesCreationContactForm />
+      </div>
       <div
         class="flex flex-col lg:flex-row-reverse gap-8 items-center justify-center mx-4 md:mx-16"
         role="group"

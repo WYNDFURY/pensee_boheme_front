@@ -1,7 +1,7 @@
 <template>
   <div class="px-4 mx-auto">
     <UButton
-      label="Formulaire d'organisation d'événement"
+      label="Formulaire pour créations personnalisées"
       color="primary"
       size="xl"
       block
@@ -10,7 +10,7 @@
     />
     <UModal
       v-model:open="open"
-      title="Formulaire d'organisation d'événement"
+      title="Formulaire pour créations personnalisées"
       :close="{
         color: 'primary',
         variant: 'outline',
@@ -47,40 +47,17 @@
             <UInput v-model="state.phone" placeholder=" numéro de téléphone" />
           </UFormField>
 
-          <UFormField
-            label="Estimation de la date de l'événement"
-            name="eventDate"
-            class="col-span-2 flex flex-col items-center"
-          >
-            <UInput v-model="state.eventDate" type="date" />
-          </UFormField>
-
-          <UFormField label="Lieu de l'événement" name="eventLocation" class="col-span-2 w-full">
-            <UInput
-              v-model="state.eventLocation"
-              placeholder="Lieu de votre événement"
-              class="w-full"
-            />
-          </UFormField>
-
-          <UFormField label="Thème / Couleurs" name="themeColors" class="col-span-2 w-full">
-            <UInput
-              v-model="state.themeColors"
-              placeholder="Thème ou couleurs souhaitées"
-              class="w-full"
-            />
-          </UFormField>
-
           <UFormField label="Message" name="message" class="col-span-2 w-full">
             <UTextarea
               v-model="state.message"
               autoresize
-              placeholder="Décrivez votre demande"
+              placeholder="Décrivez votre idée de base et vos envies pour votre commande personalisée."
               class="w-full"
               :rows="5"
               :maxrows="5"
             />
           </UFormField>
+
           <UFormField
             label="Info Supplémentaires"
             name="additional_info"
@@ -111,9 +88,6 @@
     firstName: z.string().min(1, 'Prénom requis'),
     lastName: z.string().min(1, 'Nom requis'),
     phone: z.string().min(1, 'Téléphone requis'),
-    eventDate: z.string().min(1, "Date de l'événement requise"),
-    eventLocation: z.string().min(1, "Lieu de l'événement requis"),
-    themeColors: z.string().optional(),
     message: z
       .string()
       .max(1000, 'Message trop long (max 1000 caractères)')
@@ -128,11 +102,7 @@
     firstName: '',
     lastName: '',
     phone: '',
-    eventDate: '',
-    eventLocation: '',
-    themeColors: '',
     message: '',
-    additional_info: '',
   })
   const open = ref(false)
   const form = ref()
@@ -152,32 +122,46 @@
   }
 
   async function onSubmit(event: FormSubmitEvent<Schema>) {
-    try {
-      console.log('Form data:', event.data)
+    console.log('Form data:', event.data)
 
-      // Your form submission logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
-
-      toast.add({
-        title: 'Success',
-        description: 'Le formulaire a été envoyé avec succès',
-        color: 'success',
-      })
-
-      open.value = false
-
-      // Reset form
-      Object.keys(state.value).forEach((key) => {
-        state.value[key as keyof Schema] = ''
-      })
-    } catch (error) {
+    const response = await $fetch<{ success: boolean; message?: string }>('/api/contact/creation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: {
+        email: event.data.email,
+        firstName: event.data.firstName,
+        lastName: event.data.lastName,
+        phone: event.data.phone,
+        message: event.data.message,
+        type: 'creation', // Optional: to distinguish form types
+      },
+    })
+    console.log('Response:', response)
+    if (!response.success) {
       toast.add({
         title: 'Error',
         description: "Une erreur est survenue lors de l'envoi",
         color: 'error',
       })
-      console.error('Form submission error:', error)
+
+      throw new Error(response.message || 'Form submission failed')
     }
+
+    toast.add({
+      title: 'Success',
+      description: 'Le formulaire a été envoyé avec succès',
+      color: 'success',
+    })
+
+    open.value = false
+
+    // Reset form
+    Object.keys(state.value).forEach((key) => {
+      state.value[key as keyof Schema] = ''
+    })
   }
 </script>
 

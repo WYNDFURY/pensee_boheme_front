@@ -1,5 +1,5 @@
 <template>
-  <main v-if="data" role="main">
+  <main v-if="data" role="main" class="h-screen">
     <div class="sr-only">
       Galerie {{ data.data.name }} - Pensée Bohème : découvrez nos créations florales
       {{ data.data.name.toLowerCase() }} en Normandie. Compositions artisanales par Cécile Devaux.
@@ -7,9 +7,6 @@
 
     <GaleriesDisplay :gallery="data" />
   </main>
-  <div v-else class="min-h-screen flex items-center justify-center">
-    <p class="text-xl text-gray-500">Galerie non trouvée</p>
-  </div>
 </template>
 
 <script lang="ts" setup>

@@ -6,7 +6,11 @@
     <h2 v-if="gallery.data.photographer" class="text-xl md:text-2xl lg:text-3xl text-center mt-4">
       {{ gallery.data.photographer }}
     </h2>
-    <div class="columns-2 md:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 p-4 md:p-8">
+    <PagesLottieLoader v-show="pending" class="h-screen" />
+    <div
+      v-show="!pending"
+      class="columns-2 md:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 p-4 md:p-8"
+    >
       <div
         v-for="(galleryMedia, index) in gallery.data.media"
         :key="galleryMedia.id"
@@ -17,7 +21,7 @@
           :title="generateImageTitle(galleryMedia.name)"
           loading="lazy"
           :src="galleryMedia.url"
-          class="h-auto max-w-full rounded-lg transition-all duration-500 ease-out"
+          class="bg-white h-auto max-w-full rounded-lg transition-all duration-500 ease-out"
           width="800"
         />
       </div>
@@ -31,6 +35,14 @@
   const props = defineProps<{
     gallery: Gallery
   }>()
+
+  const pending = ref(true)
+
+  onMounted(() => {
+    setTimeout(() => {
+      pending.value = false
+    }, 1500)
+  })
 
   const author = computed(() => {
     return props.gallery.data.photographer || 'Cécile Devaux - Pensée Bohème'
