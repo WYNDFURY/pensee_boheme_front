@@ -103,24 +103,20 @@
         >
           <div class="flex items-center gap-2" itemprop="telephone">
             <AkPhone class="text-xl" aria-hidden="true" />
-            <a
-              href="tel:+33614643584"
-              class="hover:text-accent-500 transition-colors"
-              aria-label="Appeler le 06 14 64 35 84"
+            <p
+              aria-label="numéro de téléphone de Pensée Bohème"
             >
               +33 6 14 64 35 84
-            </a>
+            </p>
           </div>
           <div class="flex items-center gap-2">
             <MdTwoToneMailOutline class="text-xl" aria-hidden="true" />
-            <a
-              href="mailto:penseeboheme76@gmail.com"
-              class="hover:text-accent-500 transition-colors"
+            <p
               itemprop="email"
-              aria-label="Envoyer un email à penseeboheme76@gmail.com"
+              aria-label="email de Pensée Bohème"
             >
               penseeboheme76@gmail.com
-            </a>
+          </p>
           </div>
           <div class="flex items-center gap-2">
             <AkLocation class="text-xl" aria-hidden="true" />
@@ -133,7 +129,7 @@
           <div class="flex items-center gap-2">
             <DeFacebookOriginal class="text-xl" aria-hidden="true" />
             <a
-              href="https://www.facebook.com/penseeboheme76"
+              href="https://www.facebook.com/penseeboheme"
               target="_blank"
               rel="noopener noreferrer"
               class="hover:text-accent-500 transition-colors"

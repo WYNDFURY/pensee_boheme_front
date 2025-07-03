@@ -82,6 +82,22 @@
   import { UModal, UForm, UFormField, UInput, UButton, UTextarea } from '#components'
   import * as z from 'zod'
   import type { FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
+  import PenseeBohemeCredentials from '~/api/PenseeBohemeCredentials'
+  type Schema = z.output<typeof schema>
+
+  const apiKey = new PenseeBohemeCredentials().apiKey
+  const open = ref(false)
+  const form = ref()
+  const toast = useToast()
+
+  
+  const state = ref<Partial<Schema>>({
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    message: '',
+  })
 
   const schema = z.object({
     email: z.string().email().min(1, 'Email requis'),
@@ -94,20 +110,7 @@
       .min(1, 'Message requis'),
     additional_info: z.string().optional(),
   })
-
-  type Schema = z.output<typeof schema>
-
-  const state = ref<Partial<Schema>>({
-    email: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-    message: '',
-  })
-  const open = ref(false)
-  const form = ref()
-
-  const toast = useToast()
+  
   async function submitForm() {
     // Trigger form validation and submission
     await form.value.submit()
@@ -122,9 +125,10 @@
   }
 
   async function onSubmit(event: FormSubmitEvent<Schema>) {
-    console.log('Form data:', event.data)
+    try {
+    console.log('Form data:', event.data)   
 
-    const response = await $fetch<{ success: boolean; message?: string }>('/api/contact/creation', {
+    const response = await $fetch<{ success: boolean; message?: string }>(`${apiKey}/contact/creation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -136,11 +140,11 @@
         lastName: event.data.lastName,
         phone: event.data.phone,
         message: event.data.message,
+        additional_info: event.data.additional_info,
         type: 'creation', // Optional: to distinguish form types
       },
     })
-    console.log('Response:', response)
-    if (!response.success) {
+    if (response.success == false) {
       toast.add({
         title: 'Error',
         description: "Une erreur est survenue lors de l'envoi",
@@ -162,6 +166,14 @@
     Object.keys(state.value).forEach((key) => {
       state.value[key as keyof Schema] = ''
     })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      toast.add({
+        title: 'Error',
+        description: 'Une erreur est survenue, veuillez vérifier les informations entrées.',
+        color: 'error',
+      })
+    }
   }
 </script>
 

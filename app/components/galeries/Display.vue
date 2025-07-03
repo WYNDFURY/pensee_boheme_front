@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NuxtLink to="/galeries" ><AkArrowLeft class="absolute text-4xl m-4 hover:text-accent-500 transition-colors"/></NuxtLink>
     <h1 class="text-3xl md:text-4xl lg:text-5xl text-center mt-8">
       {{ gallery.data.name }}
     </h1>
@@ -26,11 +27,13 @@
         />
       </div>
     </div>
+    <NuxtLink to="/galeries" ><p class="text-xl md:text-2xl lg:text-3xl text-center hover:text-accent-500 transition-colors mt-12">Retour aux galleries</p></NuxtLink>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import type { Gallery } from '~/types/models'
+import { AkArrowLeft } from '@kalimahapps/vue-icons';
+import type { Gallery } from '~/types/models'
 
   const props = defineProps<{
     gallery: Gallery

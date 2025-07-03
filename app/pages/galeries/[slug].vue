@@ -1,5 +1,5 @@
 <template>
-  <main v-if="data" role="main" class="h-screen">
+  <main v-if="data" role="main">
     <div class="sr-only">
       Galerie {{ data.data.name }} - Pensée Bohème : découvrez nos créations florales
       {{ data.data.name.toLowerCase() }} en Normandie. Compositions artisanales par Cécile Devaux.

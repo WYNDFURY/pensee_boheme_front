@@ -105,6 +105,15 @@
   import { UModal, UForm, UFormField, UInput, UButton, UTextarea } from '#components'
   import * as z from 'zod'
   import type { FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
+  import PenseeBohemeCredentials from '~/api/PenseeBohemeCredentials'
+
+  const apiKey = new PenseeBohemeCredentials().apiKey
+  type Schema = z.output<typeof schema>
+  const open = ref(false)
+  const form = ref()
+  const toast = useToast()
+
+
 
   const schema = z.object({
     email: z.string().email().min(1, 'Email requis'),
@@ -121,8 +130,6 @@
     additional_info: z.string().optional(),
   })
 
-  type Schema = z.output<typeof schema>
-
   const state = ref<Partial<Schema>>({
     email: '',
     firstName: '',
@@ -134,16 +141,13 @@
     message: '',
     additional_info: '',
   })
-  const open = ref(false)
-  const form = ref()
-
-  const toast = useToast()
+  
   async function submitForm() {
-    // Trigger form validation and submission
     await form.value.submit()
   }
 
   async function onError(event: FormErrorEvent) {
+    console.log(event.errors)
     if (event?.errors?.[0]?.id) {
       const element = document.getElementById(event.errors[0].id)
       element?.focus()
@@ -151,34 +155,63 @@
     }
   }
 
-  async function onSubmit(event: FormSubmitEvent<Schema>) {
+    async function onSubmit(event: FormSubmitEvent<Schema>) {
     try {
-      console.log('Form data:', event.data)
+      console.log('Form data:', event.data)   
 
-      // Your form submission logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
-
-      toast.add({
-        title: 'Success',
-        description: 'Le formulaire a été envoyé avec succès',
-        color: 'success',
-      })
-
-      open.value = false
-
-      // Reset form
-      Object.keys(state.value).forEach((key) => {
-        state.value[key as keyof Schema] = ''
-      })
-    } catch (error) {
+    const response = await $fetch<{ success: boolean; message?: string}>(`${apiKey}/contact/event`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: {
+        email: event.data.email,
+        firstName: event.data.firstName,
+        lastName: event.data.lastName,
+        phone: event.data.phone,
+        eventDate: event.data.eventDate,
+        eventLocation: event.data.eventLocation,
+        themeColors: event.data.themeColors,
+        message: event.data.message,
+        additional_info: event.data.additional_info,
+        type: 'creation', // Optional: to distinguish form types
+      },
+    })
+    
+    if (response.success == false) {
       toast.add({
         title: 'Error',
         description: "Une erreur est survenue lors de l'envoi",
         color: 'error',
       })
+
+      throw new Error(response.message || 'Form submission failed')
+    }
+
+    toast.add({
+      title: 'Success',
+      description: 'Le formulaire a été envoyé avec succès',
+      color: 'success',
+    })
+
+    open.value = false
+
+    // Reset form
+    Object.keys(state.value).forEach((key) => {
+      state.value[key as keyof Schema] = ''
+    })
+    } catch (error) {
       console.error('Form submission error:', error)
+      toast.add({
+        title: 'Error',
+        description: 'Une erreur est survenue, veuillez vérifier les informations entrées.',
+        color: 'error',
+      })
     }
   }
+    
+
 </script>
 
 <style scoped>

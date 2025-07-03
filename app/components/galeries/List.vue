@@ -74,7 +74,7 @@
             <NuxtLink
               v-if="currentGallery?.media"
               :href="`/galeries/${currentGallery.slug}`"
-              class="aspect-[3/4] w-36 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-2xl relative"
+              class="aspect-[3/4] w-36 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 relative"
             >
               <PagesLottieLoader v-show="pending" />
               <NuxtImg
@@ -83,11 +83,12 @@
                 :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
                 :class="{ 'opacity-0': pending, 'opacity-100 shadow-xl': !pending }"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105 hover:shadow-2xl"
                 quality="75"
               />
 
               <div
+              v-show="!pending"
                 class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300"
               >
                 <span
@@ -148,6 +149,9 @@
   import { PagesLottieLoader, UButton } from '#components'
   import type { Galleries } from '~/types/models'
 
+    // Current gallery index
+  const currentIndex = useState('currentGalleryIndex', () => 0)
+
   const props = defineProps<{
     galleryItems: Galleries
   }>()
@@ -167,8 +171,6 @@
     }, 500)
   }
 
-  // Current gallery index
-  const currentIndex = ref(0)
 
   // Computed values
   const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
