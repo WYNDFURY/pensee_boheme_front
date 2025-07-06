@@ -142,8 +142,39 @@
       },
       areaServed: ['Normandie', 'Seine-Maritime', 'France'],
     }),
+    defineEvent({
+      name: 'Ateliers Créatifs EVJF - Accessoires Fleurs Séchées',
+      description: 'Ateliers créatifs pour enterrements de vie de jeune fille : création d\'accessoires en fleurs séchées',
+      image: 'https://pensee-boheme.fr/ateliers-creatifs/ateliers_banner.jpg',
+      startDate: new Date().toISOString(),
+      endDate: new Date(Date.now() + 2 * 365 * 24 * 60 * 60 * 1000).toISOString(), // 2 years from now
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: 'Normandie - Déplacement à domicile',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'Normandie',
+          addressCountry: 'FR',
+        },
+        description: 'Service de déplacement dans toute la région Normandie'
+      },
+      organizer: {
+        '@type': 'Person',
+        name: 'Cécile Devaux',
+        email: 'penseeboheme76@gmail.com',
+        telephone: '+33614643584',
+      },
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        price: 'Sur devis',
+        priceCurrency: 'EUR',
+        description: 'Atelier créatif EVJF - minimum 4 participantes'
+      }
+    }),
   ])
-
   // Breadcrumb Schema
   useSchemaOrg([
     defineBreadcrumb([

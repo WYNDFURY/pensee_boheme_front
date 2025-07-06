@@ -164,13 +164,12 @@
             guide ma créativité !
           </p>
           <div class="mx-auto w-2/3">
-            <ClientOnly>
               <USeparator
                 orientation="horizontal"
                 class="h-10"
                 :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
+                aria-label="Séparateur décoratif avec logo Pensée Bohème"
               />
-            </ClientOnly>
           </div>
           <p class="italic text-xl font-medium leading-relaxed 2xl:text-2xl">
             Bienvenue dans cet espace où chaque projet, chaque création, est une ode à la beauté de

@@ -73,13 +73,12 @@
       </figure>
     </section>
     <div class="mx-auto py-8 w-2/3" role="separator" aria-hidden="true">
-      <ClientOnly>
         <USeparator
           orientation="horizontal"
           class="h-10"
           :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
+          aria-label="Séparateur décoratif avec logo Pensée Bohème"
         />
-      </ClientOnly>
     </div>
     <section
       class="flex flex-col gap-10"
