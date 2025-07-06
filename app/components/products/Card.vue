@@ -6,7 +6,7 @@
       :src="product.media[0]?.url"
       :loading="'lazy'"
       alt="Product Image"
-      class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full"
+      class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full h-fit"
     />
     <div class="flex text-sm lg:text-lg justify-between gap-1 my-2">
       <p>{{ product.name }}</p>

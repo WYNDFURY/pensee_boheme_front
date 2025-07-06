@@ -5,7 +5,7 @@
       color="primary"
       size="xl"
       block
-      class="px-8 text-xl"
+      class="px-4 sm:px-8 text-lg sm:text-xl"
       @click="open = true"
     />
     <UModal
@@ -19,7 +19,7 @@
       :ui="{
         footer: 'justify-end',
         overlay: 'bg-black/50',
-        title: 'text-black',
+        title: 'text-black w-11/12 sm:w-full',
       }"
     >
       <template #body>

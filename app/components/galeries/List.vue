@@ -41,7 +41,7 @@
       <div class="flex items-center justify-evenly w-full">
         <!-- Previous button -->
         <UButton
-          class="hover:scale-105 active:scale-95 hover:cursor-pointer"
+          class="hover:scale-105 active:scale-95 hover:cursor-pointer -z-10"
           color="primary"
           size="xl"
           icon="i-heroicons-arrow-left"
@@ -55,10 +55,10 @@
           class="flex justify-center items-center py-8 transition-all duration-500 ease-in-out"
         >
           <!-- Carousel/gallery images -->
-          <div class="relative flex items-center">
+          <div class="relative flex items-center ">
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 -rotate-12 translate-x-16 md:translate-x-10 translate-y-6 md:translate-y-8 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-24 sm:w-36 md:w-48 -rotate-12 translate-x-8 sm:translate-x-24 md:translate-x-10 translate-y-4 md:translate-y-8 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
                 v-show="!pending"
@@ -74,7 +74,7 @@
             <NuxtLink
               v-if="currentGallery?.media"
               :href="`/galeries/${currentGallery.slug}`"
-              class="aspect-[3/4] w-36 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 relative"
+              class="aspect-[3/4] w-28 sm:w-48 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 relative"
             >
               <PagesLottieLoader v-show="pending" />
               <NuxtImg
@@ -101,7 +101,7 @@
 
             <div
               v-if="currentGallery?.media"
-              class="aspect-[3/4] w-28 md:w-48 rotate-12 -translate-x-8 md:-translate-x-10 -translate-y-2 md:-translate-y-4 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
+              class="aspect-[3/4] w-24 sm:w-36 md:w-48 rotate-8 -translate-x-2 sm:-translate-x-16 md:-translate-x-10 -translate-y-6 md:-translate-y-4 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
                 v-show="!pending"

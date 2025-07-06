@@ -4,8 +4,7 @@
       label="Formulaire d'organisation d'événement"
       color="primary"
       size="xl"
-      block
-      class="px-8 text-xl"
+      class="px-4 sm:px-8 text-lg sm:text-xl"
       @click="open = true"
     />
     <UModal
@@ -19,7 +18,7 @@
       :ui="{
         footer: 'justify-end',
         overlay: 'bg-black/50',
-        title: 'text-black',
+        title: 'text-black w-11/12 sm:w-full',
       }"
     >
       <template #body>
@@ -52,7 +51,7 @@
             name="eventDate"
             class="col-span-2 flex flex-col items-center"
           >
-            <UInput v-model="state.eventDate" type="date" />
+            <UInput v-model="state.eventDate" type="date" class="w-40"  />
           </UFormField>
 
           <UFormField label="Lieu de l'événement" name="eventLocation" class="col-span-2 w-full">

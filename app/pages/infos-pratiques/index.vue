@@ -77,7 +77,7 @@
           Me Contacter
         </h2>
       </header>
-      <div class="flex" role="group" aria-label="Formulaires de contact">
+      <div class="w-full flex flex-col justify-center items-center space-y-12 lg:flex-row lg:space-y-0 " role="group" aria-label="Formulaires de contact">
         <PagesEventContactForm />
         <PagesCreationContactForm />
       </div>
