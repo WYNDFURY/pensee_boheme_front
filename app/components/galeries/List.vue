@@ -23,6 +23,8 @@
     <!-- Gallery display area -->
     <main
       class="flex flex-col sticky top-0 h-[calc(100vh-80px)] w-full text-center justify-evenly items-center transition-all duration-500 ease-in-out"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
     >
       <div class="space-y-2">
         <h1
@@ -41,13 +43,14 @@
       <div class="flex items-center justify-evenly w-full">
         <!-- Previous button -->
         <UButton
-          class="hover:scale-105 active:scale-95 hover:cursor-pointer -z-10"
-          color="primary"
-          size="xl"
-          icon="i-heroicons-arrow-left"
-          :disabled="isFirstGallery"
-          @click="prevGallery"
+        class="hover:scale-105 active:scale-95 hover:cursor-pointer"
+        color="primary"
+        size="xl"
+        icon="i-heroicons-arrow-left"
+        :disabled="isFirstGallery"
+        @click="prevGallery"
         />
+
 
         <!-- Gallery cards display -->
         <div
@@ -149,20 +152,42 @@
   import { PagesLottieLoader, UButton } from '#components'
   import type { Galleries } from '~/types/models'
 
-    // Current gallery index
   const currentIndex = useState('currentGalleryIndex', () => 0)
-
   const props = defineProps<{
     galleryItems: Galleries
   }>()
 
   const pending = ref(true)
 
-  onMounted(() => {
-    setTimeout(() => {
-      pending.value = false
-    }, 500)
-  })
+  // Touch/swipe handling for mobile
+  const touchStartX = ref(0)
+  const touchEndX = ref(0)
+  const minSwipeDistance = 50
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartX.value = e.changedTouches[0].screenX
+  }
+
+  function handleTouchEnd(e: TouchEvent) {
+    touchEndX.value = e.changedTouches[0].screenX
+    handleSwipe()
+  }
+
+  function handleSwipe() {
+    const swipeDistance = touchStartX.value - touchEndX.value
+    if (Math.abs(swipeDistance) < minSwipeDistance) return
+
+    if (swipeDistance > 0) {
+      nextGallery() 
+    } else {
+      prevGallery()
+    }
+  }
+
+  // Computed values
+  const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
+  const isFirstGallery = computed(() => currentIndex.value === 0)
+  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
 
   function resetTimer() {
     pending.value = true
@@ -171,13 +196,6 @@
     }, 500)
   }
 
-
-  // Computed values
-  const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
-  const isFirstGallery = computed(() => currentIndex.value === 0)
-  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
-
-  // Simple navigation
   function nextGallery() {
     if (!isLastGallery.value) {
       resetTimer()
@@ -192,20 +210,19 @@
     }
   }
 
-  // Keyboard navigation
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'ArrowRight') nextGallery()
-    else if (e.key === 'ArrowLeft') prevGallery()
+    if (e.key === 'ArrowLeft') prevGallery()
   }
 
-  // Lifecycle
   onMounted(() => {
     window.addEventListener('keydown', handleKeyDown)
+    setTimeout(() => {
+      pending.value = false
+    }, 500)
   })
 
   onUnmounted(() => {
     window.removeEventListener('keydown', handleKeyDown)
   })
 </script>
-
-<style></style>
