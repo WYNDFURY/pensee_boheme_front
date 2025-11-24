@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:prod": "cross-env NUXT_PUBLIC_API_BASE_URL=https://api.pensee-boheme.fr/api nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.4.1",
     "@types/node": "^22.15.29",
+    "cross-env": "^10.1.0",
     "eslint": "^9.28.0",
     "nuxt-anchorscroll": "^1.0.5",
     "typescript": "^5.8.3"
