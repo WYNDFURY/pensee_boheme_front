@@ -15,8 +15,8 @@
           class="flex flex-1 text-pretty items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh]"
         >
           <h1 id="hero-title" itemprop="name">
-            Chaque création, <br />
-            est une ode à la beauté <br />
+            Chaque création, <br >
+            est une ode à la beauté <br >
             de la nature et à l'imagination
           </h1>
         </header>
@@ -55,7 +55,7 @@
           itemtype="https://schema.org/Person"
           class="text-center px-5 font-semibold text-3xl leading-normal text-accent-500 md:hidden"
         >
-          Je suis <span itemprop="name">Cécile</span>, <br />
+          Je suis <span itemprop="name">Cécile</span>, <br >
           créatrice de Pensée Bohème fleuriste passionnée et engagée
         </h2>
 
@@ -73,7 +73,7 @@
           <h2
             class="hidden md:block my-10 text-balance font-semibold text-center text-3xl 2xl:text-4xl leading-normal text-accent-500"
           >
-            Je suis Cécile, <br />
+            Je suis Cécile, <br >
             créatrice de Pensée Bohème fleuriste passionnée et engagée
           </h2>
           <p class="my-5 2xl:text-2xl">
@@ -89,7 +89,7 @@
               éco-responsable.
               <span
                 class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
-              ></span>
+              />
             </NuxtLink>
           </p>
           <p class="2xl:text-2xl">
@@ -101,7 +101,7 @@
               class="relative border-b border-dotted border-accent-500 font-semibold text-accent-500 group md:border-none"
               >rendez-vous<span
                 class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
-              ></span>
+              />
             </NuxtLink>
             dans mon atelier à Beuzeville-la-Grenier; petit village Normand situé entre Le Havre et
             Rouen.

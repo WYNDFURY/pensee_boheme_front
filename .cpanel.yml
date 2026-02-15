@@ -1,0 +1,26 @@
+---
+# cPanel Git Deployment Configuration for Pensée Bohème
+# This file defines automated deployment tasks executed on git push
+# Documentation: https://docs.cpanel.net/knowledge-base/web-services/guide-to-git-deployment/
+
+deployment:
+  tasks:
+    # Set deployment target directory
+    # IMPORTANT: Replace USERNAME with your actual cPanel username before first deployment
+    # Example: /home/pensee01/public_html
+    - export DEPLOYPATH=/home/penseebo/front_deploy_test/public_html
+
+    # Install all dependencies (production + dev needed for Nuxt build)
+    # --frozen-lockfile ensures yarn.lock consistency, fails if package.json/yarn.lock mismatch
+    - yarn install --frozen-lockfile
+
+    # Generate static site with production API URL
+    # Expands to: cross-env NUXT_PUBLIC_API_BASE_URL=https://api.pensee-boheme.fr/api nuxt generate
+    # Pre-renders routes, fetches API data, generates sitemap/robots.txt
+    # Output: .output/public/
+    - yarn generate:prod
+
+    # Deploy generated static files to web server
+    # Copies all files from .output/public/ to deployment path
+    # Uses absolute path /bin/cp to avoid shell alias issues
+    - /bin/cp -R .output/public/* $DEPLOYPATH

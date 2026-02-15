@@ -4,7 +4,7 @@
     <!-- Sidebar with gallery titles -->
     <aside class="w-52 hidden lg:block mx-8 my-8">
       <ul class="space-y-3">
-        <li v-for="(gallery, index) in galleryItems.data" :key="index">
+        <li v-for="(gallery, index) in galleryItems.data" :key="gallery.id">
           <button
             class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
             :class="[
@@ -64,13 +64,9 @@
               class="aspect-[3/4] w-24 sm:w-36 md:w-48 -rotate-12 translate-x-8 sm:translate-x-24 md:translate-x-10 translate-y-4 md:translate-y-8 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
-                v-show="!pending"
-                loading="eager"
-                :src="currentGallery?.media[0]?.url || '/images/placeholder.jpg'"
+                v-bind="leftImageConfig"
                 :alt="`${currentGallery?.name} - Image 1 - Pensée Bohème création florale`"
-                :class="{ 'opacity-0 ': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
-                quality="75"
               />
             </div>
 
@@ -79,19 +75,15 @@
               :href="`/galeries/${currentGallery.slug}`"
               class="aspect-[3/4] w-28 sm:w-48 md:w-60 z-10 overflow-hidden rounded-lg group transition-all duration-500 relative"
             >
-              <PagesLottieLoader v-show="pending" />
               <NuxtImg
-                v-show="!pending"
-                loading="eager"
-                :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
+                ref="centerImgRef"
+                v-bind="centerImageConfig"
                 :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
-                :class="{ 'opacity-0': pending, 'opacity-100 shadow-xl': !pending }"
+                
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105 hover:shadow-2xl"
-                quality="75"
               />
 
               <div
-              v-show="!pending"
                 class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300"
               >
                 <span
@@ -107,13 +99,9 @@
               class="aspect-[3/4] w-24 sm:w-36 md:w-48 rotate-8 -translate-x-2 sm:-translate-x-16 md:-translate-x-10 -translate-y-6 md:-translate-y-4 overflow-hidden rounded-lg group transition-all duration-500 hover:shadow-xl absolute md:static"
             >
               <NuxtImg
-                v-show="!pending"
-                loading="eager"
-                :src="currentGallery?.media[2]?.url || '/media/placeholder.jpg'"
+                v-bind="rightImageConfig"
                 :alt="`${currentGallery?.name} - Image 3 - Pensée Bohème création florale`"
-                :class="{ 'opacity-0': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
-                quality="75"
               />
             </div>
           </div>
@@ -134,7 +122,7 @@
       <div class="flex justify-center gap-2 py-6">
         <button
           v-for="(gallery, index) in galleryItems.data"
-          :key="index"
+          :key="gallery.id"
           :class="
             index === currentIndex
               ? 'bg-accent-500 scale-125 shadow-md'
@@ -157,7 +145,7 @@
     galleryItems: Galleries
   }>()
 
-  const pending = ref(true)
+  const centerImgRef = ref<InstanceType<typeof import('#components').NuxtImg> | null>(null)
 
   // Touch/swipe handling for mobile
   const touchStartX = ref(0)
@@ -189,23 +177,36 @@
   const isFirstGallery = computed(() => currentIndex.value === 0)
   const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
 
-  function resetTimer() {
-    pending.value = true
-    setTimeout(() => {
-      pending.value = false
-    }, 500)
-  }
+  // Responsive image configurations
+  const leftImageConfig = computed(() =>
+    useResponsiveImage(currentGallery.value?.media?.[0], 'thumb', {
+      eager: true,
+      customSizes: '96px sm:144px md:192px',
+    })
+  )
+
+  const centerImageConfig = computed(() =>
+    useResponsiveImage(currentGallery.value?.media?.[1], 'thumb', {
+      eager: true,
+      customSizes: '112px sm:192px md:240px',
+    })
+  )
+
+  const rightImageConfig = computed(() =>
+    useResponsiveImage(currentGallery.value?.media?.[2], 'thumb', {
+      eager: true,
+      customSizes: '96px sm:144px md:192px',
+    })
+  )
 
   function nextGallery() {
     if (!isLastGallery.value) {
-      resetTimer()
       currentIndex.value++
     }
   }
 
   function prevGallery() {
     if (!isFirstGallery.value) {
-      resetTimer()
       currentIndex.value--
     }
   }
@@ -217,9 +218,6 @@
 
   onMounted(() => {
     window.addEventListener('keydown', handleKeyDown)
-    setTimeout(() => {
-      pending.value = false
-    }, 500)
   })
 
   onUnmounted(() => {

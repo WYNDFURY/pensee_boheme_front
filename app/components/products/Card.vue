@@ -1,11 +1,8 @@
 <template>
   <div v-if="product.media[0]" class="w-1/2 mx-auto border-b-1">
-    <PagesLottieLoader v-show="pending" class="min-w-full aspect-square" />
     <NuxtImg
-      v-show="!pending"
-      :src="product.media[0]?.url"
-      :loading="'lazy'"
-      alt="Product Image"
+      v-bind="imageConfig"
+      :alt="`${product.name} - Pensée Bohème`"
       class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full h-fit"
     />
     <div class="flex text-sm lg:text-lg justify-between gap-1 my-2">
@@ -19,17 +16,17 @@
   //  REMOVE THE V-IF CONDITION ON THE IMAGE TO DEBUG THE MISSING IMAGES IN THE DIV
   import type { Product } from '~/types/models'
 
-  defineProps<{
+  const props = defineProps<{
     product: Product
   }>()
 
-  const pending = ref(true)
+  // Responsive image configuration
+  const imageConfig = computed(() =>
+    useResponsiveImage(props.product.media?.[0], 'card', {
+      customSizes: '(min-width: 768px) 25vw, 50vw',
+    })
+  )
 
-  onMounted(() => {
-    setTimeout(() => {
-      pending.value = false
-    }, 500)
-  })
 </script>
 
 <style></style>

@@ -7,11 +7,10 @@
       {{ product.name }}
     </p>
     <NuxtImg
-      :src="product.media[0]?.url"
+      v-bind="imageConfig"
       :alt="product.name"
       placeholder=""
       class="object-cover w-full rounded-sm drop-shadow-md opacity-80"
-      loading="lazy"
     />
     <div class="my-4">
       <p
@@ -23,7 +22,7 @@
       </p>
     </div>
 
-    <div class="h-px w-24 mb-4 mx-auto rounded-full bg-accent-500"></div>
+    <div class="h-px w-24 mb-4 mx-auto rounded-full bg-accent-500"/>
     <p class="text-center text-2xl font-medium text-accent-500">
       {{ product.price }} € par personne
     </p>
@@ -48,4 +47,11 @@
 
   // Computed property with the formatted description
   const formattedDescription = formatDescription(props.product.description)
+
+  // Responsive image configuration
+  const imageConfig = computed(() =>
+    useResponsiveImage(props.product.media?.[0], 'card', {
+      customSizes: '100vw',
+    })
+  )
 </script>

@@ -12,8 +12,8 @@
       :banner-image="'/AFS/AFS_Banner.jpg'"
       :alt="'Bannière accessoires fleurs séchées Pensée Bohème - atelier création bijoux floraux mariée Normandie'"
       ><h1 id="accessoires-title" itemscope itemtype="https://schema.org/Product" itemprop="name">
-        Accessoires <br />
-        Fleurs <br />
+        Accessoires <br >
+        Fleurs <br >
         Séchées
       </h1></PagesBanner
     >
@@ -33,7 +33,7 @@
         >
           <p class="text-xl 2xl:text-2xl xl:mx-28 2xl:mx-68">
             Passionnée par la beauté et la pérennité des fleurs séchées, je vous invite à découvrir
-            des accessoires uniques, conçus avec amour et attention. <br />
+            des accessoires uniques, conçus avec amour et attention. <br >
             Chaque création est le reflet d'une inspiration personnelle, où les couleurs sont
             soigneusement choisies pour s'harmoniser parfaitement à vos désirs.
           </p>
@@ -100,8 +100,8 @@
           itemprop="description"
         >
           Pour la mariée ou son cortège, pour un événement particulier ou simplement pour vous faire
-          plaisir. <br />Je mets tout en œuvre pour que vos accessoires se marient parfaitement avec
-          vos envies. <br />Tous les accessoires sont créés sur mesure, selon les couleurs que vous
+          plaisir. <br >Je mets tout en œuvre pour que vos accessoires se marient parfaitement avec
+          vos envies. <br >Tous les accessoires sont créés sur mesure, selon les couleurs que vous
           désirez.
         </p>
       </header>

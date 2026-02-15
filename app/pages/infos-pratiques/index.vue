@@ -121,7 +121,7 @@
           <div class="flex items-center gap-2">
             <AkLocation class="text-xl" aria-hidden="true" />
             <span>
-              <span itemprop="streetAddress">316 route du Parc d'Anxtot</span><br />
+              <span itemprop="streetAddress">316 route du Parc d'Anxtot</span><br >
               <span itemprop="postalCode">76210</span>
               <span itemprop="addressLocality">Beuzeville la Grenier</span>
             </span>

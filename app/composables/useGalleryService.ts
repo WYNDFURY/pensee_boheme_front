@@ -8,7 +8,6 @@ export const useGalleryService = () => {
   const getIndexOfGalleries = () => {
     const { data } = useFetch<Galleries>(`${apiKey}/galleries`, {
       key: 'galleries-index',
-      server: false,
     })
 
     return { data }
@@ -19,7 +18,6 @@ export const useGalleryService = () => {
 
     const { data } = useFetch<Gallery>(`${apiKey}/galleries/${slug}`, {
       key: `gallery-${slug}`,
-      server: false,
     })
 
     return { data }

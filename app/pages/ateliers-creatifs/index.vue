@@ -13,7 +13,7 @@
       :banner-image="'/ateliers-creatifs/ateliers_banner.jpg'"
       :alt="'Bannière ateliers créatifs EVJF Pensée Bohème - animation atelier fleurs séchées enterrement vie jeune fille Normandie'"
       ><h1 id="ateliers-title" itemscope itemtype="https://schema.org/Service" itemprop="name">
-        Ateliers <br />
+        Ateliers <br >
         Créatifs
       </h1>
     </PagesBanner>
@@ -37,7 +37,7 @@
           class="h-px w-24 my-5 mx-auto rounded-full bg-accent-500"
           role="separator"
           aria-hidden="true"
-        ></div>
+        />
       </header>
       <div
         class="flex flex-col gap-4 text-xl font-light leading-relaxed xl:mx-28 2xl:mx-68"
@@ -49,7 +49,7 @@
         </p>
         <p>
           Je me déplace dans toute la région Normandie pour animer des ateliers sur le lieu de votre
-          week-end. <br />
+          week-end. <br >
           Vous choisissez le type d'accessoires ainsi que les teintes (en harmonie avec celles du
           mariage, bien sûr !), et je m'occupe de tout le matériel nécessaire pour vos créations.
         </p>
@@ -59,7 +59,7 @@
         </p>
         <p>
           Je serai présente pour vous guider à chaque étape en vous montrant les techniques de
-          fleuriste. <br />
+          fleuriste. <br >
           À la fin de l'atelier, repartez avec un accessoire unique que vous pourrez porter le jour
           du mariage, un souvenir précieux de ce week-end magique passé ensemble !
         </p>
@@ -81,7 +81,7 @@
       class="h-px w-24 my-24 mx-auto rounded-full bg-accent-500"
       role="separator"
       aria-hidden="true"
-    ></div>
+    />
 
     <section
       aria-label="Liste des ateliers disponibles"

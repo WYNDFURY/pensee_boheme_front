@@ -35,7 +35,7 @@
       >
         <p>
           Amis professionnels, vous cherchez à donner un coup d'éclat à la décoration de votre
-          boutique ? <br />Je serais ravie de discuter avec vous de votre projet !
+          boutique ? <br >Je serais ravie de discuter avec vous de votre projet !
         </p>
 
         <p>
@@ -63,9 +63,9 @@
         <IconsIdea class="w-12 md:w-20 xl:w-24 text-accent-500 mb-8 lg:mb-12" aria-hidden="true" />
 
         <p class="text-center text-sm md:text-xl leading-relaxed text-balance">
-          Je propose également mes services pour animer <br />
+          Je propose également mes services pour animer <br >
           des ateliers fleuris dans vos entreprises,
-          <br />
+          <br >
           <NuxtLink
             to="/ateliers-creatifs"
             class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
@@ -74,7 +74,7 @@
             On en discute ensemble ?
             <span
               class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
-            ></span>
+            />
           </NuxtLink>
         </p>
       </aside>
