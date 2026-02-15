@@ -26,14 +26,43 @@ No test framework is configured.
 
 ## Deployment
 
-### Automated Deployment via cPanel Git
+### Automated Deployment via GitHub Actions
 
-Push to `main` branch triggers automated deployment to production at `https://pensee-boheme.fr`.
+Push to `main` branch triggers automated build and deployment to production at `https://pensee-boheme.fr`.
 
 **Deployment Pipeline**:
-1. Install dependencies (`yarn install --frozen-lockfile`)
-2. Generate static site (`yarn generate:prod`)
-3. Copy output to web server (`/home/user/public_html`)
+1. GitHub Actions: Install dependencies (`yarn install --frozen-lockfile`)
+2. GitHub Actions: Generate static site (`yarn generate:prod`)
+3. GitHub Actions: Deploy to cPanel via FTP (`.output/public/` → `public_html/`)
+
+**Setup** (one-time):
+See [.github/DEPLOYMENT.md](.github/DEPLOYMENT.md) for complete setup instructions.
+
+Quick setup:
+1. Add GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`
+2. Push to `main` branch
+3. Monitor deployment in GitHub Actions tab
+
+**Workflow**:
+```bash
+# Make changes
+git add .
+git commit -m "Update content"
+git push origin main
+# GitHub Actions automatically builds and deploys
+```
+
+**Monitoring**:
+- GitHub → Actions tab → Latest workflow run
+- Deployment takes ~3-5 minutes
+- Green checkmark ✅ = success, Red X ❌ = failed
+
+**Rollback**:
+```bash
+git revert HEAD
+git push origin main
+# GitHub Actions redeploys previous version
+```
 
 **Pre-Deployment Checklist**:
 - Test locally: `yarn generate:prod && yarn preview`
@@ -41,53 +70,14 @@ Push to `main` branch triggers automated deployment to production at `https://pe
 - Ensure yarn.lock is committed
 - Check production API is accessible
 
-**Monitoring**:
-- cPanel → Git Version Control → Deployment Logs
-- Watch for exit code 0 (success) or ≠ 0 (failure)
-- Deployment takes ~2-5 minutes
-
-**Rollback**:
-```bash
-git revert HEAD
-git push origin main
-```
-
-**Initial Setup** (one-time):
-1. Configure cPanel Git repository (point to GitHub repo)
-2. Replace `USERNAME` in `.cpanel.yml` with actual cPanel username
-3. Trigger first deployment via push
-
-**Common Deployment Scenarios**:
-
-1. **Regular content update** (new gallery):
-   - Make changes, commit, push
-   - Monitor deployment logs
-   - Verify live site
-
-2. **Dependency update**:
-   - Update package.json
-   - Run `yarn install` locally
-   - Commit yarn.lock
-   - Push (cPanel runs `yarn install --frozen-lockfile`)
-
-3. **Emergency rollback**:
-   - Identify last working commit: `git log --oneline -5`
-   - Revert: `git revert <commit-hash>`
-   - Push: `git push origin main`
-
-4. **Troubleshooting deployment failure**:
-   - Check cPanel logs for error message
-   - Test locally: `yarn generate:prod`
-   - Fix error, commit, push
-
 **Common Errors**:
 
 | Error | Cause | Solution |
 |-------|-------|----------|
-| `yarn.lock needs update` | package.json changed without running yarn install | Run `yarn install` locally, commit yarn.lock |
-| `API unreachable` | Backend down or network issue | Check `https://api.pensee-boheme.fr/api/galleries`, retry after backend recovery |
-| `TypeScript error` | Type mismatch in component | Fix types locally, test with `yarn generate:prod` |
-| `Disk quota exceeded` | Too many deployments, old files accumulating | Clean up old `_nuxt` bundles via cPanel File Manager |
+| Build fails | TypeScript/build error | Check GitHub Actions logs, fix locally, push |
+| FTP connection fails | Wrong credentials | Verify GitHub Secrets match cPanel FTP settings |
+| Site not updating | Browser cache | Hard refresh (Ctrl+Shift+R) |
+| API unreachable during build | Backend down | Wait for backend recovery, re-run workflow |
 
 ## Architecture
 
