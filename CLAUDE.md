@@ -137,6 +137,9 @@ The project includes an admin backoffice at `/admin/*` for managing galleries an
   - Galleries: `{ data: GalleryData[] }` (use `ApiResponse<GalleryData[]>` type, access via `.data`)
   - Products/Categories: `Product[]` or `Category[]` direct arrays (no wrapper, access directly)
   - Always check actual API response structure before typing
+- **Gallery data fields**:
+  - `media`: Array of Media objects, limited to first 3 items for preview performance
+  - `images_count`: Total count of images in the gallery (use this for displaying counts, not `media.length`)
 
 ### UTable (Nuxt UI v3)
 UTable is based on TanStack Table v8. **Critical patterns:**

@@ -67,7 +67,7 @@
           </div>
           <div>
             <p class="text-sm text-gray-500">Total Images</p>
-            <p class="text-2xl font-bold">{{ galleries.reduce((sum, g) => sum + (g.media?.length || 0), 0) }}</p>
+            <p class="text-2xl font-bold">{{ galleries.reduce((sum, g) => sum + (g.images_count || 0), 0) }}</p>
           </div>
         </div>
       </UCard>
@@ -93,7 +93,7 @@
       </template>
 
       <template #image_count-cell="{ row }">
-        {{ (row.original as GalleryData).media?.length ?? 0 }}
+        {{ (row.original as GalleryData).images_count ?? 0 }}
       </template>
 
       <template #actions-cell="{ row }">

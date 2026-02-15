@@ -60,6 +60,7 @@ export type GalleryData = {
   cover_image: Media[] | null
   order: number
   media?: Media[] | []
+  images_count?: number  // Total count of images in the gallery
 }
 
 export type ApiResponse<T> = {
