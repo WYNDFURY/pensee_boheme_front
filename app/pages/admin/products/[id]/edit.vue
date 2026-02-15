@@ -15,8 +15,8 @@
       ref="form"
       :schema="schema"
       :state="state"
-      @submit="onSubmit"
       class="space-y-6 max-w-2xl"
+      @submit="onSubmit"
     >
       <UFormField label="Nom" name="name" required>
         <UInput v-model="state.name" @input="generateSlug" />
@@ -30,11 +30,28 @@
         <UTextarea v-model="state.description" :rows="4" />
       </UFormField>
 
+      <UFormField label="Page (Univers)" name="page_id" required>
+        <USelect
+          v-model="state.page_id"
+          :items="pageOptions"
+          :loading="pagesPending"
+          :disabled="pagesPending || !!pagesError"
+          placeholder="Sélectionner un univers"
+        />
+      </UFormField>
+
       <UFormField label="Catégorie" name="category_id" required>
         <USelect
           v-model="state.category_id"
-          :options="categoryOptions"
-          placeholder="Sélectionner une catégorie"
+          :items="filteredCategoryOptions"
+          :disabled="!state.page_id"
+          :placeholder="
+            !state.page_id
+              ? 'Sélectionner une page d\'abord'
+              : filteredCategoryOptions.length === 0
+                ? 'Aucune catégorie disponible'
+                : 'Sélectionner une catégorie'
+          "
         />
       </UFormField>
 
@@ -51,19 +68,19 @@
       </UFormField>
 
       <!-- Existing image -->
-      <div v-if="existingImage && !imagePreview">
+      <div v-if="existingImage?.length && !imagePreview">
         <label class="block text-sm font-medium mb-2">Image actuelle</label>
         <div class="relative w-48 aspect-square mb-2">
           <img
-            :src="existingImage.url"
-            :alt="existingImage.name"
+            :src="existingImage?.[0]?.urls?.medium || existingImage?.[0]?.url"
+            :alt="existingImage?.[0]?.name"
             class="w-full h-full object-cover rounded"
-          />
+          >
           <button
             type="button"
-            @click="deleteExistingImage"
             :disabled="deletingImage"
             class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 disabled:opacity-50"
+            @click="deleteExistingImage"
           >
             <UIcon
               :name="deletingImage ? 'i-heroicons-arrow-path' : 'i-heroicons-x-mark'"
@@ -75,11 +92,11 @@
       </div>
 
       <UFormField label="Image" name="image" hint="Max 10 MB">
-        <input
-          type="file"
+        <UFileUpload
+          v-model="uploadedFile"
           accept="image/jpeg,image/png,image/webp,image/gif"
-          @change="onFileChange"
-          class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100"
+          icon="i-lucide-image-plus"
+          :preview="false"
         />
       </UFormField>
 
@@ -89,28 +106,29 @@
           :src="imagePreview"
           class="w-full h-full object-cover rounded"
           alt="Preview"
-        />
+        >
         <button
           type="button"
-          @click="removeNewImage"
           class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+          @click="removeNewImage"
         >
           <UIcon name="i-heroicons-x-mark" class="w-4 h-4" />
         </button>
       </div>
 
-      <div class="flex gap-4">
+      <div class="w-full justify-between flex gap-4">
+        <UButton
+          type="button"
+          label="Annuler"
+          color="primary"
+          variant="outline"
+          @click="navigateTo('/admin/products')"
+        />
         <UButton
           type="submit"
           label="Enregistrer"
           color="primary"
           :loading="loading"
-        />
-        <UButton
-          type="button"
-          label="Annuler"
-          color="gray"
-          @click="navigateTo('/admin/products')"
         />
       </div>
     </UForm>
@@ -120,7 +138,7 @@
 <script setup lang="ts">
 import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type { Product, Category, ApiResponse, Media } from '~/types/models'
+import type { Product, ProductResponse, Category, Media, PageData } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -139,6 +157,7 @@ const schema = z.object({
   name: z.string().min(1, 'Nom requis'),
   slug: z.string().min(1, 'Slug requis'),
   description: z.string().optional(),
+  page_id: z.number({ required_error: 'Page requise' }),
   category_id: z.number({ required_error: 'Catégorie requise' }),
   has_price: z.boolean(),
   price: z.number().optional(),
@@ -161,49 +180,87 @@ const state = ref<Partial<Schema>>({
   name: '',
   slug: '',
   description: '',
+  page_id: undefined,
   category_id: undefined,
   has_price: false,
   price: undefined,
   is_active: true,
 })
 
-const existingImage = ref<Media | null>(null)
+const existingImage = ref<Media[]>([])
+const uploadedFile = ref<File | null>(null)
 const imageFile = ref<File | null>(null)
 const imagePreview = ref<string>('')
 
 // Fetch product data
 const { data: productData, pending, error } = await useAsyncData(`product-edit-${productId}`, () =>
-  api.get<ApiResponse<Product>>(`/products/${productId}`)
+  api.get<ProductResponse>(`/products/${productId}`)
 )
 
 // Fetch categories
 const { data: categoriesData } = await useAsyncData('categories', () =>
-  api.get<ApiResponse<Category[]>>('/categories')
+  api.get<Category[]>('/categories')
 )
 
-const categoryOptions = computed(() => {
-  return (categoriesData.value?.data ?? []).map(cat => ({
-    label: cat.name,
-    value: cat.id,
+// Fetch pages
+const { data: pagesData, pending: pagesPending, error: pagesError } =
+  await useAsyncData('pages', () => api.get<PageData[]>('/pages'))
+
+// Page dropdown options
+const pageOptions = computed(() => {
+  return (pagesData.value ?? []).map(page => ({
+    label: page.slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' '),
+    // Converts "univers-floral" → "Univers Floral"
+    value: page.id,
   }))
 })
 
+// Filtered category options based on selected page
+const filteredCategoryOptions = computed(() => {
+  // If no page selected, show empty array (force page selection first)
+  if (!state.value.page_id) return []
+
+  return (categoriesData.value ?? [])
+    .filter(cat => cat.page_id === state.value.page_id)
+    .map(cat => ({
+      label: cat.name,
+      value: cat.id,
+    }))
+})
+
 // Pre-fill form when data loads
-watch(productData, (response) => {
-  if (response?.data) {
-    const product = response.data
+watch(productData, (product) => {
+  if (product?.data) {
+    // Find the category to get its page_id
+    const category = categoriesData.value?.find(cat => cat.id === product.data.category_id)
+
     state.value = {
-      name: product.name,
-      slug: product.slug,
-      description: product.description || '',
-      category_id: product.category_id,
-      has_price: product.has_price,
-      price: product.price || undefined,
-      is_active: product.is_active,
+      name: product.data.name,
+      slug: product.data.slug,
+      description: product.data.description || '',
+      page_id: category?.page_id,
+      category_id: product.data.category_id,
+      has_price: product.data.has_price,
+      price: product.data.price || undefined,
+      is_active: product.data.is_active,
     }
-    existingImage.value = product.media?.[0] || null
+    existingImage.value = product.data.media || []
   }
 }, { immediate: true })
+
+// Watch page selection - reset category when page changes
+watch(
+  () => state.value.page_id,
+  (newPageId, oldPageId) => {
+    // Reset category selection when page changes
+    if (newPageId !== oldPageId && oldPageId !== undefined) {
+      state.value.category_id = undefined
+    }
+  }
+)
 
 function generateSlug() {
   if (!state.value.name) return
@@ -216,12 +273,12 @@ function generateSlug() {
 }
 
 async function deleteExistingImage() {
-  if (!existingImage.value) return
+  if (!existingImage.value.length) return
 
   deletingImage.value = true
   try {
-    await api.delete(`/media/${existingImage.value.id}`)
-    existingImage.value = null
+    await api.delete(`/media/${existingImage?.value[0]?.id}`)
+    existingImage.value = []
     toast.add({
       title: 'Image supprimée',
       color: 'success',
@@ -233,11 +290,13 @@ async function deleteExistingImage() {
   }
 }
 
-function onFileChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  if (!target.files || target.files.length === 0) return
-
-  const file = target.files[0]
+// Watch for file upload and validate
+watch(uploadedFile, async (file) => {
+  if (!file) {
+    imageFile.value = null
+    imagePreview.value = ''
+    return
+  }
 
   // Validate file size
   if (file.size > 10 * 1024 * 1024) {
@@ -246,6 +305,8 @@ function onFileChange(event: Event) {
       description: 'L\'image doit faire maximum 10 MB',
       color: 'error',
     })
+    await nextTick()
+    uploadedFile.value = null
     return
   }
 
@@ -257,9 +318,10 @@ function onFileChange(event: Event) {
     imagePreview.value = e.target?.result as string
   }
   reader.readAsDataURL(file)
-}
+})
 
 function removeNewImage() {
+  uploadedFile.value = null
   imageFile.value = null
   imagePreview.value = ''
 }

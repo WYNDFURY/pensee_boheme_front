@@ -15,8 +15,8 @@
       ref="form"
       :schema="schema"
       :state="state"
-      @submit="onSubmit"
       class="space-y-6 max-w-2xl"
+      @submit="onSubmit"
     >
       <UFormField label="Nom" name="name" required>
         <UInput v-model="state.name" @input="generateSlug" />
@@ -48,15 +48,15 @@
             class="relative aspect-square"
           >
             <img
-              :src="image.url"
+              :src="image.urls?.medium || image.url"
               class="w-full h-full object-cover rounded"
               :alt="image.name"
-            />
+            >
             <button
               type="button"
-              @click="deleteExistingImage(image.id)"
               :disabled="deletingImageId === image.id"
               class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 disabled:opacity-50"
+              @click="deleteExistingImage(image.id)"
             >
               <UIcon
                 :name="deletingImageId === image.id ? 'i-heroicons-arrow-path' : 'i-heroicons-x-mark'"
@@ -70,12 +70,12 @@
 
       <!-- New images -->
       <UFormField label="Ajouter de nouvelles images" name="images" hint="Jusqu'à 20 images au total, max 10 MB chacune">
-        <input
-          type="file"
+        <UFileUpload
+          v-model="uploadedFiles"
           multiple
           accept="image/jpeg,image/png,image/webp,image/gif"
-          @change="onFilesChange"
-          class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100"
+          icon="i-lucide-image-plus"
+          :preview="false"
         />
       </UFormField>
 
@@ -90,29 +90,30 @@
             :src="preview"
             class="w-full h-full object-cover rounded"
             alt="Preview"
-          />
+          >
           <button
             type="button"
-            @click="removeNewImage(index)"
             class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+            @click="removeNewImage(index)"
           >
             <UIcon name="i-heroicons-x-mark" class="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      <div class="flex gap-4">
+      <div class="w-full flex justify-between gap-4">
+        <UButton
+          type="button"
+          label="Annuler"
+          color="primary"
+          variant="outline"
+          @click="navigateTo('/admin/galleries')"
+        />
         <UButton
           type="submit"
           label="Enregistrer"
           color="primary"
           :loading="loading"
-        />
-        <UButton
-          type="button"
-          label="Annuler"
-          color="gray"
-          @click="navigateTo('/admin/galleries')"
         />
       </div>
     </UForm>
@@ -157,6 +158,7 @@ const state = ref<Partial<Schema>>({
 })
 
 const existingImages = ref<Media[]>([])
+const uploadedFiles = ref<File[] | null>(null)
 const imageFiles = ref<File[]>([])
 const imagePreviews = ref<string[]>([])
 
@@ -205,11 +207,14 @@ async function deleteExistingImage(mediaId: number) {
   }
 }
 
-function onFilesChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  if (!target.files) return
+// Watch for file uploads and validate
+watch(uploadedFiles, async (files) => {
+  if (!files || files.length === 0) {
+    imageFiles.value = []
+    imagePreviews.value = []
+    return
+  }
 
-  const files = Array.from(target.files)
   const totalImages = existingImages.value.length + files.length
 
   // Validate total image count
@@ -219,6 +224,8 @@ function onFilesChange(event: Event) {
       description: `Maximum 20 images au total (${existingImages.value.length} existantes)`,
       color: 'error',
     })
+    await nextTick()
+    uploadedFiles.value = null
     return
   }
 
@@ -230,6 +237,8 @@ function onFilesChange(event: Event) {
       description: 'Chaque image doit faire maximum 10 MB',
       color: 'error',
     })
+    await nextTick()
+    uploadedFiles.value = null
     return
   }
 
@@ -244,11 +253,19 @@ function onFilesChange(event: Event) {
     }
     reader.readAsDataURL(file)
   })
-}
+})
 
 function removeNewImage(index: number) {
   imageFiles.value.splice(index, 1)
   imagePreviews.value.splice(index, 1)
+
+  // Update uploadedFiles to keep UFileUpload in sync
+  if (uploadedFiles.value) {
+    uploadedFiles.value.splice(index, 1)
+    if (uploadedFiles.value.length === 0) {
+      uploadedFiles.value = null
+    }
+  }
 }
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {

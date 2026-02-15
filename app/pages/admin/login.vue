@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-bgcolor">
-    <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md p-8 rounded-lg shadow-lg">
       <h1 class="text-3xl font-semibold text-center mb-6 text-accent-500">
         Admin Pensée Bohème
       </h1>
@@ -8,11 +8,11 @@
       <UForm
         :schema="schema"
         :state="state"
-        @submit="onSubmit"
         class="space-y-4"
+        @submit="onSubmit"
       >
         <UFormField label="Email" name="email">
-          <UInput v-model="state.email" type="email" />
+          <UInput v-model="state.email" type="email" placeholder="email"/>
         </UFormField>
 
         <UFormField label="Mot de passe" name="password">

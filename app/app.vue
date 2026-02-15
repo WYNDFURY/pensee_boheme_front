@@ -1,7 +1,7 @@
 <template>
   <UApp class="">
     <NuxtLayout>
-      <NuxtPage class="bg-bgcolor font-['Josefin_Slab']" />
+      <NuxtPage class="bg-bgcolor" />
     </NuxtLayout>
   </UApp>
 </template>

@@ -6,8 +6,8 @@
       ref="form"
       :schema="schema"
       :state="state"
-      @submit="onSubmit"
       class="space-y-6 max-w-2xl"
+      @submit="onSubmit"
     >
       <UFormField label="Nom" name="name" required>
         <UInput v-model="state.name" @input="generateSlug" />
@@ -34,12 +34,12 @@
       </UFormField>
 
       <UFormField label="Images" name="images" hint="Jusqu'à 20 images, max 10 MB chacune">
-        <input
-          type="file"
+        <UFileUpload
+          v-model="uploadedFiles"
           multiple
           accept="image/jpeg,image/png,image/webp,image/gif"
-          @change="onFilesChange"
-          class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100"
+          icon="i-lucide-image-plus"
+          :preview="false"
         />
       </UFormField>
 
@@ -57,28 +57,28 @@
           />
           <button
             type="button"
-            @click="removeImage(index)"
             class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+            @click="removeImage(index)"
           >
             <UIcon name="i-heroicons-x-mark" class="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      <div class="flex gap-4">
+      <div class="w-full flex justify-between gap-4">
+        <UButton
+          type="button"
+          label="Annuler"
+          color="primary"
+          variant="outline"
+          @click="$router.push('/admin/galleries')"
+        />
         <UButton
           type="submit"
           label="Créer"
           color="primary"
           :loading="loading"
           :disabled="loading"
-        />
-        <UButton
-          type="button"
-          label="Annuler"
-          color="neutral"
-          variant="outline"
-          @click="$router.push('/admin/galleries')"
         />
       </div>
     </UForm>
@@ -119,6 +119,7 @@ const state = ref<Partial<Schema>>({
   is_published: false,
 })
 
+const uploadedFiles = ref<File[] | null>(null)
 const imageFiles = ref<File[]>([])
 const imagePreviews = ref<string[]>([])
 
@@ -132,11 +133,13 @@ function generateSlug() {
     .replace(/^-+|-+$/g, '')
 }
 
-function onFilesChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  if (!target.files) return
-
-  const files = Array.from(target.files)
+// Watch for file uploads and validate
+watch(uploadedFiles, async (files) => {
+  if (!files || files.length === 0) {
+    imageFiles.value = []
+    imagePreviews.value = []
+    return
+  }
 
   // Validate file count
   if (files.length > 20) {
@@ -145,6 +148,8 @@ function onFilesChange(event: Event) {
       description: 'Maximum 20 images autorisées',
       color: 'error',
     })
+    await nextTick()
+    uploadedFiles.value = null
     return
   }
 
@@ -156,6 +161,8 @@ function onFilesChange(event: Event) {
       description: 'Chaque image doit faire maximum 10 MB',
       color: 'error',
     })
+    await nextTick()
+    uploadedFiles.value = null
     return
   }
 
@@ -170,11 +177,19 @@ function onFilesChange(event: Event) {
     }
     reader.readAsDataURL(file)
   })
-}
+})
 
 function removeImage(index: number) {
   imageFiles.value.splice(index, 1)
   imagePreviews.value.splice(index, 1)
+
+  // Update uploadedFiles to keep UFileUpload in sync
+  if (uploadedFiles.value) {
+    uploadedFiles.value.splice(index, 1)
+    if (uploadedFiles.value.length === 0) {
+      uploadedFiles.value = null
+    }
+  }
 }
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {

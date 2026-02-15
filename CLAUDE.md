@@ -4,18 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Pensée Bohème — frontend for an eco-responsible florist website in Normandy, France. Built with **Nuxt 3** (Vue 3), **Nuxt UI v3**, and **Tailwind CSS**. The site is French-only, SSR-enabled, and statically generated for production.
+Pensée Bohème — frontend for an eco-responsible florist website in Normandy, France. Built with **Nuxt 3** (Vue 3), **Nuxt UI v3** (v3.3.2), and **Tailwind CSS**. The site is French-only, SSR-enabled, and statically generated for production.
+
+## Package Manager
+
+This project uses **Yarn 1.22.22** (specified in `package.json` `packageManager` field). All commands should use `yarn`, not `npm` or `pnpm`.
 
 ## Commands
 
 ```bash
-npm run dev              # Dev server at http://localhost:3000
-npm run build            # Build for production
-npm run generate         # Static site generation (local API)
-npm run generate:prod    # Static site generation (production API: api.pensee-boheme.fr)
-npm run preview          # Preview production build
-npm run lint             # ESLint check
-npm run lint:fix         # ESLint autofix
+yarn dev                 # Dev server at http://localhost:3000
+yarn build               # Build for production
+yarn generate            # Static site generation (local API)
+yarn generate:prod       # Static site generation (production API: api.pensee-boheme.fr)
+yarn preview             # Preview production build
+yarn lint                # ESLint check
+yarn lint:fix            # ESLint autofix
 ```
 
 No test framework is configured.
@@ -49,6 +53,16 @@ API endpoints consumed: `/galleries`, `/galleries/{slug}`, `/pages/{slug}`, `/in
 
 Environment variable: `NUXT_PUBLIC_API_BASE_URL` (set in `.env` for dev, overridden via `cross-env` in `generate:prod` script).
 
+**IMPORTANT: API Reference Documentation**
+
+`docs/api-reference.md` is auto-generated from the backend and contains:
+- Complete endpoint documentation (URLs, methods, auth requirements)
+- Request/response structures with field validation rules
+- Resource schemas (ProductResource, GalleryResource, MediaResource, etc.)
+- Response wrapping patterns (which endpoints wrap in `{data:[]}` vs direct arrays)
+
+**Always check this file first when building pages that fetch data** — it's the source of truth for API structure and will be updated automatically when the backend changes.
+
 ### Pre-rendered Routes
 
 `/home`, `/galeries`, `/engagement`, `/infos-pratiques` are statically pre-rendered at build time via `nitro.prerender.routes`.
@@ -66,7 +80,7 @@ Heavy SEO setup: `@nuxtjs/seo`, `@nuxtjs/robots`, `@nuxtjs/sitemap`. Pages use `
 
 ### UI Libraries
 
-- **Nuxt UI v3** (`@nuxt/ui`) — primary component library
+- **Nuxt UI v3** (`@nuxt/ui@3.3.2`) — primary component library built on Reka UI + Tailwind Variants
 - **Reka UI** — headless components (used alongside Nuxt UI)
 - **Embla Carousel** — gallery carousel/slider
 - **Zod** — form validation schemas
@@ -80,7 +94,7 @@ Feature work is documented in `specs/` before implementation. `specs/product.md`
 
 - **vue-best-practices** — Vue 3 Composition API patterns, `<script setup>`, reactivity, state management, performance (v-once, v-memo, virtual lists), transitions, composables. Use for any Vue component work.
 - **nuxt** — Nuxt 3 reference: data fetching (`useFetch`), SSR best practices, routing, config, modules, rendering modes, deployment. Use for any Nuxt-specific work.
-- **nuxt-ui** — Nuxt UI v3 (@nuxt/ui) component library reference: UButton, UModal, UForm, UTable, etc. Provides ready-to-use styled components with Tailwind Variants theming. Use when working with Nuxt UI components.
+- **nuxt-ui-v3** — Nuxt UI v3.3.2 (@nuxt/ui) component library reference: UButton, UModal, UForm, UTable, USelect, etc. Provides ready-to-use styled components with Tailwind Variants theming. **ALWAYS use this skill when working with Nuxt UI components** - it has critical patterns like using `items` prop for USelect.
 - **seo-audit** — SEO diagnostics: meta tags, structured data, technical SEO, on-page audit. Use when reviewing or improving SEO.
 
 ## Image Handling
@@ -129,8 +143,41 @@ The project includes an admin backoffice at `/admin/*` for managing galleries an
 - **Image previews**: `FileReader` for instant client-side previews before upload
 - **Multi-image**: Array of files with previews, remove button per image
 
+**UFileUpload - CRITICAL:**
+- **Use for all file uploads** instead of native `<input type="file">`
+- **v-model binding**: `v-model="uploadedFiles"` with `ref<File[] | null>` for multiple, `ref<File | null>` for single
+- **Validation pattern**: Use `watch()` on the v-model ref to validate files
+- **MUST use `nextTick()` when resetting**: Always wrap `uploadedFiles.value = null` in `await nextTick()` to prevent DOM manipulation errors
+  ```ts
+  watch(uploadedFiles, async (files) => {
+    if (validationFails) {
+      await nextTick()
+      uploadedFiles.value = null  // Reset after DOM update
+    }
+  })
+  ```
+- **Why nextTick is required**: UFileUpload manages internal DOM refs. Setting v-model to null synchronously during validation causes `Cannot read properties of null (reading 'parentNode')` errors because Vue tries to access removed DOM nodes
+
+**USelect (Dropdown) - CRITICAL:**
+- **MUST use `items` prop** (not `options`): `<USelect v-model="value" :items="options" />`
+- Items format: Array of `{ label: string, value: any }` objects or primitives
+- Example:
+  ```vue
+  <USelect
+    v-model="state.category_id"
+    :items="categoryOptions"
+    placeholder="Select a category"
+  />
+  ```
+- Using `:options` instead of `:items` will cause dropdowns to not open (only shows a black line)
+- This applies to both v3 and v4 of Nuxt UI
+
 ### API Patterns
 - **GET/POST/PATCH/DELETE**: `useAdminApi()` methods auto-inject `Authorization: Bearer` header
+- **File uploads**: Use `useAdminApi().upload(endpoint, formData, method)` for multipart/form-data
+  - **CRITICAL**: Do NOT override `headers` in upload - it will remove the Authorization header
+  - The base `request()` function adds the Authorization header automatically
+  - Browser sets Content-Type with multipart boundary automatically
 - **Error handling**: 401 → logout, 422 → throw to component for field errors, others → toast
 - **Optimistic UI**: Remove from list immediately on delete, rollback if API fails
 - **Response structure inconsistency**:

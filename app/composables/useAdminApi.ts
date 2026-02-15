@@ -71,9 +71,7 @@ export const useAdminApi = () => {
         method,
         body: formData,
         // Don't set Content-Type — browser sets it with boundary for FormData
-        headers: {
-          Accept: 'application/json',
-        },
+        // Note: Authorization header is added by the base request() function
       })
     },
   }

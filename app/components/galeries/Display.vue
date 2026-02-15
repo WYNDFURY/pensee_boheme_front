@@ -18,15 +18,11 @@
         class="w-full rounded-xl shadow relative overflow-hidden bg-gray-100"
       >
         <NuxtImg
+          v-bind="getImageConfig(galleryMedia, index)"
           :alt="generateImageAlt(galleryMedia.name, index)"
           :title="generateImageTitle(galleryMedia.name)"
-          loading="lazy"
-          :src="galleryMedia.url"
           class="bg-white h-auto max-w-full rounded-lg transition-all duration-500 ease-out"
           width="800"
-          sizes="50vw md:25vw"
-          format="webp"
-          quality="80"
           @load="onImageLoad"
         />
       </div>
@@ -37,7 +33,7 @@
 
 <script lang="ts" setup>
 import { AkArrowLeft } from '@kalimahapps/vue-icons';
-import type { Gallery } from '~/types/models'
+import type { Gallery, Media } from '~/types/models'
 
   const props = defineProps<{
     gallery: Gallery
@@ -47,6 +43,14 @@ import type { Gallery } from '~/types/models'
   const loadedCount = ref(0)
   const REVEAL_THRESHOLD = 4
   const SAFETY_TIMEOUT = 2000
+
+  // Get responsive image config for each gallery media item
+  function getImageConfig(galleryMedia: Media, index: number) {
+    return useResponsiveImage(galleryMedia, 'detail', {
+      eager: index === 0,
+      customSizes: '(min-width: 768px) 25vw, 50vw',
+    })
+  }
 
   function onImageLoad() {
     loadedCount.value++

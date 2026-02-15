@@ -12,10 +12,10 @@
       :banner-image="'/DPCI/DPCI_Banner.jpg'"
       :alt="'Bannière détails personnalisés et cadeaux invités Pensée Bohème - créations florales sur-mesure mariage Normandie'"
       ><h1 id="cadeaux-title" itemscope itemtype="https://schema.org/Product" itemprop="name">
-        Détails <br />
-        personnalisés <br />
-        & <br />
-        cadeaux <br />
+        Détails <br >
+        personnalisés <br >
+        & <br >
+        cadeaux <br >
         invités
       </h1>
     </PagesBanner>

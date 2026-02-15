@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-bgcolor font-sans">
     <!-- Header -->
     <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,14 +45,14 @@
               <p class="text-sm font-medium text-gray-900">{{ user.first_name }} {{ user.last_name }}</p>
               <p class="text-xs text-gray-500">{{ user.email }}</p>
             </div>
-            <div class="h-8 w-px bg-gray-200"></div>
+            <div class="h-8 w-px bg-gray-200"/>
             <UButton
               label="Déconnexion"
               color="error"
               variant="ghost"
               size="sm"
-              @click="handleLogout"
               icon="i-heroicons-arrow-right-on-rectangle"
+              @click="handleLogout"
             />
           </div>
         </div>
@@ -60,7 +60,7 @@
     </header>
 
     <!-- Main content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
       <slot />
     </main>
   </div>

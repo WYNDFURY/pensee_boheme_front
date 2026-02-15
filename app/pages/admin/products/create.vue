@@ -6,8 +6,8 @@
       ref="form"
       :schema="schema"
       :state="state"
-      @submit="onSubmit"
       class="space-y-6 max-w-2xl"
+      @submit="onSubmit"
     >
       <UFormField label="Nom" name="name" required>
         <UInput v-model="state.name" @input="generateSlug" />
@@ -21,11 +21,28 @@
         <UTextarea v-model="state.description" :rows="4" />
       </UFormField>
 
+      <UFormField label="Page (Univers)" name="page_id" required>
+        <USelect
+          v-model="state.page_id"
+          :items="pageOptions"
+          :loading="pagesPending"
+          :disabled="pagesPending || pagesError"
+          placeholder="Sélectionner un univers"
+        />
+      </UFormField>
+
       <UFormField label="Catégorie" name="category_id" required>
         <USelect
           v-model="state.category_id"
-          :options="categoryOptions"
-          placeholder="Sélectionner une catégorie"
+          :items="filteredCategoryOptions"
+          :disabled="!state.page_id"
+          :placeholder="
+            !state.page_id
+              ? 'Sélectionner une page d\'abord'
+              : filteredCategoryOptions.length === 0
+                ? 'Aucune catégorie disponible'
+                : 'Sélectionner une catégorie'
+          "
         />
       </UFormField>
 
@@ -42,11 +59,11 @@
       </UFormField>
 
       <UFormField label="Image" name="image" hint="Max 10 MB">
-        <input
-          type="file"
+        <UFileUpload
+          v-model="uploadedFile"
           accept="image/jpeg,image/png,image/webp,image/gif"
-          @change="onFileChange"
-          class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100"
+          icon="i-lucide-image-plus"
+          :preview="false"
         />
       </UFormField>
 
@@ -59,25 +76,26 @@
         />
         <button
           type="button"
-          @click="removeImage"
           class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+          @click="removeImage"
         >
           <UIcon name="i-heroicons-x-mark" class="w-4 h-4" />
         </button>
       </div>
 
-      <div class="flex gap-4">
+      <div class="w-full flex justify-between gap-4">
+        <UButton
+          type="button"
+          label="Annuler"
+          color="primary"
+          variant="outline"
+          @click="navigateTo('/admin/products')"
+        />
         <UButton
           type="submit"
           label="Créer"
           color="primary"
           :loading="loading"
-        />
-        <UButton
-          type="button"
-          label="Annuler"
-          color="gray"
-          @click="navigateTo('/admin/products')"
         />
       </div>
     </UForm>
@@ -87,7 +105,7 @@
 <script setup lang="ts">
 import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type { Category, ApiResponse } from '~/types/models'
+import type { Category, PageData } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -102,6 +120,7 @@ const schema = z.object({
   name: z.string().min(1, 'Nom requis'),
   slug: z.string().min(1, 'Slug requis'),
   description: z.string().optional(),
+  page_id: z.number({ required_error: 'Page requise' }),
   category_id: z.number({ required_error: 'Catégorie requise' }),
   has_price: z.boolean(),
   price: z.number().optional(),
@@ -124,26 +143,61 @@ const state = ref<Partial<Schema>>({
   name: '',
   slug: '',
   description: '',
+  page_id: undefined,
   category_id: undefined,
   has_price: false,
   price: undefined,
   is_active: true,
 })
 
+const uploadedFile = ref<File | null>(null)
 const imageFile = ref<File | null>(null)
 const imagePreview = ref<string>('')
 
 // Fetch categories
 const { data: categoriesData } = await useAsyncData('categories', () =>
-  api.get<ApiResponse<Category[]>>('/categories')
+  api.get<Category[]>('/categories')
 )
 
-const categoryOptions = computed(() => {
-  return (categoriesData.value?.data ?? []).map(cat => ({
-    label: cat.name,
-    value: cat.id,
+// Fetch pages
+const { data: pagesData, pending: pagesPending, error: pagesError } =
+  await useAsyncData('pages', () => api.get<PageData[]>('/pages'))
+
+// Page dropdown options
+const pageOptions = computed(() => {
+  return (pagesData.value ?? []).map(page => ({
+    label: page.slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' '),
+    // Converts "univers-floral" → "Univers Floral"
+    value: page.id,
   }))
 })
+
+// Filtered category options based on selected page
+const filteredCategoryOptions = computed(() => {
+  // If no page selected, show empty array (force page selection first)
+  if (!state.value.page_id) return []
+
+  return (categoriesData.value ?? [])
+    .filter(cat => cat.page_id === state.value.page_id)
+    .map(cat => ({
+      label: cat.name,
+      value: cat.id,
+    }))
+})
+
+// Watch page selection - reset category when page changes
+watch(
+  () => state.value.page_id,
+  (newPageId, oldPageId) => {
+    // Reset category selection when page changes
+    if (newPageId !== oldPageId && oldPageId !== undefined) {
+      state.value.category_id = undefined
+    }
+  }
+)
 
 function generateSlug() {
   if (!state.value.name) return
@@ -155,11 +209,13 @@ function generateSlug() {
     .replace(/^-+|-+$/g, '')
 }
 
-function onFileChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  if (!target.files || target.files.length === 0) return
-
-  const file = target.files[0]
+// Watch for file upload and validate
+watch(uploadedFile, async (file) => {
+  if (!file) {
+    imageFile.value = null
+    imagePreview.value = ''
+    return
+  }
 
   // Validate file size
   if (file.size > 10 * 1024 * 1024) {
@@ -168,6 +224,8 @@ function onFileChange(event: Event) {
       description: 'L\'image doit faire maximum 10 MB',
       color: 'error',
     })
+    await nextTick()
+    uploadedFile.value = null
     return
   }
 
@@ -179,9 +237,10 @@ function onFileChange(event: Event) {
     imagePreview.value = e.target?.result as string
   }
   reader.readAsDataURL(file)
-}
+})
 
 function removeImage() {
+  uploadedFile.value = null
   imageFile.value = null
   imagePreview.value = ''
 }

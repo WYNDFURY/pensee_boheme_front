@@ -26,10 +26,10 @@
       <!-- Hamburger Icon - Visible only on mobile when menu is closed -->
       <div>
         <button
-          class="lg:hidden flex justify-end"
-          @click="mobileMenuOpen = !mobileMenuOpen"
-          aria-label="Menu"
           v-if="!mobileMenuOpen"
+          class="lg:hidden flex justify-end"
+          aria-label="Menu"
+          @click="mobileMenuOpen = !mobileMenuOpen"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@
           </svg>
         </button>
         <NuxtLink to="/home" @click="mobileMenuOpen = false">
-          <img src="/logo.svg" alt="Pensée Bohème" class="h-16 invert" />
+          <img src="/logo.svg" alt="Pensée Bohème" class="h-16 invert" >
         </NuxtLink>
       </div>
 

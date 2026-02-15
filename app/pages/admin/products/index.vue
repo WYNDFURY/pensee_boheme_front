@@ -28,14 +28,14 @@
         </div>
         <USelect
           v-model="selectedCategory"
-          :options="categoryOptions"
+          :items="categoryOptions"
           placeholder="Toutes les catégories"
           size="lg"
           class="w-full md:w-64"
         />
         <USelect
           v-model="selectedStatus"
-          :options="statusOptions"
+          :items="statusOptions"
           placeholder="Tous les statuts"
           size="lg"
           class="w-full md:w-48"
@@ -109,11 +109,11 @@
 
       <template #image-cell="{ row }">
         <img
-          v-if="(row.original as Product).media?.[0]?.url"
-          :src="(row.original as Product).media?.[0]?.url"
+          v-if="(row.original as Product).media?.[0]?.urls?.thumb || (row.original as Product).media?.[0]?.url"
+          :src="(row.original as Product).media?.[0]?.urls?.thumb || (row.original as Product).media?.[0]?.url"
           :alt="(row.original as Product).name"
           class="w-16 h-16 object-cover rounded"
-        />
+        >
         <span v-else class="text-gray-400 text-sm">Aucune image</span>
       </template>
 
@@ -121,7 +121,7 @@
         <div class="flex gap-2">
           <UButton
             size="xs"
-            color="neutral"
+            color="primary"
             label="Modifier"
             :to="`/admin/products/${(row.original as Product).id}/edit`"
           />
@@ -146,8 +146,13 @@
         <p class="text-sm text-gray-500 mt-2">Cette action est irréversible.</p>
       </template>
       <template #footer>
-        <div class="flex justify-end gap-2">
-          <UButton label="Annuler" color="neutral" @click="deleteModal.open = false" />
+        <div class="w-full flex justify-evenly gap-2">
+          <UButton 
+            label="Annuler" 
+            color="primary" 
+            variant="outline" 
+            @click="deleteModal.open = false" 
+          />
           <UButton
             label="Supprimer"
             color="error"
@@ -168,8 +173,6 @@ definePageMeta({
   ssr: false,
 })
 
-const { token } = useAuth()
-const config = useRuntimeConfig()
 const api = useAdminApi()
 const toast = useToast()
 
@@ -188,28 +191,14 @@ const columns: any[] = [
   { id: 'actions', header: 'Actions' },
 ]
 
-const { data: productsData, pending, error, refresh } = await useFetch<Product[]>(
-  `${config.public.apiBaseUrl}/products`,
-  {
-    key: 'admin-products',
-    headers: {
-      Authorization: `Bearer ${token.value}`,
-      Accept: 'application/json',
-    },
-    server: false,
-  }
+const { data: productsData, pending, error, refresh } = await useAsyncData(
+  'admin-products',
+  () => api.get<Product[]>('/products')
 )
 
-const { data: categoriesData } = await useFetch<Category[]>(
-  `${config.public.apiBaseUrl}/categories`,
-  {
-    key: 'admin-categories',
-    headers: {
-      Authorization: `Bearer ${token.value}`,
-      Accept: 'application/json',
-    },
-    server: false,
-  }
+const { data: categoriesData } = await useAsyncData(
+  'admin-categories',
+  () => api.get<Category[]>('/categories')
 )
 
 const allProducts = computed(() => productsData.value ?? [])

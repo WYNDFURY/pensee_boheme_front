@@ -23,7 +23,7 @@
             >formulaire de demande
             <span
               class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
-            ></span>
+            />
           </NuxtLink>
           afin que nous puissions collaborer ensemble à la conception de votre pièce unique.
         </p>

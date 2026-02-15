@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="font-['Josefin_Slab']">
     <LayoutHeader class="relative z-10" />
     <slot />
     <LayoutBanner />

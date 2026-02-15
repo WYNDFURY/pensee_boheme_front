@@ -31,7 +31,17 @@ export type Product = {
 export type Media = {
   id: number
   name: string
-  url: string
+  file_name: string
+  mime_type: string
+  size: number
+  urls: {
+    thumb: string      // 400x400 center-crop WebP
+    medium: string     // 1200px max-width WebP
+    large: string      // 2000px max-width WebP
+    original: string   // Original uploaded file
+  }
+  // @deprecated - Backward compatibility during migration. Use urls.medium instead
+  url?: string
 }
 
 export type ProductOption = {
@@ -69,6 +79,8 @@ export type ApiResponse<T> = {
 
 export type Gallery = ApiResponse<GalleryData>
 export type Galleries = ApiResponse<GalleryData[]>
+
+export type ProductResponse = ApiResponse<Product>
 
 export type Page = ApiResponse<PageData>
 

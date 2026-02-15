@@ -28,7 +28,7 @@
         </div>
         <USelect
           v-model="selectedPublished"
-          :options="publishedOptions"
+          :items="publishedOptions"
           placeholder="Tous les statuts"
           size="lg"
           class="w-full md:w-48"
@@ -100,7 +100,7 @@
         <div class="flex gap-2">
           <UButton
             size="xs"
-            color="neutral"
+            color="primary"
             label="Modifier"
             :to="`/admin/galleries/${(row.original as GalleryData).slug}/edit`"
           />
@@ -125,8 +125,13 @@
         <p class="text-sm text-gray-500 mt-2">Cette action est irréversible.</p>
       </template>
       <template #footer>
-        <div class="flex justify-end gap-2">
-          <UButton label="Annuler" color="neutral" @click="deleteModal.open = false" />
+        <div class="w-full flex justify-evenly gap-2">
+          <UButton 
+            label="Annuler" 
+            color="primary" 
+            variant="outline"
+            @click="deleteModal.open = false" 
+          />
           <UButton
             label="Supprimer"
             color="error"

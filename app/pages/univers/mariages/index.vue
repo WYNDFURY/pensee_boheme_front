@@ -83,10 +83,10 @@
             class="text-2xl lg:text-3xl md:mx-0 text-balance"
             itemprop="description"
           >
-            En tant que fleuriste événementielle spécialisée dans les mariages,<br />
+            En tant que fleuriste événementielle spécialisée dans les mariages,<br >
             j'ai à cœur de créer des ambiances uniques et mémorables.
           </h2>
-          <hr class="h-px w-24 mx-auto rounded-full bg-accent-500" aria-hidden="true" />
+          <hr class="h-px w-24 mx-auto rounded-full bg-accent-500" aria-hidden="true" >
           <div
             class="flex flex-col text-left md:text-center gap-4 text-lg lg:text-xl leading-relaxed mx-10 xl:mx-28 2xl:mx-68"
             role="region"
@@ -152,7 +152,7 @@
               <hr
                 class="h-px w-24 mx-auto rounded-full border-0 bg-accent-500"
                 aria-hidden="true"
-              />
+              >
             </span>
             <p
               class="mt-2 text-center font-semibold text-accent-500 lg:text-right"
@@ -191,7 +191,7 @@
           <IconsBannerLogo class="w-12 md:w-16 h-full text-accent-500" aria-hidden="true" />
           <p class="text-center text-lg md:text-xl leading-relaxed">
             Je propose également mes services pour animer des ateliers fleuris dans vos entreprises
-            <br />
+            <br >
             <NuxtLink
               to="/ateliers-creatifs"
               class="relative border-b border-dotted border-accent-500 font-semibold text-accent-500 group md:border-none"
