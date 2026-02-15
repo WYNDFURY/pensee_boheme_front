@@ -7,7 +7,7 @@
     <div v-if="isDesktop">
       <AteliersCardDesktop
         v-for="(product, index) in page?.categories?.[0]?.products"
-        :key="index"
+        :key="product.id"
         :product="product"
         :is-even="index % 2 === 0"
       />
@@ -16,8 +16,8 @@
     <!-- for mobile -->
     <div v-if="!isDesktop">
       <AteliersCardMobile
-        v-for="(product, index) in page?.categories?.[0]?.products"
-        :key="index"
+        v-for="product in page?.categories?.[0]?.products"
+        :key="product.id"
         :product="product"
       />
     </div>

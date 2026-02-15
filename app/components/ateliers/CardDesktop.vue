@@ -10,6 +10,9 @@
               :alt="product.name"
               class="object-cover w-full h-full rounded-sm drop-shadow-md opacity-80"
               loading="lazy"
+              sizes="25vw"
+              format="webp"
+              quality="80"
             />
           </div>
           <div
@@ -48,6 +51,9 @@
               placeholder=""
               class="object-cover w-full h-full rounded-sm drop-shadow-md opacity-80"
               loading="lazy"
+              sizes="25vw"
+              format="webp"
+              quality="80"
             />
           </div>
         </div>

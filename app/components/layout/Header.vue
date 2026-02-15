@@ -1,5 +1,5 @@
 <template>
-  <header class="">
+  <header v-if="!isAdminRoute" class="">
     <div
       class="px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
     >
@@ -110,6 +110,9 @@
 
   // Close mobile menu when route changes
   const route = useRoute()
+
+  // Hide public header on admin pages
+  const isAdminRoute = computed(() => route.path.startsWith('/admin'))
   watch(
     () => route.path,
     () => {

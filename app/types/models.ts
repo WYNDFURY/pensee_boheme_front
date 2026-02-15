@@ -70,3 +70,21 @@ export type Gallery = ApiResponse<GalleryData>
 export type Galleries = ApiResponse<GalleryData[]>
 
 export type Page = ApiResponse<PageData>
+
+// Admin auth types
+export type AuthUser = {
+  id: number
+  first_name: string
+  last_name: string
+  email: string
+}
+
+export type LoginResponse = {
+  token: string
+  user: AuthUser
+}
+
+export type ApiError = {
+  message: string
+  errors?: Record<string, string[]>
+}

@@ -12,6 +12,9 @@
       placeholder=""
       class="object-cover w-full rounded-sm drop-shadow-md opacity-80"
       loading="lazy"
+      sizes="100vw"
+      format="webp"
+      quality="80"
     />
     <div class="my-4">
       <p

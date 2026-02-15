@@ -4,9 +4,13 @@
     <NuxtImg
       v-show="!pending"
       :src="product.media[0]?.url"
-      :loading="'lazy'"
-      alt="Product Image"
+      loading="lazy"
+      :alt="`${product.name} - Pensée Bohème`"
       class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full h-fit"
+      sizes="50vw md:25vw"
+      format="webp"
+      quality="80"
+      @load="onImageLoad"
     />
     <div class="flex text-sm lg:text-lg justify-between gap-1 my-2">
       <p>{{ product.name }}</p>
@@ -25,10 +29,14 @@
 
   const pending = ref(true)
 
+  function onImageLoad() {
+    pending.value = false
+  }
+
   onMounted(() => {
     setTimeout(() => {
       pending.value = false
-    }, 500)
+    }, 2000)
   })
 </script>
 

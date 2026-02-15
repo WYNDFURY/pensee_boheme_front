@@ -52,7 +52,7 @@
             </figcaption>
           </figure>
         </div>
-        <figure class="relative w-4/6 -translate-y-1/3 self-center md:w-1/2">
+        <figure class="relative w-4/6 -mt-24 self-center md:w-1/2 md:-mt-32 lg:-mt-40 xl:max-w-xl 2xl:max-w-2xl">
           <NuxtImg
             src="/mariages/mariages_2.webp"
             alt="Bouquet de mariée Pensée Bohème - création florale artisanale pour mariage romantique en Normandie"

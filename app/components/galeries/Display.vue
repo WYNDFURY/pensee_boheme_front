@@ -24,6 +24,10 @@
           :src="galleryMedia.url"
           class="bg-white h-auto max-w-full rounded-lg transition-all duration-500 ease-out"
           width="800"
+          sizes="50vw md:25vw"
+          format="webp"
+          quality="80"
+          @load="onImageLoad"
         />
       </div>
     </div>
@@ -40,11 +44,21 @@ import type { Gallery } from '~/types/models'
   }>()
 
   const pending = ref(true)
+  const loadedCount = ref(0)
+  const REVEAL_THRESHOLD = 4
+  const SAFETY_TIMEOUT = 2000
+
+  function onImageLoad() {
+    loadedCount.value++
+    if (loadedCount.value >= REVEAL_THRESHOLD) {
+      pending.value = false
+    }
+  }
 
   onMounted(() => {
     setTimeout(() => {
       pending.value = false
-    }, 1500)
+    }, SAFETY_TIMEOUT)
   })
 
   const author = computed(() => {

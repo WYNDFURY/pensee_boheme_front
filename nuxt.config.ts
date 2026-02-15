@@ -118,6 +118,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/home', '/galeries', '/engagement', '/infos-pratiques'],
+      ignore: ['/admin/**'],
     },
   },
 

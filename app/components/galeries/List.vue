@@ -4,7 +4,7 @@
     <!-- Sidebar with gallery titles -->
     <aside class="w-52 hidden lg:block mx-8 my-8">
       <ul class="space-y-3">
-        <li v-for="(gallery, index) in galleryItems.data" :key="index">
+        <li v-for="(gallery, index) in galleryItems.data" :key="gallery.id">
           <button
             class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
             :class="[
@@ -70,6 +70,8 @@
                 :alt="`${currentGallery?.name} - Image 1 - Pensée Bohème création florale`"
                 :class="{ 'opacity-0 ': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
+                sizes="96px sm:144px md:192px"
+                format="webp"
                 quality="75"
               />
             </div>
@@ -82,12 +84,16 @@
               <PagesLottieLoader v-show="pending" />
               <NuxtImg
                 v-show="!pending"
+                ref="centerImgRef"
                 loading="eager"
                 :src="currentGallery?.media[1]?.url || '/media/placeholder.jpg'"
                 :alt="`${currentGallery?.name} - Image principale - Pensée Bohème galerie`"
                 :class="{ 'opacity-0': pending, 'opacity-100 shadow-xl': !pending }"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out hover:brightness-105 hover:shadow-2xl"
+                sizes="112px sm:192px md:240px"
+                format="webp"
                 quality="75"
+                @load="onCenterImageLoad"
               />
 
               <div
@@ -113,6 +119,8 @@
                 :alt="`${currentGallery?.name} - Image 3 - Pensée Bohème création florale`"
                 :class="{ 'opacity-0': pending, 'opacity-100 shadow-lg': !pending }"
                 class="w-full h-full object-cover"
+                sizes="96px sm:144px md:192px"
+                format="webp"
                 quality="75"
               />
             </div>
@@ -134,7 +142,7 @@
       <div class="flex justify-center gap-2 py-6">
         <button
           v-for="(gallery, index) in galleryItems.data"
-          :key="index"
+          :key="gallery.id"
           :class="
             index === currentIndex
               ? 'bg-accent-500 scale-125 shadow-md'
@@ -158,6 +166,7 @@
   }>()
 
   const pending = ref(true)
+  const centerImgRef = ref<InstanceType<typeof import('#components').NuxtImg> | null>(null)
 
   // Touch/swipe handling for mobile
   const touchStartX = ref(0)
@@ -189,26 +198,35 @@
   const isFirstGallery = computed(() => currentIndex.value === 0)
   const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
 
-  function resetTimer() {
+  function resetPending() {
     pending.value = true
-    setTimeout(() => {
-      pending.value = false
-    }, 500)
+  }
+
+  function onCenterImageLoad() {
+    pending.value = false
   }
 
   function nextGallery() {
     if (!isLastGallery.value) {
-      resetTimer()
+      resetPending()
       currentIndex.value++
     }
   }
 
   function prevGallery() {
     if (!isFirstGallery.value) {
-      resetTimer()
+      resetPending()
       currentIndex.value--
     }
   }
+
+  watch(currentIndex, async () => {
+    await nextTick()
+    const imgEl = centerImgRef.value?.$el?.querySelector('img') || centerImgRef.value?.$el
+    if (imgEl?.complete && imgEl?.naturalWidth > 0) {
+      pending.value = false
+    }
+  })
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'ArrowRight') nextGallery()
@@ -219,7 +237,7 @@
     window.addEventListener('keydown', handleKeyDown)
     setTimeout(() => {
       pending.value = false
-    }, 500)
+    }, 2000)
   })
 
   onUnmounted(() => {
