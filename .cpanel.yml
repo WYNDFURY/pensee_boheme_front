@@ -8,7 +8,7 @@ deployment:
     # Set deployment target directory
     # IMPORTANT: Replace USERNAME with your actual cPanel username before first deployment
     # Example: /home/pensee01/public_html
-    - export DEPLOYPATH=/home/USERNAME/public_html
+    - export DEPLOYPATH=/home/penseebo/front_deploy_test/public_html
 
     # Install all dependencies (production + dev needed for Nuxt build)
     # --frozen-lockfile ensures yarn.lock consistency, fails if package.json/yarn.lock mismatch

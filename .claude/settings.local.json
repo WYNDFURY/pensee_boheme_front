@@ -3,7 +3,11 @@
     "allow": [
       "WebFetch(domain:ui.nuxt.com)",
       "WebFetch(domain:ui3.nuxt.com)",
-      "Bash(yarn lint:*)"
+      "Bash(yarn lint:*)",
+      "WebFetch(domain:docs.cpanel.net)",
+      "Bash(yarn generate:prod:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
