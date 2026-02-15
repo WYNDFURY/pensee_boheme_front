@@ -24,6 +24,71 @@ yarn lint:fix            # ESLint autofix
 
 No test framework is configured.
 
+## Deployment
+
+### Automated Deployment via cPanel Git
+
+Push to `main` branch triggers automated deployment to production at `https://pensee-boheme.fr`.
+
+**Deployment Pipeline**:
+1. Install dependencies (`yarn install --frozen-lockfile`)
+2. Generate static site (`yarn generate:prod`)
+3. Copy output to web server (`/home/user/public_html`)
+
+**Pre-Deployment Checklist**:
+- Test locally: `yarn generate:prod && yarn preview`
+- Verify no TypeScript errors
+- Ensure yarn.lock is committed
+- Check production API is accessible
+
+**Monitoring**:
+- cPanel → Git Version Control → Deployment Logs
+- Watch for exit code 0 (success) or ≠ 0 (failure)
+- Deployment takes ~2-5 minutes
+
+**Rollback**:
+```bash
+git revert HEAD
+git push origin main
+```
+
+**Initial Setup** (one-time):
+1. Configure cPanel Git repository (point to GitHub repo)
+2. Replace `USERNAME` in `.cpanel.yml` with actual cPanel username
+3. Trigger first deployment via push
+
+**Common Deployment Scenarios**:
+
+1. **Regular content update** (new gallery):
+   - Make changes, commit, push
+   - Monitor deployment logs
+   - Verify live site
+
+2. **Dependency update**:
+   - Update package.json
+   - Run `yarn install` locally
+   - Commit yarn.lock
+   - Push (cPanel runs `yarn install --frozen-lockfile`)
+
+3. **Emergency rollback**:
+   - Identify last working commit: `git log --oneline -5`
+   - Revert: `git revert <commit-hash>`
+   - Push: `git push origin main`
+
+4. **Troubleshooting deployment failure**:
+   - Check cPanel logs for error message
+   - Test locally: `yarn generate:prod`
+   - Fix error, commit, push
+
+**Common Errors**:
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `yarn.lock needs update` | package.json changed without running yarn install | Run `yarn install` locally, commit yarn.lock |
+| `API unreachable` | Backend down or network issue | Check `https://api.pensee-boheme.fr/api/galleries`, retry after backend recovery |
+| `TypeScript error` | Type mismatch in component | Fix types locally, test with `yarn generate:prod` |
+| `Disk quota exceeded` | Too many deployments, old files accumulating | Clean up old `_nuxt` bundles via cPanel File Manager |
+
 ## Architecture
 
 ### Nuxt 3 with Compatibility Version 4
