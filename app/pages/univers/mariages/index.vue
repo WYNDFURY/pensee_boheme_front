@@ -9,7 +9,7 @@
 
     <PagesBanner
       :text-class="'md:justify-end md:mr-16 bottom-1/6'"
-      :banner-image="'/mariages/mariages_Banner.jpg'"
+      :banner-image="'/mariages/mariages_banner.jpg'"
       :alt="'Bannière mariages Pensée Bohème - décoration florale mariage sur-mesure Normandie par Cécile Devaux'"
       ><h1 id="mariages-title" itemprop="name">Mariages</h1></PagesBanner
     >
@@ -225,7 +225,7 @@
     ogTitle: 'Décoration Florale Mariage Pensée Bohème - Service Complet Normandie',
     ogDescription:
       'Créations florales sur-mesure pour mariages en Normandie : compositions, installation, personnalisation. Forfait décoration à partir de 900€.',
-    ogImage: 'https://pensee-boheme.fr/mariages/mariages_Banner.jpg',
+    ogImage: 'https://pensee-boheme.fr/mariages/mariages_banner.jpg',
     ogUrl: 'https://pensee-boheme.fr/univers/mariages',
     ogType: 'website',
 
@@ -233,7 +233,7 @@
     twitterCard: 'summary_large_image',
     twitterTitle: 'Décoration Florale Mariage - Pensée Bohème Normandie',
     twitterDescription: 'Service complet de décoration florale pour mariages en Normandie',
-    twitterImage: 'https://pensee-boheme.fr/mariages/mariages_Banner.jpg',
+    twitterImage: 'https://pensee-boheme.fr/mariages/mariages_banner.jpg',
   })
 
   // Structured Data
@@ -242,7 +242,7 @@
       name: 'Pensée Bohème',
       description:
         'Fleuriste événementielle spécialisée dans la décoration florale de mariages en Normandie',
-      image: 'https://pensee-boheme.fr/mariages/mariages_Banner.jpg',
+      image: 'https://pensee-boheme.fr/mariages/mariages_banner.jpg',
       address: {
         '@type': 'PostalAddress',
         streetAddress: "316 route du Parc d'Anxtot",
