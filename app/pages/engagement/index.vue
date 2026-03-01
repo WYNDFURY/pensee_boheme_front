@@ -166,10 +166,10 @@
     twitterImage: 'https://pensee-boheme.fr/engagement/engagement_1.jpg',
   })
 
-  // Schema.org structured data for environmental engagement
   useSchemaOrg([
+    useBusinessSchema(),
     defineOrganization({
-      '@type': 'Florist',
+      '@type': 'Organization',
       name: 'Pensée Bohème',
       description:
         "Fleuriste éco-responsable engagée dans une démarche de développement durable et de respect de l'environnement",
@@ -188,24 +188,6 @@
         description:
           'Collectif soutenant une agriculture florale plus responsable et des fleurs locales de saison',
       },
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      serviceType: [
-        'Fleurs locales et de saison',
-        'Production raisonnée',
-        'Pratiques éco-responsables',
-        'Location éléments décoratifs',
-        'Réduction déchets floraux',
-      ],
     }),
   ])
 

@@ -117,31 +117,8 @@
     twitterImage: 'https://pensee-boheme.fr/ateliers-creatifs/ateliers_banner.jpg',
   })
 
-  // Structured data for creative workshops
   useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        "Atelier d'animation d'ateliers créatifs EVJF en fleurs séchées pour enterrements de vie de jeune fille en Normandie",
-      image: 'https://pensee-boheme.fr/ateliers-creatifs/ateliers_banner.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Normandie', 'Seine-Maritime', 'France'],
-    }),
+    useBusinessSchema(),
     defineEvent({
       name: 'Ateliers Créatifs EVJF - Accessoires Fleurs Séchées',
       description: 'Ateliers créatifs pour enterrements de vie de jeune fille : création d\'accessoires en fleurs séchées',

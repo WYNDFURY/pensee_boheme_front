@@ -139,32 +139,7 @@
       "Créations artisanales d'accessoires en fleurs séchées pour mariées et événements",
     twitterImage: 'https://pensee-boheme.fr/AFS/AFS_Banner.jpg',
   })
-  // Structured data for dried flower accessories
-  useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        "Atelier de création d'accessoires en fleurs séchées pour mariées et événements en Normandie",
-      image: 'https://pensee-boheme.fr/AFS/AFS_Banner.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Normandie', 'Seine-Maritime', 'France'],
-    }),
-  ])
+  useSchemaOrg([useBusinessSchema()])
   // Breadcrumb Schema
   useSchemaOrg([
     defineBreadcrumb([

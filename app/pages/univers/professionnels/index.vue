@@ -93,48 +93,23 @@
     ogTitle: 'Services Professionnels Pensée Bohème - Décoration Florale Entreprises',
     ogDescription:
       'Décoration florale pour professionnels : décor vitrine, abonnements bouquets, ateliers créatifs. Rendez votre espace commercial plus chaleureux en Normandie.',
-    ogImage: 'https://penseeboheme.fr/professionnels/pro_banner.jpg',
-    ogUrl: 'https://penseeboheme.fr/univers/professionnels',
+    ogImage: 'https://pensee-boheme.fr/professionnels/pro_banner.jpg',
+    ogUrl: 'https://pensee-boheme.fr/univers/professionnels',
 
     twitterCard: 'summary_large_image',
     twitterTitle: 'Services Professionnels - Pensée Bohème Normandie',
     twitterDescription: 'Décoration florale pour entreprises et boutiques en Normandie',
-    twitterImage: 'https://penseeboheme.fr/professionnels/pro_banner.jpg',
+    twitterImage: 'https://pensee-boheme.fr/professionnels/pro_banner.jpg',
   })
 
-  // Structured data for professional services
-  useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        'Services de décoration florale pour professionnels : décor vitrine, décoration saisonnière, abonnements bouquets et ateliers créatifs en entreprise',
-      image: 'https://penseeboheme.fr/professionnels/pro_banner.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://penseeboheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Normandie', 'Seine-Maritime', 'France'],
-    }),
-  ])
+  useSchemaOrg([useBusinessSchema()])
 
   // Breadcrumb Schema
   useSchemaOrg([
     defineBreadcrumb([
-      { name: 'Accueil', item: 'https://penseeboheme.fr/home' },
-      { name: 'Univers', item: 'https://penseeboheme.fr/univers' },
-      { name: 'Professionnels', item: 'https://penseeboheme.fr/univers/professionnels' },
+      { name: 'Accueil', item: 'https://pensee-boheme.fr/home' },
+      { name: 'Univers', item: 'https://pensee-boheme.fr/univers' },
+      { name: 'Professionnels', item: 'https://pensee-boheme.fr/univers/professionnels' },
     ]),
   ])
 </script>

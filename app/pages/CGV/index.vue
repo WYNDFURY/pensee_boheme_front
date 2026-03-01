@@ -258,7 +258,7 @@
       'Conditions générales de vente pour les créations florales et accessoires de mariage Pensée Bohème',
     twitterImage: 'https://pensee-boheme.fr/logo.svg',
 
-    robots: 'index, follow',
+    robots: 'noindex, nofollow',
     author: 'Cécile Devaux - Pensée Bohème',
   })
 

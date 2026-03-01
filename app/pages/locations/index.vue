@@ -73,39 +73,16 @@
     ogTitle: 'Location Éléments Décoratifs Pensée Bohème - Service Complet Normandie',
     ogDescription:
       "Large choix d'éléments décoratifs à louer : arches, centres de table, vases. Service avec livraison, installation et désinstallation pour vos événements.",
-    ogImage: 'https://penseeboheme.fr/mariages/mariages_1.jpg',
-    ogUrl: 'https://penseeboheme.fr/locations',
+    ogImage: 'https://pensee-boheme.fr/mariages/mariages_1.jpg',
+    ogUrl: 'https://pensee-boheme.fr/locations',
 
     twitterCard: 'summary_large_image',
     twitterTitle: 'Location Décoration Mariage - Pensée Bohème Normandie',
     twitterDescription: 'Louez vos éléments décoratifs floraux avec service complet en Normandie',
-    twitterImage: 'https://penseeboheme.fr/mariages/mariages_1.jpg',
-  }) // Enhanced structured data for rental service
+    twitterImage: 'https://pensee-boheme.fr/mariages/mariages_1.jpg',
+  })
   useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        "Service de location d'éléments décoratifs pour mariages et événements : arches florales, centres de table, vases, bougies, chandeliers avec livraison, installation et désinstallation",
-      image: 'https://penseeboheme.fr/mariages/mariages_1.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://penseeboheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      priceRange: '€€',
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
-    }),
+    useBusinessSchema(),
     {
       '@type': 'Service',
       name: "Location d'Éléments Décoratifs Floraux",

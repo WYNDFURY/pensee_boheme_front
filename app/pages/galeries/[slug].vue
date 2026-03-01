@@ -28,50 +28,26 @@
       ogTitle: `Galerie ${galleryTitle} - Pensée Bohème Normandie`,
       ogDescription: `Découvrez notre galerie ${galleryTitle.toLowerCase()} : créations florales artisanales en Normandie`,
       ogImage: gallery.cover_image
-        ? `https://penseeboheme.fr${gallery.cover_image}`
-        : 'https://penseeboheme.fr/home/landpage_1_og.jpg',
-      ogUrl: `https://penseeboheme.fr/galeries/${slug}`,
+        ? `https://pensee-boheme.fr${gallery.cover_image}`
+        : 'https://pensee-boheme.fr/home/landpage_1_og.jpg',
+      ogUrl: `https://pensee-boheme.fr/galeries/${slug}`,
 
       twitterCard: 'summary_large_image',
       twitterTitle: `Galerie ${galleryTitle} - Pensée Bohème`,
       twitterDescription: `Créations florales ${galleryTitle.toLowerCase()} par Pensée Bohème en Normandie`,
       twitterImage: gallery.cover_image
-        ? `https://penseeboheme.fr${gallery.cover_image}`
-        : 'https://penseeboheme.fr/home/landpage_1_og.jpg',
+        ? `https://pensee-boheme.fr${gallery.cover_image}`
+        : 'https://pensee-boheme.fr/home/landpage_1_og.jpg',
     })
 
-    // Structured data for image gallery
-    useSchemaOrg([
-      defineLocalBusiness({
-        name: 'Pensée Bohème',
-        description: `Fleuriste artisanale spécialisée dans les créations florales en Normandie`,
-        image: 'https://penseeboheme.fr/home/landpage_1_og.jpg',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: "316 route du Parc d'Anxtot",
-          addressLocality: 'Beuzeville-la-Grenier',
-          postalCode: '76210',
-          addressRegion: 'Normandie',
-          addressCountry: 'FR',
-        },
-        telephone: '+33614643584',
-        email: 'penseeboheme76@gmail.com',
-        url: 'https://penseeboheme.fr',
-        sameAs: ['https://www.facebook.com/penseeboheme76'],
-        founder: {
-          '@type': 'Person',
-          name: 'Cécile Devaux',
-        },
-        areaServed: ['Normandie', 'Seine-Maritime', 'France'],
-      }),
-    ])
+    useSchemaOrg([useBusinessSchema()])
 
     // Breadcrumb Schema
     useSchemaOrg([
       defineBreadcrumb([
-        { name: 'Accueil', item: 'https://penseeboheme.fr/home' },
-        { name: 'Galeries', item: 'https://penseeboheme.fr/galeries' },
-        { name: galleryTitle, item: `https://penseeboheme.fr/galeries/${slug}` },
+        { name: 'Accueil', item: 'https://pensee-boheme.fr/home' },
+        { name: 'Galeries', item: 'https://pensee-boheme.fr/galeries' },
+        { name: galleryTitle, item: `https://pensee-boheme.fr/galeries/${slug}` },
       ]),
     ])
 
@@ -81,7 +57,7 @@
         '@type': 'ImageGallery',
         name: `Galerie ${galleryTitle}`,
         description: galleryDescription,
-        url: `https://penseeboheme.fr/galeries/${slug}`,
+        url: `https://pensee-boheme.fr/galeries/${slug}`,
         author: {
           '@type': 'Person',
           name: 'Cécile Devaux',
@@ -90,7 +66,7 @@
         image: gallery.cover_image
           ? {
               '@type': 'ImageObject',
-              url: `https://penseeboheme.fr${gallery.cover_image}`,
+              url: `https://pensee-boheme.fr${gallery.cover_image}`,
               name: galleryTitle,
               description: galleryDescription,
             }

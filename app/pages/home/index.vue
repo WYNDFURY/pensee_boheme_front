@@ -192,75 +192,16 @@
     ogTitle: 'Pensée Bohème - Fleuriste Créative et Éco-responsable en Normandie',
     ogDescription:
       'Chaque création est une ode à la beauté de la nature. Cécile vous accueille dans son atelier à Beuzeville-la-Grenier pour vos projets floraux sur-mesure.',
-    ogImage: '/home/landpage_1.jpg',
+    ogImage: 'https://pensee-boheme.fr/home/landpage_1.jpg',
     ogUrl: 'https://pensee-boheme.fr/home',
 
     twitterCard: 'summary_large_image',
     twitterTitle: 'Pensée Bohème - Fleuriste Éco-responsable Normandie',
     twitterDescription: 'Créations florales éco-responsables sur-mesure par Cécile Devaux',
-    twitterImage: '/home/landpage_1.jpg',
+    twitterImage: 'https://pensee-boheme.fr/home/landpage_1.jpg',
   })
 
-  useSchemaOrg([
-    defineLocalBusiness({
-      '@type': 'Florist',
-      name: 'Pensée Bohème',
-      description:
-        'Fleuriste éco-responsable spécialisée dans les créations florales sur-mesure, fleurs séchées, mariages et ateliers créatifs.',
-      image: '/home/landpage_2.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 49.59050861790701,
-        longitude: 0.4137516889308236,
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      openingHours: [
-        'Mo 09:00-16:00',
-        'Tu 09:00-16:00',
-        'We closed',
-        'Th 09:00-16:00',
-        'Fr 09:00-16:00',
-        'Sa 09:00-13:00',
-        'Su closed',
-      ],
-      priceRange: '€€',
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
-      serviceType: [
-        'Création florale',
-        'Fleurs de mariage',
-        'Fleurs séchées',
-        'Ateliers créatifs',
-        'EVJF',
-        'Décoration événementielle',
-        'Cadeaux personnalisés',
-      ],
-    }),
-    defineOpeningHours([
-      {
-        dayOfWeek: ['Monday', 'Tuesday', 'Thursday', 'Friday'],
-        opens: '09:00',
-        closes: '16:00',
-      },
-      {
-        dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '13:00',
-      },
-    ]),
-  ])
+  useSchemaOrg([useBusinessSchema()])
 
   // Breadcrumb Schema
   useSchemaOrg([defineBreadcrumb([{ name: 'Accueil', item: 'https://pensee-boheme.fr/home' }])])

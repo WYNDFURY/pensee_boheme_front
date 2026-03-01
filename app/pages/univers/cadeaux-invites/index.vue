@@ -54,32 +54,7 @@
     twitterImage: 'https://pensee-boheme.fr/DPCI/DPCI_Banner.jpg',
   })
 
-  // Structured data for personalized gifts and details
-  useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        "Atelier de création de détails personnalisés et cadeaux d'invités floraux pour mariages et événements en Normandie",
-      image: 'https://pensee-boheme.fr/DPCI/DPCI_Banner.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Normandie', 'Seine-Maritime', 'France'],
-    }),
-  ])
+  useSchemaOrg([useBusinessSchema()])
   // Breadcrumb Schema
   useSchemaOrg([
     defineBreadcrumb([

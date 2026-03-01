@@ -1,9 +1,8 @@
 <template>
   <main class="py-20 text-balance text-neutral-800" role="main">
     <div class="sr-only">
-      Informations pratiques Pensée Bohème : horaires d'ouverture, contact, adresse de l'ateli
-      telephone: '+33614643584', email: 'penseeboheme76@gmail.com', url: 'https://penseeboheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'], Beuzeville-la-Grenier. Prenez rendez-vous
+      Informations pratiques Pensée Bohème : horaires d'ouverture, contact et adresse de l'atelier à
+      Beuzeville-la-Grenier. Téléphone : 06 14 64 35 84, email : penseeboheme76@gmail.com. Prenez rendez-vous
       avec Cécile Devaux pour vos projets floraux éco-responsables.
     </div>
 
@@ -171,69 +170,17 @@
     ogTitle: 'Contact & Horaires Pensée Bohème - Fleuriste Éco-responsable Normandie',
     ogDescription:
       'Prenez rendez-vous avec Cécile dans son atelier normand. Horaires : Lun-Mar-Jeu-Ven 9h-16h, Sam 9h-13h, fermé mercredi. 06 14 64 35 84',
-    ogImage: 'https://penseeboheme.fr/infos-pratiques/infos_pratiques_1.jpg',
-    ogUrl: 'https://penseeboheme.fr/infos-pratiques',
+    ogImage: 'https://pensee-boheme.fr/infos-pratiques/infos_pratiques_1.jpg',
+    ogUrl: 'https://pensee-boheme.fr/infos-pratiques',
 
     twitterCard: 'summary_large_image',
     twitterTitle: 'Contact Pensée Bohème - Fleuriste Normandie',
     twitterDescription:
       'Contactez Cécile pour vos créations florales éco-responsables en Normandie',
-    twitterImage: 'https://penseeboheme.fr/infos-pratiques/infos_pratiques_1.jpg',
+    twitterImage: 'https://pensee-boheme.fr/infos-pratiques/infos_pratiques_1.jpg',
   })
 
-  // Enhanced structured data for local business contact page
-  useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        "Fleuriste éco-responsable spécialisée dans les créations florales sur-mesure, accueil sur rendez-vous dans l'atelier",
-      image: 'https://penseeboheme.fr/infos-pratiques/infos_pratiques_1.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 49.59050861790701,
-        longitude: 0.4137516889308236,
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      sameAs: ['https://www.facebook.com/penseeboheme76'],
-      openingHours: [
-        'Mo 09:00-16:00',
-        'Tu 09:00-16:00',
-        'We closed',
-        'Th 09:00-16:00',
-        'Fr 09:00-16:00',
-        'Sa 09:00-13:00',
-        'Su closed',
-      ],
-      priceRange: '€€',
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
-    }),
-    defineOpeningHours([
-      {
-        dayOfWeek: ['Monday', 'Tuesday', 'Thursday', 'Friday'],
-        opens: '09:00',
-        closes: '16:00',
-      },
-      {
-        dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '13:00',
-      },
-    ]),
-  ])
+  useSchemaOrg([useBusinessSchema()])
 
   // Breadcrumb Schema
   useSchemaOrg([

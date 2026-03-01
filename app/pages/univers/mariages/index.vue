@@ -236,29 +236,8 @@
     twitterImage: 'https://pensee-boheme.fr/mariages/mariages_banner.jpg',
   })
 
-  // Structured Data
   useSchemaOrg([
-    defineLocalBusiness({
-      name: 'Pensée Bohème',
-      description:
-        'Fleuriste événementielle spécialisée dans la décoration florale de mariages en Normandie',
-      image: 'https://pensee-boheme.fr/mariages/mariages_banner.jpg',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: "316 route du Parc d'Anxtot",
-        addressLocality: 'Beuzeville-la-Grenier',
-        postalCode: '76210',
-        addressRegion: 'Normandie',
-        addressCountry: 'FR',
-      },
-      telephone: '+33614643584',
-      email: 'penseeboheme76@gmail.com',
-      url: 'https://pensee-boheme.fr',
-      founder: {
-        '@type': 'Person',
-        name: 'Cécile Devaux',
-      },
-      areaServed: 'Normandie, Seine-Maritime, France',
+    useBusinessSchema({
       offers: {
         '@type': 'Offer',
         name: 'Forfait décoration mariage',
@@ -270,8 +249,6 @@
         },
       },
     }),
-
-    // Breadcrumb
     defineBreadcrumb([
       { name: 'Accueil', item: 'https://pensee-boheme.fr/home' },
       { name: 'Univers', item: 'https://pensee-boheme.fr/univers' },
