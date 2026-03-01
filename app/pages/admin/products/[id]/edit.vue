@@ -72,7 +72,7 @@
         <label class="block text-sm font-medium mb-2">Image actuelle</label>
         <div class="relative w-48 aspect-square mb-2">
           <img
-            :src="existingImage?.[0]?.urls?.medium || existingImage?.[0]?.url"
+            :src="existingImage?.[0]?.urls?.medium"
             :alt="existingImage?.[0]?.name"
             class="w-full h-full object-cover rounded"
           >
@@ -138,7 +138,7 @@
 <script setup lang="ts">
 import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type { Product, ProductResponse, Category, Media, PageData } from '~/types/models'
+import type { Product, Category, Media, PageData } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -193,8 +193,8 @@ const imageFile = ref<File | null>(null)
 const imagePreview = ref<string>('')
 
 // Fetch product data
-const { data: productData, pending, error } = await useAsyncData(`product-edit-${productId}`, () =>
-  api.get<ProductResponse>(`/products/${productId}`)
+const { data: productData, pending } = await useAsyncData(`product-edit-${productId}`, () =>
+  api.get<Product>(`/products/${productId}`)
 )
 
 // Fetch categories
@@ -223,8 +223,9 @@ const filteredCategoryOptions = computed(() => {
   // If no page selected, show empty array (force page selection first)
   if (!state.value.page_id) return []
 
+  const selectedPage = pagesData.value?.find(p => p.id === state.value.page_id)
   return (categoriesData.value ?? [])
-    .filter(cat => cat.page_id === state.value.page_id)
+    .filter(cat => cat.page_slug === selectedPage?.slug)
     .map(cat => ({
       label: cat.name,
       value: cat.id,
@@ -232,22 +233,18 @@ const filteredCategoryOptions = computed(() => {
 })
 
 // Pre-fill form when data loads
+// NOTE: category/page pre-fill omitted — category_id not returned by ProductResource (backend todo)
 watch(productData, (product) => {
-  if (product?.data) {
-    // Find the category to get its page_id
-    const category = categoriesData.value?.find(cat => cat.id === product.data.category_id)
-
+  if (product) {
     state.value = {
-      name: product.data.name,
-      slug: product.data.slug,
-      description: product.data.description || '',
-      page_id: category?.page_id,
-      category_id: product.data.category_id,
-      has_price: product.data.has_price,
-      price: product.data.price || undefined,
-      is_active: product.data.is_active,
+      name: product.name,
+      slug: product.slug,
+      description: product.description || '',
+      has_price: product.has_price,
+      price: product.price || undefined,
+      is_active: product.is_active,
     }
-    existingImage.value = product.data.media || []
+    existingImage.value = product.media || []
   }
 }, { immediate: true })
 

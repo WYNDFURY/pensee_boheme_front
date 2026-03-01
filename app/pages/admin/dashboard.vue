@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Galleries, Product } from '~/types/models'
+import type { GalleryData, Product } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -64,7 +64,7 @@ const api = useAdminApi()
 
 const { data: galleries, pending: galleriesPending } = await useAsyncData(
   'admin-galleries-count',
-  () => api.get<Galleries>('/galleries')
+  () => api.get<GalleryData[]>('/galleries')
 )
 
 const { data: products, pending: productsPending } = await useAsyncData(
@@ -72,6 +72,6 @@ const { data: products, pending: productsPending } = await useAsyncData(
   () => api.get<Product[]>('/products')
 )
 
-const galleriesCount = computed(() => galleries.value?.data?.length ?? 0)
+const galleriesCount = computed(() => galleries.value?.length ?? 0)
 const productsCount = computed(() => products.value?.length ?? 0)
 </script>

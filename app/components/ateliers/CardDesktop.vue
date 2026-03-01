@@ -6,7 +6,7 @@
         <div class="flex items-center justify-center">
           <div class="relative aspect-[2/3] w-[25vw] z-10">
             <NuxtImg
-              :src="product.media[0]?.url"
+              :src="product.media[0]?.urls?.medium"
               :alt="product.name"
               class="object-cover w-full h-full rounded-sm drop-shadow-md opacity-80"
               loading="lazy"
@@ -46,7 +46,7 @@
         <div class="flex items-center justify-center col-start-2">
           <div class="relative aspect-[2/3] w-[25vw] z-10">
             <NuxtImg
-              :src="product.media[0]?.url"
+              :src="product.media[0]?.urls?.medium"
               :alt="product.name"
               placeholder=""
               class="object-cover w-full h-full rounded-sm drop-shadow-md opacity-80"

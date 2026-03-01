@@ -1,5 +1,5 @@
 import PenseeBohemeCredentials from '~/api/PenseeBohemeCredentials'
-import type { Page } from '~/types/models'
+import type { PageData } from '~/types/models'
 
 export const useShowPageProductsService = () => {
   const apiKey = new PenseeBohemeCredentials().apiKey
@@ -10,7 +10,7 @@ export const useShowPageProductsService = () => {
 
     const slug = useState<string>('current-page-slug').value
 
-    return useFetch<Page>(`${apiKey}/pages/${slug}`, {
+    return useFetch<PageData>(`${apiKey}/pages/${slug}`, {
       key: `page-${slug}`,
       server: false,
       lazy: true,

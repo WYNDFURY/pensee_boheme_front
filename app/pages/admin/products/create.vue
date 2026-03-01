@@ -180,8 +180,9 @@ const filteredCategoryOptions = computed(() => {
   // If no page selected, show empty array (force page selection first)
   if (!state.value.page_id) return []
 
+  const selectedPage = pagesData.value?.find(p => p.id === state.value.page_id)
   return (categoriesData.value ?? [])
-    .filter(cat => cat.page_id === state.value.page_id)
+    .filter(cat => cat.page_slug === selectedPage?.slug)
     .map(cat => ({
       label: cat.name,
       value: cat.id,

@@ -93,7 +93,7 @@ The app uses Nuxt's `future.compatibilityVersion: 4` setting. Source code lives 
 - `app/components/` — Organized by domain: `layout/`, `pages/`, `galeries/`, `products/`, `ateliers/`, `instagram/`, `icons/`
 - `app/composables/` — Service hooks wrapping `useFetch` for API calls
 - `app/api/PenseeBohemeCredentials.js` — Reads API base URL from `useRuntimeConfig().public.apiBaseUrl`
-- `app/types/models.ts` — TypeScript types for API responses (`Gallery`, `Page`, `Product`, `Category`, `InstagramMedia`)
+- `app/types/models.ts` — TypeScript types for API responses (`GalleryData`, `PageData`, `Product`, `Category`, `Media`, `InstagramMedia`, `MutationResponse<T>`)
 - `app/assets/css/main.css` — Global styles, Tailwind theme variables, font imports
 
 ### API Communication Pattern
@@ -114,9 +114,16 @@ Environment variable: `NUXT_PUBLIC_API_BASE_URL` (set in `.env` for dev, overrid
 - Complete endpoint documentation (URLs, methods, auth requirements)
 - Request/response structures with field validation rules
 - Resource schemas (ProductResource, GalleryResource, MediaResource, etc.)
-- Response wrapping patterns (which endpoints wrap in `{data:[]}` vs direct arrays)
 
 **Always check this file first when building pages that fetch data** — it's the source of truth for API structure and will be updated automatically when the backend changes.
+
+**Standardized response format** (`JsonResource::withoutWrapping()` is set globally on the backend):
+- **GET list** → flat array (e.g., `GalleryData[]`, `Product[]`) — no `{ data: [...] }` wrapper
+- **GET single** → flat object (e.g., `GalleryData`, `Product`) — no `{ data: {...} }` wrapper
+- **POST/PATCH** → `{ message: string, data: T }` — use `MutationResponse<T>` type
+- **DELETE** → `{ message: string }`
+
+**Do NOT** add `.data` unwrapping after `useFetch`/`useAsyncData` calls — responses are already flat.
 
 ### Pre-rendered Routes
 
@@ -235,13 +242,18 @@ The project includes an admin backoffice at `/admin/*` for managing galleries an
   - Browser sets Content-Type with multipart boundary automatically
 - **Error handling**: 401 → logout, 422 → throw to component for field errors, others → toast
 - **Optimistic UI**: Remove from list immediately on delete, rollback if API fails
-- **Response structure inconsistency**:
-  - Galleries: `{ data: GalleryData[] }` (use `ApiResponse<GalleryData[]>` type, access via `.data`)
-  - Products/Categories: `Product[]` or `Category[]` direct arrays (no wrapper, access directly)
-  - Always check actual API response structure before typing
+- **Response types**: All GET responses are flat (see API Communication Pattern above). Use `api.get<GalleryData[]>('/galleries')`, `api.get<Product>('/products/1')`, etc. — no wrapper types needed.
+- **Mutation responses**: POST/PATCH return `MutationResponse<T>` (`{ message, data }`). Use `api.upload<MutationResponse<Product>>(...)`.
 - **Gallery data fields**:
   - `media`: Array of Media objects, limited to first 3 items for preview performance
   - `images_count`: Total count of images in the gallery (use this for displaying counts, not `media.length`)
+  - `cover_image`: `string | null` — a direct URL string, NOT a `Media` object or array
+- **Category fields**: `page_slug: string | null` (NOT `page_id`). To filter categories by selected page:
+  ```ts
+  const selectedPage = pagesData.value?.find(p => p.id === state.value.page_id)
+  .filter(cat => cat.page_slug === selectedPage?.slug)
+  ```
+- **Product.category_id**: NOT returned by `ProductResource` — product edit page cannot pre-fill the page/category dropdowns from the API response. Backend needs to add `category_id` to `ProductResource` to enable this.
 
 ### UTable (Nuxt UI v3)
 UTable is based on TanStack Table v8. **Critical patterns:**

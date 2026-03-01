@@ -88,7 +88,7 @@
       itemscope
       itemtype="https://schema.org/ItemList"
     >
-      <AteliersList v-if="data" :page="data.data" />
+      <AteliersList v-if="data" :page="data" />
     </section>
   </main>
 </template>

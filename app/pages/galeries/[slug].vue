@@ -1,8 +1,8 @@
 <template>
   <main v-if="data" role="main">
     <div class="sr-only">
-      Galerie {{ data.data.name }} - Pensée Bohème : découvrez nos créations florales
-      {{ data.data.name.toLowerCase() }} en Normandie. Compositions artisanales par Cécile Devaux.
+      Galerie {{ data.name }} - Pensée Bohème : découvrez nos créations florales
+      {{ data.name.toLowerCase() }} en Normandie. Compositions artisanales par Cécile Devaux.
     </div>
 
     <GaleriesDisplay :gallery="data" />
@@ -15,7 +15,7 @@
   const { data } = await getShowOfGallery(slug)
   // Dynamic SEO based on gallery data
   if (data?.value) {
-    const gallery = data.value.data
+    const gallery = data.value
     const galleryTitle = gallery.name || 'Galerie'
     const galleryDescription =
       gallery.description || `Découvrez notre galerie ${galleryTitle.toLowerCase()}`
@@ -27,16 +27,16 @@
 
       ogTitle: `Galerie ${galleryTitle} - Pensée Bohème Normandie`,
       ogDescription: `Découvrez notre galerie ${galleryTitle.toLowerCase()} : créations florales artisanales en Normandie`,
-      ogImage: gallery.cover_image?.[0]?.url
-        ? `https://penseeboheme.fr${gallery.cover_image[0].url}`
+      ogImage: gallery.cover_image
+        ? `https://penseeboheme.fr${gallery.cover_image}`
         : 'https://penseeboheme.fr/home/landpage_1_og.jpg',
       ogUrl: `https://penseeboheme.fr/galeries/${slug}`,
 
       twitterCard: 'summary_large_image',
       twitterTitle: `Galerie ${galleryTitle} - Pensée Bohème`,
       twitterDescription: `Créations florales ${galleryTitle.toLowerCase()} par Pensée Bohème en Normandie`,
-      twitterImage: gallery.cover_image?.[0]?.url
-        ? `https://penseeboheme.fr${gallery.cover_image[0].url}`
+      twitterImage: gallery.cover_image
+        ? `https://penseeboheme.fr${gallery.cover_image}`
         : 'https://penseeboheme.fr/home/landpage_1_og.jpg',
     })
 
@@ -87,10 +87,10 @@
           name: 'Cécile Devaux',
         },
         // Use cover image if available
-        image: gallery.cover_image?.[0]?.url
+        image: gallery.cover_image
           ? {
               '@type': 'ImageObject',
-              url: `https://penseeboheme.fr${gallery.cover_image[0].url}`,
+              url: `https://penseeboheme.fr${gallery.cover_image}`,
               name: galleryTitle,
               description: galleryDescription,
             }

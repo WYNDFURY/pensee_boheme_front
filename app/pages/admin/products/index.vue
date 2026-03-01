@@ -74,7 +74,7 @@
           </div>
           <div>
             <p class="text-sm text-gray-500">Catégories</p>
-            <p class="text-2xl font-bold">{{ categories.length }}</p>
+            <p class="text-2xl font-bold">{{ uniqueCategoryCount }}</p>
           </div>
         </div>
       </UCard>
@@ -87,14 +87,14 @@
         <p class="mt-2 text-sm text-gray-500">Chargement des produits...</p>
       </div>
 
-      <div v-else-if="error" class="text-center py-12">
+      <div v-else-if="fetchError" class="text-center py-12">
         <UIcon name="i-heroicons-exclamation-circle" class="h-12 w-12 mx-auto text-error-600" />
         <p class="mt-2 text-sm text-error-600">Erreur lors du chargement des produits</p>
       </div>
 
       <UTable v-else :data="products" :columns="columns" class="w-full">
       <template #category-cell="{ row }">
-        {{ getCategoryName((row.original as Product).category_id) }}
+        {{ (row.original as Product).category_name ?? 'N/A' }}
       </template>
 
       <template #price-cell="{ row }">
@@ -109,8 +109,8 @@
 
       <template #image-cell="{ row }">
         <img
-          v-if="(row.original as Product).media?.[0]?.urls?.thumb || (row.original as Product).media?.[0]?.url"
-          :src="(row.original as Product).media?.[0]?.urls?.thumb || (row.original as Product).media?.[0]?.url"
+          v-if="(row.original as Product).media?.[0]?.urls?.thumb"
+          :src="(row.original as Product).media?.[0]?.urls?.thumb"
           :alt="(row.original as Product).name"
           class="w-16 h-16 object-cover rounded"
         >
@@ -166,7 +166,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product, Category } from '~/types/models'
+import type { Product } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -178,7 +178,7 @@ const toast = useToast()
 
 // Search and filters
 const searchQuery = ref('')
-const selectedCategory = ref<number | null>(null)
+const selectedCategory = ref<string | null>(null)
 const selectedStatus = ref<boolean | null>(null)
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -191,23 +191,23 @@ const columns: any[] = [
   { id: 'actions', header: 'Actions' },
 ]
 
-const { data: productsData, pending, error, refresh } = await useAsyncData(
+const { data: productsData, pending, error: fetchError, refresh } = await useAsyncData(
   'admin-products',
   () => api.get<Product[]>('/products')
 )
 
-const { data: categoriesData } = await useAsyncData(
-  'admin-categories',
-  () => api.get<Category[]>('/categories')
+const allProducts = computed(() => productsData.value ?? [])
+
+const uniqueCategoryCount = computed(() =>
+  new Set(allProducts.value.map(p => p.category_name).filter(Boolean)).size
 )
 
-const allProducts = computed(() => productsData.value ?? [])
-const categories = computed(() => categoriesData.value ?? [])
-
-// Filter options
 const categoryOptions = computed(() => [
   { label: 'Toutes les catégories', value: null },
-  ...categories.value.map(c => ({ label: c.name, value: c.id }))
+  ...new Set(allProducts.value.map(p => p.category_name).filter(Boolean))
+    .values()
+    .map((name): { label: string; value: string } => ({ label: name!, value: name! }))
+    .toArray(),
 ])
 
 const statusOptions = [
@@ -220,7 +220,6 @@ const statusOptions = [
 const products = computed(() => {
   let filtered = allProducts.value
 
-  // Search filter
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
     filtered = filtered.filter(p =>
@@ -230,23 +229,16 @@ const products = computed(() => {
     )
   }
 
-  // Category filter
   if (selectedCategory.value !== null) {
-    filtered = filtered.filter(p => p.category_id === selectedCategory.value)
+    filtered = filtered.filter(p => p.category_name === selectedCategory.value)
   }
 
-  // Status filter
   if (selectedStatus.value !== null) {
     filtered = filtered.filter(p => p.is_active === selectedStatus.value)
   }
 
   return filtered
 })
-
-function getCategoryName(categoryId: number): string {
-  const category = categories.value.find(c => c.id === categoryId)
-  return category?.name ?? 'N/A'
-}
 
 const deleteModal = ref({
   open: false,

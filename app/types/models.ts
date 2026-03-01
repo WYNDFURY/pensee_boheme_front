@@ -8,9 +8,9 @@ export type Category = {
   id: number
   name: string
   slug: string
-  description: string
+  description: string | null
   order: number
-  page_id: number
+  page_slug: string | null
   products?: Product[] | []
 }
 
@@ -23,7 +23,7 @@ export type Product = {
   price_formatted: string | null
   is_active: boolean
   has_price: boolean
-  category_id: number
+  category_name: string | null
   media: Media[] | []
   options?: ProductOption[] | []
 }
@@ -40,8 +40,6 @@ export type Media = {
     large: string      // 2000px max-width WebP
     original: string   // Original uploaded file
   }
-  // @deprecated - Backward compatibility during migration. Use urls.medium instead
-  url?: string
 }
 
 export type ProductOption = {
@@ -53,7 +51,7 @@ export type ProductOption = {
 
 export type InstagramMedia = {
   id: number
-  media_type: 'IMAGE' | 'CAROUSEL_ALBUM'
+  media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM'
   media_url: string
   permalink: string
   caption?: string
@@ -67,22 +65,11 @@ export type GalleryData = {
   slug: string
   description: string | null
   is_published: boolean
-  cover_image: Media[] | null
+  cover_image: string | null
   order: number
   media?: Media[] | []
-  images_count?: number  // Total count of images in the gallery
+  images_count?: number
 }
-
-export type ApiResponse<T> = {
-  data: T
-}
-
-export type Gallery = ApiResponse<GalleryData>
-export type Galleries = ApiResponse<GalleryData[]>
-
-export type ProductResponse = ApiResponse<Product>
-
-export type Page = ApiResponse<PageData>
 
 // Admin auth types
 export type AuthUser = {
@@ -95,6 +82,11 @@ export type AuthUser = {
 export type LoginResponse = {
   token: string
   user: AuthUser
+}
+
+export type MutationResponse<T = unknown> = {
+  message: string
+  data: T
 }
 
 export type ApiError = {

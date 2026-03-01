@@ -4,7 +4,7 @@
     <!-- Sidebar with gallery titles -->
     <aside class="w-52 hidden lg:block mx-8 my-8">
       <ul class="space-y-3">
-        <li v-for="(gallery, index) in galleryItems.data" :key="gallery.id">
+        <li v-for="(gallery, index) in galleryItems" :key="gallery.id">
           <button
             class="text-lg font-medium transition-all duration-200 w-full text-left px-3 py-2 rounded-md hover:bg-primary_green/10"
             :class="[
@@ -121,7 +121,7 @@
       <!-- Gallery pagination indicators -->
       <div class="flex justify-center gap-2 py-6">
         <button
-          v-for="(gallery, index) in galleryItems.data"
+          v-for="(gallery, index) in galleryItems"
           :key="gallery.id"
           :class="
             index === currentIndex
@@ -138,11 +138,11 @@
 
 <script lang="ts" setup>
   import { PagesLottieLoader, UButton } from '#components'
-  import type { Galleries } from '~/types/models'
+  import type { GalleryData } from '~/types/models'
 
   const currentIndex = useState('currentGalleryIndex', () => 0)
   const props = defineProps<{
-    galleryItems: Galleries
+    galleryItems: GalleryData[]
   }>()
 
   const centerImgRef = ref<InstanceType<typeof import('#components').NuxtImg> | null>(null)
@@ -173,9 +173,9 @@
   }
 
   // Computed values
-  const currentGallery = computed(() => props.galleryItems.data[currentIndex.value])
+  const currentGallery = computed(() => props.galleryItems[currentIndex.value])
   const isFirstGallery = computed(() => currentIndex.value === 0)
-  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.data.length - 1)
+  const isLastGallery = computed(() => currentIndex.value === props.galleryItems.length - 1)
 
   // Responsive image configurations
   const leftImageConfig = computed(() =>

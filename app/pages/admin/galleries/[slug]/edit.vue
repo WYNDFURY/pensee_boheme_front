@@ -48,7 +48,7 @@
             class="relative aspect-square"
           >
             <img
-              :src="image.urls?.medium || image.url"
+              :src="image.urls.medium"
               class="w-full h-full object-cover rounded"
               :alt="image.name"
             >
@@ -123,7 +123,7 @@
 <script setup lang="ts">
 import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type { Gallery, Media } from '~/types/models'
+import type { GalleryData, Media } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -163,21 +163,21 @@ const imageFiles = ref<File[]>([])
 const imagePreviews = ref<string[]>([])
 
 // Fetch gallery data
-const { data, pending, error } = await useAsyncData(`gallery-edit-${slug}`, () =>
-  api.get<Gallery>(`/galleries/${slug}`)
+const { data, pending } = await useAsyncData(`gallery-edit-${slug}`, () =>
+  api.get<GalleryData>(`/galleries/${slug}`)
 )
 
 // Pre-fill form when data loads
 watch(data, (gallery) => {
-  if (gallery?.data) {
+  if (gallery) {
     state.value = {
-      name: gallery.data.name,
-      slug: gallery.data.slug,
-      description: gallery.data.description || '',
-      order: gallery.data.order,
-      is_published: gallery.data.is_published,
+      name: gallery.name,
+      slug: gallery.slug,
+      description: gallery.description || '',
+      order: gallery.order,
+      is_published: gallery.is_published,
     }
-    existingImages.value = gallery.data.media || []
+    existingImages.value = gallery.media || []
   }
 }, { immediate: true })
 

@@ -26,7 +26,7 @@
       itemscope
       itemtype="https://schema.org/ItemList"
     >
-      <ProductsList v-if="data" :page="data.data" />
+      <ProductsList v-if="data" :page="data" />
     </section>
   </main>
 </template>

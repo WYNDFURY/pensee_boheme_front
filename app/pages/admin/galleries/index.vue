@@ -145,7 +145,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GalleryData, Galleries } from '~/types/models'
+import type { GalleryData } from '~/types/models'
 
 definePageMeta({
   layout: 'admin',
@@ -171,7 +171,7 @@ const columns: any[] = [
   { id: 'actions', header: 'Actions' },
 ]
 
-const { data, pending, error, refresh } = await useFetch<Galleries>(
+const { data, pending, error, refresh } = await useFetch<GalleryData[]>(
   `${config.public.apiBaseUrl}/galleries`,
   {
     key: 'admin-galleries',
@@ -183,8 +183,6 @@ const { data, pending, error, refresh } = await useFetch<Galleries>(
   }
 )
 
-const allGalleries = computed(() => data.value?.data ?? [])
-
 // Filter options
 const publishedOptions = [
   { label: 'Tous les statuts', value: null },
@@ -194,7 +192,7 @@ const publishedOptions = [
 
 // Filtered galleries
 const galleries = computed(() => {
-  let filtered = allGalleries.value
+  let filtered = data.value ?? []
 
   // Search filter
   if (searchQuery.value) {

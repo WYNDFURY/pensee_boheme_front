@@ -2,10 +2,10 @@
   <div>
     <NuxtLink to="/galeries" ><AkArrowLeft class="absolute text-4xl m-4 hover:text-accent-500 transition-colors"/></NuxtLink>
     <h1 class="text-3xl md:text-4xl lg:text-5xl text-center mt-8">
-      {{ gallery.data.name }}
+      {{ gallery.name }}
     </h1>
-    <h2 v-if="gallery.data.photographer" class="text-xl md:text-2xl lg:text-3xl text-center mt-4">
-      {{ gallery.data.photographer }}
+    <h2 v-if="gallery.photographer" class="text-xl md:text-2xl lg:text-3xl text-center mt-4">
+      {{ gallery.photographer }}
     </h2>
     <PagesLottieLoader v-show="pending" class="h-screen" />
     <div
@@ -13,7 +13,7 @@
       class="columns-2 md:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 p-4 md:p-8"
     >
       <div
-        v-for="(galleryMedia, index) in gallery.data.media"
+        v-for="(galleryMedia, index) in gallery.media"
         :key="galleryMedia.id"
         class="w-full rounded-xl shadow relative overflow-hidden bg-gray-100"
       >
@@ -33,10 +33,10 @@
 
 <script lang="ts" setup>
 import { AkArrowLeft } from '@kalimahapps/vue-icons';
-import type { Gallery, Media } from '~/types/models'
+import type { GalleryData, Media } from '~/types/models'
 
   const props = defineProps<{
-    gallery: Gallery
+    gallery: GalleryData
   }>()
 
   const pending = ref(true)
@@ -66,7 +66,7 @@ import type { Gallery, Media } from '~/types/models'
   })
 
   const author = computed(() => {
-    return props.gallery.data.photographer || 'Cécile Devaux - Pensée Bohème'
+    return props.gallery.photographer || 'Cécile Devaux - Pensée Bohème'
   })
 
   // SEO helper functions
