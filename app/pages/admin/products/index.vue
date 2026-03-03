@@ -102,9 +102,14 @@
       </template>
 
       <template #is_active-cell="{ row }">
-        <span :class="(row.original as Product).is_active ? 'text-green-600' : 'text-gray-400'">
-          {{ (row.original as Product).is_active ? 'Actif' : 'Inactif' }}
-        </span>
+        <USwitch
+          :model-value="(row.original as Product).is_active"
+          :loading="togglingProducts.has((row.original as Product).id)"
+          :disabled="togglingProducts.has((row.original as Product).id)"
+          color="success"
+          :ui="{ base: 'data-[state=unchecked]:bg-gray-300' }"
+          @update:model-value="toggleProductActive(row.original as Product)"
+        />
       </template>
 
       <template #image-cell="{ row }">
@@ -239,6 +244,27 @@ const products = computed(() => {
 
   return filtered
 })
+
+// Toggle is_active
+const togglingProducts = ref(new Set<number>())
+
+async function toggleProductActive(product: Product) {
+  const newValue = !product.is_active
+  product.is_active = newValue
+  togglingProducts.value.add(product.id)
+
+  try {
+    await api.patch(`/products/${product.id}`, { is_active: newValue })
+    toast.add({
+      title: newValue ? 'Produit activé' : 'Produit désactivé',
+      color: 'success',
+    })
+  } catch {
+    product.is_active = !newValue
+  } finally {
+    togglingProducts.value.delete(product.id)
+  }
+}
 
 const deleteModal = ref({
   open: false,

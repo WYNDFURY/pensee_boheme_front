@@ -11,7 +11,7 @@
       itemscope
       itemtype="https://schema.org/ImageGallery"
     >
-      <GaleriesList v-if="data" :gallery-items="data" />
+      <GaleriesList v-if="data" :gallery-items="sortedGalleries" />
     </section>
   </main>
 </template>
@@ -19,6 +19,11 @@
 <script lang="ts" setup>
   const { getIndexOfGalleries } = useGalleryService()
   const { data } = getIndexOfGalleries()
+
+  const sortedGalleries = computed(() => {
+    if (!data.value) return []
+    return [...data.value].sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity))
+  })
 
   useSeoMeta({
     title: 'Galeries - Créations Florales Pensée Bohème | Normandie',
