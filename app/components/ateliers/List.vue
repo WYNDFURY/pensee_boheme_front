@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-center text-5xl font-light text-accent-500 my-24">
+    <p class="text-center text-5xl font-medium text-accent-500 my-24">
       {{ page?.categories?.[0]?.products?.length }} Ateliers vous sont proposés
     </p>
     <!-- for desktop -->

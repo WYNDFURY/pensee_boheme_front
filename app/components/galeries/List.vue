@@ -28,13 +28,13 @@
     >
       <div class="space-y-2">
         <h1
-          class="text-3xl md:text-4xl lg:text-5xl font-light w-full font-['Kumbh_Sans'] uppercase"
+          class="text-3xl md:text-4xl lg:text-5xl font-medium w-full font-['Kumbh_Sans'] uppercase"
         >
           {{ currentGallery?.name }}
         </h1>
         <h2
           v-if="currentGallery?.photographer"
-          class="text-xl md:text-2xl lg:text-3xl font-light w-full font-['Kumbh_Sans'] uppercase"
+          class="text-xl md:text-2xl lg:text-3xl font-medium w-full font-['Kumbh_Sans'] uppercase"
         >
           {{ currentGallery?.photographer }}
         </h2>

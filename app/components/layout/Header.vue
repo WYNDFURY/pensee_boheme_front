@@ -95,7 +95,7 @@
         class="font-['Josefin_Slab'] p-5 transition-transform duration-300"
         :class="mobileMenuOpen ? 'translate-y-0' : 'translate-y-4'"
         :ui="{
-          link: 'text-lg font-light min-w-0',
+          link: 'text-lg font-medium min-w-0',
         }"
       />
     </div>

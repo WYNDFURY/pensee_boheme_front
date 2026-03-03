@@ -20,12 +20,12 @@
           >
             <div class="w-1/2 ml-auto">
               <div class="pr-[10vw] text-balance text-slate-900 space-y-2">
-                <p class="font-light text-xl lg:text-2xl">{{ product.price }} € par personne</p>
+                <p class="font-medium text-xl lg:text-2xl">{{ product.price }} € par personne</p>
                 <div>
                   <p
                     v-for="(sentence, index) in formattedDescription"
                     :key="index"
-                    class="mb-1 text-xl font-light leading-relaxed"
+                    class="mb-1 text-xl font-medium leading-relaxed"
                   >
                     {{ sentence }}
                   </p>
@@ -62,12 +62,12 @@
         >
           <div class="w-1/2 mr-auto">
             <div class="pl-[10vw] text-slate-900 space-y-2">
-              <p class="font-light text-xl lg:text-2xl">{{ product.price }} € par personne</p>
+              <p class="font-medium text-xl lg:text-2xl">{{ product.price }} € par personne</p>
               <div>
                 <p
                   v-for="(sentence, index) in formattedDescription"
                   :key="index"
-                  class="mb-1 text-xl font-light leading-relaxed"
+                  class="mb-1 text-xl font-medium leading-relaxed"
                 >
                   {{ sentence }}
                 </p>

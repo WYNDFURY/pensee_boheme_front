@@ -10,7 +10,7 @@
       :class="imgClass"
     />
     <div
-      class="text-[3vh] md:text-[6vh] lg:text-[8vh] absolute inset-0 flex items-center justify-center font-light font-['Source_Serif_4'] uppercase italic leading-tight tracking-[0.5em] drop-shadow-sm"
+      class="text-[3vh] md:text-[6vh] lg:text-[8vh] absolute inset-0 flex items-center justify-center font-medium font-['Source_Serif_4'] uppercase italic leading-tight tracking-[0.5em] drop-shadow-sm"
       :class="textClass"
     >
       <slot/>

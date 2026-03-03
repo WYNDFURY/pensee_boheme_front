@@ -17,7 +17,7 @@
       <header>
         <h1
           id="infos-title"
-          class="uppercase font-light text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_Sans']"
+          class="uppercase font-medium text-5xl md:text-6xl xl:text-7xl text-center font-['Kumbh_Sans']"
           itemprop="name"
         >
           infos pratiques
@@ -45,7 +45,7 @@
           Horaire d'ouverture rendez vous:
         </h2>
         <ul
-          class="text-left text-sm md:text-lg lg:text-xl font-light leading-relaxed text-balance list-disc pl-7 mb-4"
+          class="text-left text-sm md:text-lg lg:text-xl font-medium leading-relaxed text-balance list-disc pl-7 mb-4"
           role="list"
         >
           <li role="listitem" itemprop="openingHours" content="Mo-Tu,Th-Fr 09:00-16:00">
@@ -71,7 +71,7 @@
       <header>
         <h2
           id="contact-title"
-          class="uppercase font-light text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_Sans']"
+          class="uppercase font-medium text-4xl md:text-5xl xl:text-6xl text-center font-['Kumbh_Sans']"
         >
           Me Contacter
         </h2>

@@ -16,7 +16,7 @@
       <p
         v-for="(sentence, index) in formattedDescription"
         :key="index"
-        class="w-3/4 mx-auto text-center text-xl md:text-2xl font-light leading-relaxed text-pretty"
+        class="w-3/4 mx-auto text-center text-xl md:text-2xl font-medium leading-relaxed text-pretty"
       >
         {{ sentence }}
       </p>

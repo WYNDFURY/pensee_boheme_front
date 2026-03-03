@@ -43,7 +43,7 @@
             Pensée Bohème, c'est plus de 70% de végétaux issus d'une production raisonnée
           </h1>
           <div
-            class="flex flex-col gap-4 text-xl font-light leading-relaxed xl:mx-28 2xl:mx-68"
+            class="flex flex-col gap-4 text-xl font-medium leading-relaxed xl:mx-28 2xl:mx-68"
             itemprop="description"
           >
             <div>
@@ -63,11 +63,11 @@
                 </li>
               </ul>
             </div>
-            <p class="text-xl text-left font-light leading-relaxed">
+            <p class="text-xl text-left font-medium leading-relaxed">
               C'est en me confrontant à ce milieu que je me suis rendu compte qu'il y avait
               forcément une façon de fleurir vos événements de façon plus éthique.
             </p>
-            <p class="text-xl text-left font-light leading-relaxed">
+            <p class="text-xl text-left font-medium leading-relaxed">
               Je travaille main dans la main avec des floricultrices passionnées qui me fournissent
               en fleurs locales une grande partie de l'année pour fleurir vos événements.
             </p>
@@ -84,18 +84,18 @@
       itemscope
       itemtype="https://schema.org/Partnership"
     >
-      <div class="flex flex-col items-center px-10 lg:px-20 gap-10 lg:flex-row-reverse">
+      <div class="flex flex-col justify-evenly items-center px-10 lg:px-20 gap-10 lg:flex-row-reverse">
         <NuxtImg
           src="/engagement/engagement_2.svg"
           alt="Logo Collectif de la Fleur Française - partenaire de Pensée Bohème pour des fleurs locales et éco-responsables"
-          class="flex-auto w-3/4 md:w-1/2 lg:w-1/3"
+          class="w-3/4 md:w-1/2 lg:w-1/3"
           quality="90"
           loading="lazy"
           itemprop="logo"
         />
 
         <div
-          class="text-left text-xl lg:mx-12 font-light leading-relaxed flex flex-col justify-center items-center gap-10"
+          class="text-left text-xl lg:mx-12 font-medium leading-relaxed flex flex-col justify-center items-center gap-10"
           itemprop="description"
         >
           <h2
@@ -105,32 +105,34 @@
           >
             Collectif de la Fleur Française
           </h2>
-          <p class="">
-            Depuis la création de mon entreprise, je suis adhérente au Collectif de la fleur
-            française dans une démarche de soutenir une agriculture plus responsable et proposer des
-            fleurs locales et de saison.
-          </p>
-          <p class="">
-            J'aspire également à réduire au maximum les déchets en travaillant le moins possible
-            avec de la mousse florale; en utilisant des contenants adaptés et des techniques de
-            fleurissement qui garderont une fraîcheur optimale à vos végétaux.
-          </p>
-          <p class="">
-            De plus, vous pourrez retrouver une large gamme d'éléments de décoration disponible à la
-            <NuxtLink
-              to="/locations"
-              title="Découvrir notre gamme de location d'éléments décoratifs"
-              aria-label="Voir les éléments de décoration disponibles à la location"
-              class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
-            >
-              location;
-              <span
-                class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
-              />
-            </NuxtLink>
-            ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en faisant
-            des économies.
-          </p>
+          <div class="flex max-w-[800px] flex-col gap-10">
+            <p>
+              Depuis la création de mon entreprise, je suis adhérente au Collectif de la fleur
+              française dans une démarche de soutenir une agriculture plus responsable et proposer des
+              fleurs locales et de saison.
+            </p>
+            <p>
+              J'aspire également à réduire au maximum les déchets en travaillant le moins possible
+              avec de la mousse florale; en utilisant des contenants adaptés et des techniques de
+              fleurissement qui garderont une fraîcheur optimale à vos végétaux.
+            </p>
+            <p>
+              De plus, vous pourrez retrouver une large gamme d'éléments de décoration disponible à la
+              <NuxtLink
+                to="/locations"
+                title="Découvrir notre gamme de location d'éléments décoratifs"
+                aria-label="Voir les éléments de décoration disponibles à la location"
+                class="relative border-b border-dotted border-accent-500 font-bold text-accent-500 group md:border-none"
+              >
+                location;
+                <span
+                  class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
+                />
+              </NuxtLink>
+              ainsi vous diminuer votre empreinte carbone en n'achetant pas du neuf tout en faisant
+              des économies.
+            </p>
+          </div>
 
           <NuxtLink
             to="/infos-pratiques"

@@ -40,7 +40,7 @@
         />
       </header>
       <div
-        class="flex flex-col gap-4 text-xl font-light leading-relaxed xl:mx-28 2xl:mx-68"
+        class="flex flex-col gap-4 text-xl font-medium leading-relaxed xl:mx-28 2xl:mx-68"
         itemprop="description"
       >
         <p>
