@@ -1,6 +1,12 @@
 <template>
   <div class="min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md p-8 rounded-lg shadow-lg">
+    <!-- Loader while checking auth -->
+    <div v-if="checking" class="flex flex-col items-center gap-4">
+      <UIcon name="i-heroicons-sparkles" class="w-10 h-10 text-accent-500 animate-pulse" />
+    </div>
+
+    <!-- Login form -->
+    <div v-else class="w-full max-w-md p-8 rounded-lg shadow-lg">
       <h1 class="text-3xl font-semibold text-center mb-6 text-accent-500">
         Admin Pensée Bohème
       </h1>
@@ -40,9 +46,18 @@ definePageMeta({
   ssr: false,    // Client-side only
 })
 
-const { login } = useAuth()
+const { login, isAuthenticated } = useAuth()
 const toast = useToast()
 const loading = ref(false)
+const checking = ref(true)
+
+onMounted(() => {
+  if (isAuthenticated.value) {
+    navigateTo('/admin/dashboard')
+  } else {
+    checking.value = false
+  }
+})
 
 const schema = z.object({
   email: z.string().email('Email invalide').min(1, 'Email requis'),

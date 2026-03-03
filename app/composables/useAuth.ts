@@ -19,22 +19,20 @@ export const useAuth = () => {
     return null
   })
 
-  // Rehydrate from localStorage on client if state is empty but localStorage has data
+  // Rehydrate from localStorage on client if state was reset during SSR hydration
   if (import.meta.client) {
-    onMounted(() => {
-      if (!token.value) {
-        const storedToken = localStorage.getItem(TOKEN_KEY)
-        if (storedToken) {
-          token.value = storedToken
-        }
+    if (!token.value) {
+      const storedToken = localStorage.getItem(TOKEN_KEY)
+      if (storedToken) {
+        token.value = storedToken
       }
-      if (!user.value) {
-        const storedUser = localStorage.getItem(USER_KEY)
-        if (storedUser) {
-          user.value = JSON.parse(storedUser)
-        }
+    }
+    if (!user.value) {
+      const storedUser = localStorage.getItem(USER_KEY)
+      if (storedUser) {
+        user.value = JSON.parse(storedUser)
       }
-    })
+    }
   }
 
   const isAuthenticated = computed(() => !!token.value)
