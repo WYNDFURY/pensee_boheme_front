@@ -87,8 +87,9 @@
       >
         <div class="w-full lg:w-3/4 xl:w-1/2 aspect-[16/9] rounded-lg overflow-hidden shadow-md">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600!2d0.448245!3d49.702988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjggUm91dGUgZGUgbGEgVmFsbMOpZSwgNzYxMTAgQmVjLWRlLU1vcnRhZ25l!5e0!3m2!1sfr!2sfr"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.581072568779!2d0.4586945!3d49.699861399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e047af26add8bb%3A0x81708df81afa1644!2zcGVuc8OpZSBib2jDqG1l!5e0!3m2!1sfr!2sbe!4v1772663187675!5m2!1sfr!2sbe"
             class="w-full h-full border-0"
+            allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Localisation de l'atelier Pensée Bohème à Bec-de-Mortagne"
@@ -121,7 +122,7 @@
             <AkLocation class="text-xl" aria-hidden="true" />
             <span>
               <span itemprop="streetAddress">68 Route de la Vallée</span><br >
-              <span itemprop="postalCode">76110</span>
+              <span itemprop="postalCode">76110 </span>
               <span itemprop="addressLocality">Bec-de-Mortagne</span>
             </span>
           </div>

@@ -300,9 +300,9 @@
         },
         address: {
           '@type': 'PostalAddress',
-          streetAddress: "316 route du Parc d'Anxtot",
-          addressLocality: 'Beuzeville-la-Grenier',
-          postalCode: '76210',
+          streetAddress: '68 Route de la Vallée',
+          addressLocality: 'Bec-de-Mortagne',
+          postalCode: '76110',
           addressRegion: 'Normandie',
           addressCountry: 'FR',
         },
