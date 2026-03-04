@@ -11,8 +11,8 @@
       </div>
       <a href="https://www.instagram.com/penseeboheme/" target="_blank" class="flex items-center gap-2 hover:text-accent-500 transition-colors">@pensee-boheme</a>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 md:px-20">
-      <div v-for="instagramMedia in displayedMedias" :key="instagramMedia.id">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 md:px-20 scroll-reveal-stagger">
+      <div v-for="instagramMedia in displayedMedias" :key="instagramMedia.id" class="scroll-reveal">
         <InstagramCard :instagram-media="instagramMedia" />
       </div>
     </div>
@@ -23,6 +23,8 @@
   import type { InstagramMedia } from '~/types/models'
   import { AkInstagramFill } from '@kalimahapps/vue-icons'
   import { useWindowSize } from '@vueuse/core'
+
+  useScrollReveal()
 
   const props = defineProps<{
     instagramMedias: InstagramMedia[]

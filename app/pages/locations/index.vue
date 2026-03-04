@@ -53,6 +53,7 @@
       aria-label="Catalogue des éléments disponibles à la location"
       itemscope
       itemtype="https://schema.org/ItemList"
+      class="scroll-reveal"
     >
       <ProductsList v-if="data" :page="data" />
     </section>
@@ -60,6 +61,8 @@
 </template>
 
 <script lang="ts" setup>
+  useScrollReveal()
+
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
 
@@ -93,7 +96,7 @@
         '@type': 'LocalBusiness',
         name: 'Pensée Bohème',
       },
-      areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
+      areaServed: ['Bec-de-Mortagne', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
       audience: {
         '@type': 'Audience',
         audienceType: 'Clients prestations florales',

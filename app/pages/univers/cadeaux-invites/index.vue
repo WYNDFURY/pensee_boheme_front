@@ -25,6 +25,7 @@
       aria-label="Catalogue des détails personnalisés et cadeaux d'invités"
       itemscope
       itemtype="https://schema.org/ItemList"
+      class="scroll-reveal"
     >
       <ProductsList v-if="data" :page="data" />
     </section>
@@ -32,6 +33,8 @@
 </template>
 
 <script setup lang="ts">
+  useScrollReveal()
+
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
   useSeoMeta({

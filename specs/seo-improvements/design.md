@@ -41,11 +41,11 @@ app/pages/
 app: {
   baseURL: '/',
   head: {
-    title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Beuzeville-la-Grenier',
+    title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Bec-de-Mortagne',
     meta: [
       { name: 'author', content: 'Cécile Devaux - Pensée Bohème' },
       { name: 'geo.region', content: 'FR-NOR' },
-      { name: 'geo.placename', content: 'Beuzeville-la-Grenier, Normandie' },
+      { name: 'geo.placename', content: 'Bec-de-Mortagne, Normandie' },
       { name: 'geo.position', content: '49.59050861790701;0.4137516889308236' },
       { name: 'ICBM', content: '49.59050861790701, 0.4137516889308236' },
       { property: 'og:locale', content: 'fr_FR' },
@@ -128,9 +128,9 @@ export const useBusinessSchema = (overrides: Record<string, unknown> = {}) =>
     image: 'https://pensee-boheme.fr/home/landpage_2.jpg',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: "316 route du Parc d'Anxtot",
-      addressLocality: 'Beuzeville-la-Grenier',
-      postalCode: '76210',
+      streetAddress: '68 Route de la Vallée',
+      addressLocality: 'Bec-de-Mortagne',
+      postalCode: '76110',
       addressRegion: 'Normandie',
       addressCountry: 'FR',
     },
@@ -162,7 +162,7 @@ export const useBusinessSchema = (overrides: Record<string, unknown> = {}) =>
     ],
     priceRange: '€€',
     founder: { '@type': 'Person', name: 'Cécile Devaux' },
-    areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
+    areaServed: ['Bec-de-Mortagne', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime'],
     ...overrides,
   })
 ```

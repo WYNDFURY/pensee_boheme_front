@@ -2,7 +2,7 @@
 
 ## What It Is
 
-Brochure + portfolio website for **Pensée Bohème**, a boutique eco-responsible florist run by Cécile Devaux in Beuzeville-la-Grenier, Normandy (76210). Appointment-only business, all creations made to order.
+Brochure + portfolio website for **Pensée Bohème**, a boutique eco-responsible florist run by Cécile Devaux in Bec-de-Mortagne, Normandy (76110). Appointment-only business, all creations made to order.
 
 The site is **not** an e-commerce store. Its goal is to **showcase work, communicate values, and generate contact/booking inquiries**.
 

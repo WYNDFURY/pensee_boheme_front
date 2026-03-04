@@ -1,7 +1,7 @@
 <template>
   <UApp class="">
     <NuxtLayout>
-      <NuxtPage class="bg-bgcolor" />
+      <NuxtPage class="bg-bgcolor" :transition="{ name: 'page', mode: 'out-in' }" />
     </NuxtLayout>
   </UApp>
 </template>

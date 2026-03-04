@@ -40,7 +40,7 @@
 
           <div class="flex items-center">
             <AkLocation class="text-lg" />
-            <span>76210 Beuzeville la Grenier</span>
+            <span>76110 Bec-de-Mortagne</span>
           </div>
         </div>
         <div>

@@ -81,7 +81,7 @@
         />
     </div>
     <section
-      class="flex flex-col gap-10"
+      class="flex flex-col gap-10 scroll-reveal"
       aria-labelledby="details-title"
       aria-label="Détails et personnalisation des accessoires"
       itemscope
@@ -118,6 +118,8 @@
 </template>
 
 <script lang="ts" setup>
+  useScrollReveal()
+
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
   useSeoMeta({

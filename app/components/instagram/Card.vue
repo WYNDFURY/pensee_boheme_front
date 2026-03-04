@@ -4,12 +4,12 @@
       :href="instagramMedia.permalink"
       target="_blank"
       rel="noopener noreferrer"
-      class="block relative aspect-square overflow-hidden rounded-md drop-shadow-md"
+      class="block relative aspect-square overflow-hidden rounded-md drop-shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
     >
       <NuxtImg
         :src="instagramMedia.media_url"
         :alt="instagramMedia.caption"
-        class="object-cover w-full h-full rounded-md drop-shadow-md opacity-80 scale-95 hover:opacity-100 transition-all duration-300 transform hover:scale-105"
+        class="object-cover w-full h-full rounded-md opacity-80 scale-95 hover:opacity-100 transition-all duration-300 transform hover:scale-105"
         loading="lazy"
         sizes="50vw sm:33vw lg:25vw"
       />

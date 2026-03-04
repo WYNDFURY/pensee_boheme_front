@@ -66,7 +66,7 @@
       </div>
     </section>
 
-    <figure aria-label="Atelier créatif en cours - création d'accessoires en fleurs séchées">
+    <figure aria-label="Atelier créatif en cours - création d'accessoires en fleurs séchées" class="scroll-reveal">
       <NuxtImg
         src="/ateliers-creatifs/ateliers_1.jpg"
         alt="Atelier créatif fleurs séchées Pensée Bohème - participantes créant accessoires mariage EVJF Normandie"
@@ -87,6 +87,7 @@
       aria-label="Liste des ateliers disponibles"
       itemscope
       itemtype="https://schema.org/ItemList"
+      class="scroll-reveal"
     >
       <AteliersList v-if="data" :page="data" />
     </section>
@@ -94,6 +95,8 @@
 </template>
 
 <script setup lang="ts">
+  useScrollReveal()
+
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
 

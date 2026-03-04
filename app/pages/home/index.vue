@@ -1,7 +1,7 @@
 <template>
   <main class="flex flex-col gap-20 text-neutral-800 text-balance">
     <div class="sr-only">
-      Pensée Bohème, fleuriste éco-responsable à Beuzeville-la-Grenier en Normandie. Cécile Devaux
+      Pensée Bohème, fleuriste éco-responsable à Bec-de-Mortagne en Normandie. Cécile Devaux
       crée des compositions florales sur-mesure pour mariages, événements et ateliers créatifs.
     </div>
     <!-- First section -->
@@ -12,7 +12,7 @@
     >
       <div class="flex h-full flex-col items-center md:flex-row-reverse">
         <header
-          class="flex flex-1 text-pretty items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh]"
+          class="hero-text-enter flex flex-1 text-pretty items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh]"
         >
           <h1 id="hero-title" itemprop="name">
             Chaque création, <br >
@@ -47,6 +47,7 @@
       aria-labelledby="about-title"
       itemscope
       itemtype="https://schema.org/Person"
+      class="scroll-reveal"
     >
       <div class="flex flex-col items-center gap-10 md:flex-row-reverse">
         <h2
@@ -61,7 +62,7 @@
 
         <NuxtImg
           src="/home/landpage_2.jpg"
-          alt="Cécile Devaux, fleuriste créatrice de Pensée Bohème dans son atelier à Beuzeville-la-Grenier"
+          alt="Cécile Devaux, fleuriste créatrice de Pensée Bohème dans son atelier à Bec-de-Mortagne"
           class="mx-auto w-full md:w-1/2 max-h-1/12"
           format="webp"
           quality="90"
@@ -103,7 +104,7 @@
                 class="absolute bottom-0 left-0 hidden h-px w-0 bg-accent-500 transition-all duration-300 md:block md:group-hover:w-full"
               />
             </NuxtLink>
-            dans mon atelier à Beuzeville-la-Grenier; petit village Normand situé entre Le Havre et
+            dans mon atelier à Bec-de-Mortagne; petit village Normand situé entre Le Havre et
             Rouen.
           </p>
         </div>
@@ -111,7 +112,7 @@
     </section>
 
     <!-- Third section -->
-    <article aria-label="Histoire et philosophie de Pensée Bohème" aria-labelledby="story-title">
+    <article aria-label="Histoire et philosophie de Pensée Bohème" aria-labelledby="story-title" class="scroll-reveal">
       <div class="flex flex-col mx-auto text-center md:flex-col-reverse md:gap-10 mb-30">
         <div class="relative">
           <figure class="relative md:hidden">
@@ -182,16 +183,18 @@
 </template>
 
 <script setup>
+  useScrollReveal()
+
   useSeoMeta({
     title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Cécile Devaux',
     description:
-      'Découvrez les créations florales éco-responsables de Cécile Devaux à Beuzeville-la-Grenier. Spécialisée dans les mariages, EVJF, ateliers fleurs séchées et décoration événementielle en Normandie.',
+      'Découvrez les créations florales éco-responsables de Cécile Devaux à Bec-de-Mortagne. Spécialisée dans les mariages, EVJF, ateliers fleurs séchées et décoration événementielle en Normandie.',
     keywords:
-      'fleuriste normandie, pensée bohème, cécile devaux, éco-responsable, fleurs séchées, mariage normandie, beuzeville-la-grenier, création florale, atelier fleurs, EVJF normandie, décoration mariage, engagement écologique',
+      'fleuriste normandie, pensée bohème, cécile devaux, éco-responsable, fleurs séchées, mariage normandie, bec-de-mortagne, création florale, atelier fleurs, EVJF normandie, décoration mariage, engagement écologique',
 
     ogTitle: 'Pensée Bohème - Fleuriste Créative et Éco-responsable en Normandie',
     ogDescription:
-      'Chaque création est une ode à la beauté de la nature. Cécile vous accueille dans son atelier à Beuzeville-la-Grenier pour vos projets floraux sur-mesure.',
+      'Chaque création est une ode à la beauté de la nature. Cécile vous accueille dans son atelier à Bec-de-Mortagne pour vos projets floraux sur-mesure.',
     ogImage: 'https://pensee-boheme.fr/home/landpage_1.jpg',
     ogUrl: 'https://pensee-boheme.fr/home',
 

@@ -2,7 +2,7 @@
   <main class="py-20 text-balance text-neutral-800" role="main">
     <div class="sr-only">
       Informations pratiques Pensée Bohème : horaires d'ouverture, contact et adresse de l'atelier à
-      Beuzeville-la-Grenier. Téléphone : 06 14 64 35 84, email : penseeboheme76@gmail.com. Prenez rendez-vous
+      Bec-de-Mortagne. Téléphone : 06 14 64 35 84, email : penseeboheme76@gmail.com. Prenez rendez-vous
       avec Cécile Devaux pour vos projets floraux éco-responsables.
     </div>
 
@@ -26,7 +26,7 @@
       <figure class="w-full md:w-3/4 lg:w-1/2 mx-auto">
         <NuxtImg
           src="/infos-pratiques/infos_pratiques_1.jpg"
-          alt="Atelier Pensée Bohème à Beuzeville-la-Grenier - espace de création florale et accueil sur rendez-vous avec Cécile Devaux"
+          alt="Atelier Pensée Bohème à Bec-de-Mortagne - espace de création florale et accueil sur rendez-vous avec Cécile Devaux"
           class="w-full rounded-sm drop-shadow-lg opacity-80"
           placeholder=""
           format="webp"
@@ -62,7 +62,7 @@
 
     <!-- contact section -->
     <section
-      class="relative flex flex-col gap-20"
+      class="relative flex flex-col gap-20 scroll-reveal"
       aria-labelledby="contact-title"
       aria-label="Informations de contact et localisation"
       itemscope
@@ -87,11 +87,11 @@
       >
         <div class="w-full lg:w-3/4 xl:w-1/2 aspect-[16/9] rounded-lg overflow-hidden shadow-md">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2209.4139441244038!2d0.4137516889308236!3d49.59050861790701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e047af26add8bb%3A0x81708df81afa1644!2zcGVuc8OpZSBib2jDqW1l!5e0!3m2!1sfr!2sbe!4v1744975436273!5m2!1sfr!2sbe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600!2d0.448245!3d49.702988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjggUm91dGUgZGUgbGEgVmFsbMOpZSwgNzYxMTAgQmVjLWRlLU1vcnRhZ25l!5e0!3m2!1sfr!2sfr"
             class="w-full h-full border-0"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Localisation de l'atelier Pensée Bohème à Beuzeville-la-Grenier"
+            title="Localisation de l'atelier Pensée Bohème à Bec-de-Mortagne"
             aria-label="Carte Google Maps montrant l'emplacement de Pensée Bohème"
           />
         </div>
@@ -120,9 +120,9 @@
           <div class="flex items-center gap-2">
             <AkLocation class="text-xl" aria-hidden="true" />
             <span>
-              <span itemprop="streetAddress">316 route du Parc d'Anxtot</span><br >
-              <span itemprop="postalCode">76210</span>
-              <span itemprop="addressLocality">Beuzeville la Grenier</span>
+              <span itemprop="streetAddress">68 Route de la Vallée</span><br >
+              <span itemprop="postalCode">76110</span>
+              <span itemprop="addressLocality">Bec-de-Mortagne</span>
             </span>
           </div>
           <div class="flex items-center gap-2">
@@ -142,7 +142,7 @@
     </section>
 
     <!-- instagram feed section -->
-    <section aria-label="Galerie Instagram Pensée Bohème">
+    <section aria-label="Galerie Instagram Pensée Bohème" class="scroll-reveal">
       <InstagramFeed v-if="data" :instagram-medias="data" />
     </section>
   </main>
@@ -157,15 +157,17 @@
     DeFacebookOriginal,
   } from '@kalimahapps/vue-icons'
 
+  useScrollReveal()
+
   const { getInstagramMedias } = useFetchInstagramMediasService()
   const { data } = getInstagramMedias()
 
   useSeoMeta({
-    title: 'Contact & Horaires - Pensée Bohème Fleuriste Beuzeville-la-Grenier | Cécile Devaux',
+    title: 'Contact & Horaires - Pensée Bohème Fleuriste Bec-de-Mortagne | Cécile Devaux',
     description:
-      'Contactez Cécile Devaux pour vos projets floraux éco-responsables. Atelier ouvert sur rendez-vous du lundi au vendredi 9h-16h (fermé mercredi), samedi 9h-13h à Beuzeville-la-Grenier, Normandie.',
+      'Contactez Cécile Devaux pour vos projets floraux éco-responsables. Atelier ouvert sur rendez-vous du lundi au vendredi 9h-16h (fermé mercredi), samedi 9h-13h à Bec-de-Mortagne, Normandie.',
     keywords:
-      'contact pensée bohème, horaires fleuriste beuzeville-la-grenier, rendez-vous fleuriste normandie, atelier fleurs normandie, cécile devaux contact, fleuriste éco-responsable contact, penseeboheme76@gmail.com, 06 14 64 35 84',
+      'contact pensée bohème, horaires fleuriste bec-de-mortagne, rendez-vous fleuriste normandie, atelier fleurs normandie, cécile devaux contact, fleuriste éco-responsable contact, penseeboheme76@gmail.com, 06 14 64 35 84',
 
     ogTitle: 'Contact & Horaires Pensée Bohème - Fleuriste Éco-responsable Normandie',
     ogDescription:

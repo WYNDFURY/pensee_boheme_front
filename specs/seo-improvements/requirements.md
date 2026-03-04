@@ -98,7 +98,7 @@ The improvements directly unblock that goal by ensuring crawlers receive consist
 **Acceptance Criteria:**
 - A composable `useBusinessSchema()` is created in `app/composables/` that exports the canonical `LocalBusiness` schema object.
 - All service pages call `useBusinessSchema()` and optionally extend it (e.g., with page-specific `offers`).
-- The canonical schema includes: `@type: Florist`, correct `url`, `streetAddress`, `geo`, `telephone`, `email`, `openingHours`, `priceRange`, `founder`, `areaServed: ['Beuzeville-la-Grenier', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime']`, `sameAs: ['https://www.facebook.com/penseeboheme76']`.
+- The canonical schema includes: `@type: Florist`, correct `url`, `streetAddress`, `geo`, `telephone`, `email`, `openingHours`, `priceRange`, `founder`, `areaServed: ['Bec-de-Mortagne', 'Le Havre', 'Rouen', 'Normandie', 'Seine-Maritime']`, `sameAs: ['https://www.facebook.com/penseeboheme76']`.
 - No page contains a hardcoded `defineLocalBusiness` block that duplicates this data.
 
 ---

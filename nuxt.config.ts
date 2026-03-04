@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     url: 'https://pensee-boheme.fr',
     name: 'Pensée Bohème',
     description:
-      'Fleuriste éco-responsable en Normandie - Créations florales sur-mesure pour mariages, événements et ateliers à Beuzeville-la-Grenier',
+      'Fleuriste éco-responsable en Normandie - Créations florales sur-mesure pour mariages, événements et ateliers à Bec-de-Mortagne',
     defaultLocale: 'fr',
   },
 
@@ -47,13 +47,13 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     head: {
-      title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Beuzeville-la-Grenier',
+      title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Bec-de-Mortagne',
       meta: [
         { name: 'author', content: 'Cécile Devaux - Pensée Bohème' },
         { name: 'geo.region', content: 'FR-NOR' },
-        { name: 'geo.placename', content: 'Beuzeville-la-Grenier, Normandie' },
-        { name: 'geo.position', content: '49.59050861790701;0.4137516889308236' },
-        { name: 'ICBM', content: '49.59050861790701, 0.4137516889308236' },
+        { name: 'geo.placename', content: 'Bec-de-Mortagne, Normandie' },
+        { name: 'geo.position', content: '49.702988;0.448245' },
+        { name: 'ICBM', content: '49.702988, 0.448245' },
         { property: 'og:locale', content: 'fr_FR' },
         { property: 'og:type', content: 'website' },
       ],
@@ -92,7 +92,63 @@ export default defineNuxtConfig({
 
   sitemap: {
     sources: ['/api/__sitemap__/urls'],
-    exclude: ['/admin/**', '/cgv'],
+    exclude: ['/admin/**', '/cgv', '/CGV'],
+    defaults: {
+      changefreq: 'monthly',
+      priority: 0.5,
+    },
+    urls: [
+      {
+        loc: '/home',
+        changefreq: 'weekly',
+        priority: 1.0,
+      },
+      {
+        loc: '/galeries',
+        changefreq: 'weekly',
+        priority: 0.9,
+      },
+      {
+        loc: '/univers/mariages',
+        changefreq: 'monthly',
+        priority: 0.8,
+      },
+      {
+        loc: '/ateliers-creatifs',
+        changefreq: 'monthly',
+        priority: 0.8,
+      },
+      {
+        loc: '/locations',
+        changefreq: 'monthly',
+        priority: 0.8,
+      },
+      {
+        loc: '/univers/accessoires-fleurs-sechees',
+        changefreq: 'monthly',
+        priority: 0.7,
+      },
+      {
+        loc: '/univers/cadeaux-invites',
+        changefreq: 'monthly',
+        priority: 0.7,
+      },
+      {
+        loc: '/univers/professionnels',
+        changefreq: 'monthly',
+        priority: 0.7,
+      },
+      {
+        loc: '/engagement',
+        changefreq: 'yearly',
+        priority: 0.6,
+      },
+      {
+        loc: '/infos-pratiques',
+        changefreq: 'monthly',
+        priority: 0.7,
+      },
+    ],
   },
 
   nitro: {

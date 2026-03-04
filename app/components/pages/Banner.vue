@@ -1,13 +1,14 @@
 <template>
-  <div class="relative bg-bgcolor text-white">
+  <div class="relative bg-bgcolor text-white overflow-hidden">
     <NuxtImg
       :src="bannerImage"
       :alt="alt"
       placeholder=""
-      class="w-full h-[20vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] opacity-80 object-cover"
+      class="w-full h-[20vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] opacity-80 object-cover scale-110"
       loading="eager"
       fetchpriority="high"
       :class="imgClass"
+      :style="{ transform: `scale(1.1) translateY(${parallaxOffset}px)` }"
     />
     <div
       class="text-[3vh] md:text-[6vh] lg:text-[8vh] absolute inset-0 flex items-center justify-center font-medium font-['Source_Serif_4'] uppercase italic leading-tight tracking-[0.5em] drop-shadow-sm"
@@ -20,12 +21,10 @@
 
 <script lang="ts" setup>
   defineProps({
-    // Image path to display in the banner
     bannerImage: {
       type: String,
       required: true,
     },
-    // Alt text for accessibility
     alt: {
       type: String,
       default: 'Banner image',
@@ -39,4 +38,13 @@
       default: '',
     },
   })
+
+  const parallaxOffset = ref(0)
+
+  function onScroll() {
+    parallaxOffset.value = window.scrollY * 0.25
+  }
+
+  onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+  onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>

@@ -83,6 +83,7 @@
       aria-label="Partenariat avec le Collectif de la Fleur Française"
       itemscope
       itemtype="https://schema.org/Partnership"
+      class="scroll-reveal"
     >
       <div class="flex flex-col justify-evenly items-center px-10 lg:px-20 gap-10 lg:flex-row-reverse">
         <NuxtImg
@@ -150,6 +151,8 @@
 </template>
 
 <script lang="ts" setup>
+  useScrollReveal()
+
   useSeoMeta({
     title: 'Engagement Éco-responsable - Pensée Bohème Fleuriste Normandie | Cécile Devaux',
     description:

@@ -71,7 +71,7 @@
 
       <!-- second section -->
       <section
-        class="mt-16"
+        class="mt-16 scroll-reveal"
         aria-labelledby="philosophy-title"
         aria-label="Philosophie et approche de la décoration florale"
         itemscope
@@ -110,7 +110,7 @@
 
       <!-- third section -->
       <section
-        class="flex flex-col mt-16 lg:mt-32"
+        class="flex flex-col mt-16 lg:mt-32 scroll-reveal"
         aria-labelledby="personalization-title"
         aria-label="Personnalisation et tarification des services"
         itemscope
@@ -182,7 +182,7 @@
       </section>
 
       <aside
-        class="my-12 px-4 md:px-8 lg:px-12"
+        class="my-12 px-4 md:px-8 lg:px-12 scroll-reveal"
         aria-label="Promotion des ateliers créatifs en entreprise"
       >
         <div
@@ -210,6 +210,8 @@
 </template>
 
 <script setup lang="ts">
+  useScrollReveal()
+
   // SEO Meta Tags
   useSeoMeta({
     title: 'Décoration Florale Mariage - Pensée Bohème | Fleuriste Mariage Normandie',

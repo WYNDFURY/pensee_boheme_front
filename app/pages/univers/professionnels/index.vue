@@ -22,7 +22,7 @@
     </PagesBanner>
 
     <section
-      class="relative flex flex-col text-balance mt-16 gap-16 mb-40 md:mb-60 lg:mb-80"
+      class="relative flex flex-col text-balance mt-16 gap-16 mb-40 md:mb-60 lg:mb-80 scroll-reveal"
       aria-labelledby="professionnels-title"
       aria-label="Services de décoration florale pour professionnels"
       itemscope
@@ -83,6 +83,8 @@
 </template>
 
 <script setup lang="ts">
+  useScrollReveal()
+
   useSeoMeta({
     title: 'Services Professionnels - Pensée Bohème | Décoration Florale Entreprises Normandie',
     description:
