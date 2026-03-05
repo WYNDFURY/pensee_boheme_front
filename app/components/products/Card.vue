@@ -3,7 +3,7 @@
     <NuxtImg
       v-bind="imageConfig"
       :alt="`${product.name} - Pensée Bohème`"
-      class="bg-slate-300 aspect-square object-cover opacity-90 min-w-full h-fit"
+      class="bg-slate-300 aspect-square object-cover opacity-90 w-full"
     />
     <div class="flex text-sm lg:text-lg justify-between gap-1 my-2">
       <p>{{ product.name }}</p>
