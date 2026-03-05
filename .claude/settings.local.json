@@ -7,7 +7,8 @@
       "WebFetch(domain:docs.cpanel.net)",
       "Bash(yarn generate:prod:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(yarn build)"
     ]
   }
 }

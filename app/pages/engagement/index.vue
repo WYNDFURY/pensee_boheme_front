@@ -34,18 +34,15 @@
             </figcaption>
           </figure>
         </div>
-        <div class="bg-primary_green px-10 lg:px-20 py-8 md:mt-15">
-          <h1
-            id="engagement-title"
-            class="mb-15 font-bold text-center font text-2xl text-accent-500"
-            itemprop="name"
-          >
-            Pensée Bohème, c'est plus de 70% de végétaux issus d'une production raisonnée
-          </h1>
-          <div
-            class="flex flex-col gap-4 text-xl font-medium leading-relaxed xl:mx-28 2xl:mx-68"
-            itemprop="description"
-          >
+        <LayoutContentSection
+          color="green"
+          class="md:mt-15"
+          title="Pensée Bohème, c'est plus de 70% de végétaux issus d'une production raisonnée"
+          title-tag="h1"
+          title-id="engagement-title"
+          :title-attrs="{ itemprop: 'name' }"
+        >
+          <div itemprop="description">
             <div>
               <h2 class="sr-only">Les défis de la floriculture conventionnelle</h2>
               <p class="mb-2">
@@ -63,16 +60,16 @@
                 </li>
               </ul>
             </div>
-            <p class="text-xl text-left font-medium leading-relaxed">
+            <p>
               C'est en me confrontant à ce milieu que je me suis rendu compte qu'il y avait
               forcément une façon de fleurir vos événements de façon plus éthique.
             </p>
-            <p class="text-xl text-left font-medium leading-relaxed">
+            <p>
               Je travaille main dans la main avec des floricultrices passionnées qui me fournissent
               en fleurs locales une grande partie de l'année pour fleurir vos événements.
             </p>
           </div>
-        </div>
+        </LayoutContentSection>
       </div>
 
       <div class="h-px mx-auto bg-accent-500 w-1/11 mt-10" />

@@ -1,7 +1,7 @@
 <template>
   <header v-if="!isAdminRoute" class="">
     <div
-      class="px-15 py-2 flex items-center justify-between bg-secondary_green text-black relative"
+      class="px-15 py-4 flex items-center justify-between bg-secondary_green text-black relative"
     >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
       <div class="lg:text-left lg:w-auto flex-shrink-0 text-center">
@@ -18,7 +18,7 @@
           :items="items"
           class="hidden lg:flex font-['Josefin_Slab']"
           :ui="{
-            link: 'text-lg',
+            link: 'text-lg tracking-wide px-4',
           }"
         />
       </ClientOnly>

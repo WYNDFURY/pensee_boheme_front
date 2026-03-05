@@ -12,9 +12,9 @@
     >
       <div class="flex h-full flex-col items-center md:flex-row-reverse">
         <header
-          class="hero-text-enter flex flex-1 text-pretty items-center justify-center bg-gradient-to-tl from-[#A37847] to-[#3A3025] bg-clip-text text-center font-extrabold leading-tight text-transparent md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh]"
+          class="hero-text-enter flex flex-1 text-pretty items-center justify-center text-center md:text-left font-semibold leading-tight md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh] font-['cormorant_garamond']"
         >
-          <h1 id="hero-title" itemprop="name">
+          <h1 id="hero-title" itemprop="name" class="hero-photo-text">
             Chaque création, <br >
             est une ode à la beauté <br >
             de la nature et à l'imagination
@@ -150,33 +150,35 @@
           </figure>
         </div>
 
-        <div class="bg-primary_pink px-10 py-8">
-          <h2 class="mb-10 font-semibold text-center text-2xl text-accent-500 2xl:text-4xl">
-            Derrière le nom Pensée Bohème se cache l'essence même de mon travail.
-          </h2>
-          <p class="mb-4 text-xl font-medium leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
+        <LayoutContentSection
+          color="pink"
+          title="Derrière le nom Pensée Bohème se cache l'essence même de mon travail."
+        >
+          <p class="mb-4">
             Enfant j'ai été émerveillée par la beauté de la Pensée; cette fleur qui symbolise la
             douceur et la créativité; c'est une des premières fleurs dont j'ai le souvenir de
             découvrir dans le jardin de mes parents.
           </p>
-          <p class="text-xl font-medium leading-relaxed 2xl:text-2xl xl:mx-28 2xl:mx-68">
+          <p>
             L'esprit Bohème quant à lui évoque pour moi une esthétique sauvage et poétique. C'est
             cette fusion entre la beauté naturelle de la Pensée et l'audace de la vie Bohème qui
             guide ma créativité !
           </p>
-          <div class="mx-auto w-2/3">
+          <template #footer>
+            <div class="mx-auto w-2/3">
               <USeparator
                 orientation="horizontal"
                 class="h-10"
                 :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
                 aria-label="Séparateur décoratif avec logo Pensée Bohème"
               />
-          </div>
-          <p class="italic text-xl font-medium leading-relaxed 2xl:text-2xl">
-            Bienvenue dans cet espace où chaque projet, chaque création, est une ode à la beauté de
-            la nature et à l'imagination.
-          </p>
-        </div>
+            </div>
+            <p class="italic text-xl font-medium leading-relaxed 2xl:text-2xl">
+              Bienvenue dans cet espace où chaque projet, chaque création, est une ode à la beauté
+              de la nature et à l'imagination.
+            </p>
+          </template>
+        </LayoutContentSection>
       </div>
     </article>
   </main>

@@ -18,31 +18,19 @@
       </h1>
     </PagesBanner>
 
-    <section
-      class="bg-primary_orange px-10 lg:px-20 py-8 text-pretty"
+    <LayoutContentSection
+      tag="section"
+      color="orange"
+      title="Vous voulez organiser un EVJF et cherchez une idée originale ?"
+      title-id="evjf-title"
+      :title-attrs="{ itemprop: 'name' }"
+      :separator="true"
       aria-labelledby="evjf-title"
       aria-label="Présentation des ateliers créatifs pour EVJF"
       itemscope
       itemtype="https://schema.org/Event"
     >
-      <header>
-        <h2
-          id="evjf-title"
-          class="font-bold text-center font text-2xl text-accent-500"
-          itemprop="name"
-        >
-          Vous voulez organiser un EVJF et cherchez une idée originale ?
-        </h2>
-        <div
-          class="h-px w-24 my-5 mx-auto rounded-full bg-accent-500"
-          role="separator"
-          aria-hidden="true"
-        />
-      </header>
-      <div
-        class="flex flex-col gap-4 text-xl font-medium leading-relaxed xl:mx-28 2xl:mx-68"
-        itemprop="description"
-      >
+      <div itemprop="description">
         <p>
           Ne cherchez plus et partagez un moment inoubliable avec la future mariée ! L'atelier
           d'accessoires en fleurs séchées est fait pour vous..
@@ -64,7 +52,7 @@
           du mariage, un souvenir précieux de ce week-end magique passé ensemble !
         </p>
       </div>
-    </section>
+    </LayoutContentSection>
 
     <figure aria-label="Atelier créatif en cours - création d'accessoires en fleurs séchées" class="scroll-reveal">
       <NuxtImg

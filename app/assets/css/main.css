@@ -3,6 +3,7 @@
 
 @theme static {
   --ui-bg: #fff9f2;
+  --ui-text: #2d2d2d;
   --ui-border: #603e65;
   --ui-text-highlighted: #6e4f72;
   --font-sans: 'Public Sans', sans-serif;
@@ -50,6 +51,23 @@
 .scroll-reveal-stagger > .scroll-reveal:nth-child(7) { transition-delay: 600ms; }
 .scroll-reveal-stagger > .scroll-reveal:nth-child(8) { transition-delay: 700ms; }
 .scroll-reveal-stagger > .scroll-reveal:nth-child(9) { transition-delay: 800ms; }
+
+/* Hero photo mask text */
+.hero-photo-text {
+  background-image: url('/home/hero_mask.webp');
+  background-size: 200%;
+  background-position: 30% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(0deg);
+  -webkit-text-stroke: 0.5px rgba(45, 45, 45, 0.3);
+  animation: mask-hue 30s linear infinite;
+}
+@keyframes mask-hue {
+  from { filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(0deg); }
+  to   { filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(360deg); }
+}
 
 /* Hero text entrance */
 .hero-text-enter {
