@@ -175,7 +175,7 @@
               <USeparator
                 orientation="horizontal"
                 class="h-10"
-                :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl' }"
+                :avatar="{ src: '/PB_pensee_logo.svg', size: 'xl', alt: '' }"
                 aria-label="Séparateur décoratif avec logo Pensée Bohème"
               />
             </div>

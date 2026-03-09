@@ -44,10 +44,10 @@
           </div>
         </div>
         <div>
-          <NuxtLink @click="scrollToTop()">
+          <button type="button" aria-label="Retour en haut" @click="scrollToTop()">
             <AkArrowUp class="text-2xl" />
             <span class="sr-only">Retour en haut</span>
-          </NuxtLink>
+          </button>
         </div>
       </div>
     </div>
