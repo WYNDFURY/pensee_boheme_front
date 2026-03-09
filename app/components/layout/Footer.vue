@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-secondary_green text-white py-8 font-['Josefin_Slab']">
+  <footer class="bg-secondary_green text-gray-800 py-8 font-['Josefin_Slab']">
     <div class="container mx-auto px-4 md:px-8">
       <div class="flex flex-row justify-evenly items-center gap-6">
         <NuxtLink to="/cgv" class="hover:text-accent-500 transition-colors"> CGV </NuxtLink>
@@ -30,17 +30,17 @@
           <div class="flex flex-col items-start gap-2">
             <div class="flex items-center">
               <AkPhone class="text-lg" />
-              <span class="flex-none">+33 6 14 64 35 84</span>
+              <span class="flex-none">&nbsp;+33 6 14 64 35 84</span>
             </div>
             <div class="flex items-center">
               <MdTwoToneMailOutline class="text-lg" />
-              <span>penseeboheme76@gmail.com</span>
+              <span>&nbsp;penseeboheme76@gmail.com</span>
             </div>
           </div>
 
           <div class="flex items-center">
             <AkLocation class="text-lg" />
-            <span>68 Route de la Vallée, 76110 Bec-de-Mortagne</span>
+            <span>&nbsp;68 Route de la Vallée, 76110 Bec-de-Mortagne</span>
           </div>
         </div>
         <div>
