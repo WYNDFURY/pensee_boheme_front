@@ -41,10 +41,24 @@
 
   const parallaxOffset = ref(0)
 
-  function onScroll() {
-    parallaxOffset.value = window.scrollY * 0.25
-  }
+  if (import.meta.client) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    let ticking = false
 
-  onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-  onUnmounted(() => window.removeEventListener('scroll', onScroll))
+    function onScroll() {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        parallaxOffset.value = window.scrollY * 0.25
+        ticking = false
+      })
+    }
+
+    onMounted(() => {
+      if (!isMobile) {
+        window.addEventListener('scroll', onScroll, { passive: true })
+      }
+    })
+    onUnmounted(() => window.removeEventListener('scroll', onScroll))
+  }
 </script>

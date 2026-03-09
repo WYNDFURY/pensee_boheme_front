@@ -22,8 +22,8 @@ export const useBusinessSchema = (overrides: Record<string, unknown> = {}) =>
     email: 'penseeboheme76@gmail.com',
     url: 'https://pensee-boheme.fr',
     sameAs: [
-      'https://www.facebook.com/penseeboheme76',
-      'https://www.instagram.com/penseeboheme76/',
+      'https://www.facebook.com/penseeboheme/',
+      'https://www.instagram.com/penseeboheme/',
     ],
     openingHoursSpecification: [
       {

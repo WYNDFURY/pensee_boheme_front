@@ -214,9 +214,9 @@
 
   // SEO Meta Tags
   useSeoMeta({
-    title: 'Décoration Florale Mariage - Pensée Bohème | Fleuriste Mariage Normandie',
+    title: 'Décoration Florale Mariage - Pensée Bohème Normandie',
     description:
-      'Décoration florale mariage sur-mesure par Pensée Bohème en Normandie : compositions florales, installation complète, accessoires personnalisés. Forfait décoration à partir de 900€.',
+      'Décoration florale mariage sur-mesure en Normandie : compositions, installation complète, accessoires personnalisés. Forfait dès 900€.',
     keywords:
       'décoration florale mariage normandie, fleuriste mariage, composition florale mariage, décoration mariage sur mesure, fleuriste événementiel normandie, forfait décoration mariage, centre de table mariage, bouquet mariée normandie',
 

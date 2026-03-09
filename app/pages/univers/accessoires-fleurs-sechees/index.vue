@@ -123,9 +123,9 @@
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
   useSeoMeta({
-    title: 'Accessoires Fleurs Séchées - Pensée Bohème | Bijoux Floraux Mariée Normandie',
+    title: 'Accessoires Fleurs Séchées - Pensée Bohème Normandie',
     description:
-      "Créations artisanales d'accessoires en fleurs séchées par Pensée Bohème : couronnes, peignes, bijoux floraux sur-mesure pour mariées et événements. Atelier en Normandie, livraison France.",
+      'Accessoires en fleurs séchées sur-mesure : couronnes, peignes, bijoux floraux pour mariées et événements. Créations artisanales en Normandie.',
     keywords:
       'accessoires fleurs séchées, bijoux floraux mariée, couronne fleurs séchées, peigne mariage, accessoires cheveux mariée, pensée bohème normandie',
 

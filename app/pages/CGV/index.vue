@@ -240,9 +240,9 @@
 
 <script lang="ts" setup>
   useSeoMeta({
-    title: 'Conditions Générales de Vente - Pensée Bohème | CGV Créations Florales Normandie',
+    title: 'CGV - Pensée Bohème Fleuriste Normandie',
     description:
-      'Conditions générales de vente de Pensée Bohème : modalités de commande, livraison, paiement et prestations pour créations florales et accessoires de mariage. CGV Cécile Devaux Normandie.',
+      'Conditions générales de vente de Pensée Bohème : modalités de commande, livraison, paiement et prestations pour créations florales.',
     keywords:
       'conditions générales vente, cgv pensée bohème, modalités commande fleurs, cgv créations florales, conditions vente mariage normandie',
 

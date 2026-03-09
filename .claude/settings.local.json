@@ -8,7 +8,17 @@
       "Bash(yarn generate:prod:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(yarn build)"
+      "Bash(yarn build)",
+      "Bash(find /c/laragon/www/projet_dev/projet_perso/pensee_boheme/front/app/pages/univers -name \"*.vue\" -exec head -50 {} +)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(curl -s \"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://pensee-boheme.fr/home&category=performance&strategy=mobile\")",
+      "Bash(node -e \":*)",
+      "Bash(yarn add @nuxtjs/google-fonts)",
+      "Bash(where yarn)",
+      "Read(//c/laragon/bin/nodejs/node-v22.14.0-win-x64/**)",
+      "Bash(npm root -g)",
+      "Bash(npx yarn --version)",
+      "Bash(corepack yarn --version)"
     ]
   }
 }

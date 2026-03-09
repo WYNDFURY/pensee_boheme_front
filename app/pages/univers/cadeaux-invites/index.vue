@@ -38,10 +38,9 @@
   const { getPageProducts } = useShowPageProductsService()
   const { data } = getPageProducts()
   useSeoMeta({
-    title:
-      'Détails Personnalisés & Cadeaux Invités - Pensée Bohème | Créations Florales Mariage Normandie',
+    title: 'Cadeaux Invités & Détails - Pensée Bohème Normandie',
     description:
-      "Créations florales personnalisées pour mariages et événements par Pensée Bohème : petites attentions, cadeaux d'invités, détails sur-mesure. Atelier artisanal en Normandie, livraison France.",
+      "Cadeaux d'invités et détails personnalisés pour mariages par Pensée Bohème. Créations florales sur-mesure, atelier artisanal en Normandie.",
     keywords:
       'cadeaux invités mariage, détails personnalisés mariage, créations florales sur mesure, petites attentions mariage, cadeaux personnalisés événement, pensée bohème normandie',
 

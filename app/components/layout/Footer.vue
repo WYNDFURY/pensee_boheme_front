@@ -40,7 +40,7 @@
 
           <div class="flex items-center">
             <AkLocation class="text-lg" />
-            <span>76110 Bec-de-Mortagne</span>
+            <span>68 Route de la Vallée, 76110 Bec-de-Mortagne</span>
           </div>
         </div>
         <div>

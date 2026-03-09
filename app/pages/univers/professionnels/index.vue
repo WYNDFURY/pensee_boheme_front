@@ -86,9 +86,9 @@
   useScrollReveal()
 
   useSeoMeta({
-    title: 'Services Professionnels - Pensée Bohème | Décoration Florale Entreprises Normandie',
+    title: 'Professionnels - Pensée Bohème Fleuriste Normandie',
     description:
-      'Services de décoration florale pour professionnels en Normandie : décor vitrine, décoration saisonnière, abonnements bouquets pour boutiques et entreprises. Ateliers créatifs en entreprise.',
+      'Décoration florale pour professionnels en Normandie : décor vitrine, décoration saisonnière, abonnements bouquets. Ateliers créatifs en entreprise.',
     keywords:
       'décoration florale professionnelle normandie, décor vitrine fleuriste, décoration boutique commerce, abonnement bouquets entreprise, ateliers créatifs entreprise, pensée bohème professionnels',
 

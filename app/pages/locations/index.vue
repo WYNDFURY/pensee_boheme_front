@@ -67,10 +67,9 @@
   const { data } = getPageProducts()
 
   useSeoMeta({
-    title:
-      'Location Éléments Décoratifs - Pensée Bohème Fleuriste Normandie | Arches, Centres de Table',
+    title: 'Location Décoration - Pensée Bohème Normandie',
     description:
-      'Louez vos éléments décoratifs chez Pensée Bohème : arches florales, centres de table, vases, bougies, chandeliers. Service complet avec livraison, installation et désinstallation pour mariages et événements en Normandie.',
+      'Location de décoration chez Pensée Bohème : arches, centres de table, vases, bougies. Service complet livraison et installation en Normandie.',
     keywords:
       'location éléments décoratifs normandie, location arches florales, location centres de table mariage, location vases fleurs, location décoration événement, pensée bohème location, fleuriste location normandie, décoration mariage location, accessoires floraux location',
     ogTitle: 'Location Éléments Décoratifs Pensée Bohème - Service Complet Normandie',

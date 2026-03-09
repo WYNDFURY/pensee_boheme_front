@@ -5,5 +5,7 @@
 </template>
 
 <script setup>
-  import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+  const DotLottieVue = defineAsyncComponent(() =>
+    import('@lottiefiles/dotlottie-vue').then((m) => m.DotLottieVue),
+  )
 </script>

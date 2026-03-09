@@ -56,17 +56,35 @@
 .hero-photo-text {
   background-image: url('/home/hero_mask.webp');
   background-size: 200%;
-  background-position: 30% 50%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(0deg);
   -webkit-text-stroke: 0.5px rgba(45, 45, 45, 0.3);
   animation: mask-hue 30s linear infinite;
+  will-change: filter;
+}
+.hero-photo-text.paused {
+  animation-play-state: paused;
 }
 @keyframes mask-hue {
   from { filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(0deg); }
   to   { filter: contrast(0.85) saturate(0.7) brightness(1.25) hue-rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-text {
+    animation: none;
+  }
+  .hero-text-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Hero text entrance */

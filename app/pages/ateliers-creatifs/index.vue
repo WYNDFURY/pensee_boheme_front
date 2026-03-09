@@ -23,14 +23,12 @@
       color="orange"
       title="Vous voulez organiser un EVJF et cherchez une idée originale ?"
       title-id="evjf-title"
-      :title-attrs="{ itemprop: 'name' }"
+      :title-attrs="{}"
       :separator="true"
       aria-labelledby="evjf-title"
       aria-label="Présentation des ateliers créatifs pour EVJF"
-      itemscope
-      itemtype="https://schema.org/Event"
     >
-      <div itemprop="description">
+      <div>
         <p>
           Ne cherchez plus et partagez un moment inoubliable avec la future mariée ! L'atelier
           d'accessoires en fleurs séchées est fait pour vous..
@@ -61,7 +59,6 @@
         placeholder=""
         class="mx-auto rounded-sm drop-shadow-lg opacity-80"
         loading="lazy"
-        itemprop="image"
       />
     </figure>
 
@@ -89,9 +86,9 @@
   const { data } = getPageProducts()
 
   useSeoMeta({
-    title: 'Ateliers Créatifs EVJF - Pensée Bohème | Animation Fleurs Séchées Normandie',
+    title: 'Ateliers Créatifs EVJF - Pensée Bohème Normandie',
     description:
-      "Ateliers créatifs pour EVJF en Normandie par Pensée Bohème : créez vos accessoires de mariage en fleurs séchées lors d'un moment unique entre amies. Animation à domicile, matériel fourni.",
+      'Ateliers créatifs EVJF en Normandie : créez vos accessoires de mariage en fleurs séchées entre amies. Animation à domicile, matériel fourni.',
     keywords:
       'atelier créatif EVJF, enterrement vie jeune fille normandie, atelier fleurs séchées, animation EVJF, création accessoires mariage, pensée bohème normandie',
 
@@ -112,35 +109,44 @@
     useBusinessSchema(),
     defineEvent({
       name: 'Ateliers Créatifs EVJF - Accessoires Fleurs Séchées',
-      description: 'Ateliers créatifs pour enterrements de vie de jeune fille : création d\'accessoires en fleurs séchées',
+      description: 'Ateliers créatifs pour enterrements de vie de jeune fille : création d\'accessoires en fleurs séchées. Minimum 4 participantes, déplacement dans toute la Normandie.',
       image: 'https://pensee-boheme.fr/ateliers-creatifs/ateliers_banner.jpg',
-      startDate: new Date().toISOString(),
-      endDate: new Date(Date.now() + 2 * 365 * 24 * 60 * 60 * 1000).toISOString(), // 2 years from now
+      startDate: '2025-01-01T09:00:00+01:00',
+      endDate: '2026-12-31T16:00:00+01:00',
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
         '@type': 'Place',
-        name: 'Normandie - Déplacement à domicile',
+        name: 'Atelier Pensée Bohème - Déplacement en Normandie',
         address: {
           '@type': 'PostalAddress',
+          streetAddress: '68 Route de la Vallée',
+          addressLocality: 'Bec-de-Mortagne',
+          postalCode: '76110',
           addressRegion: 'Normandie',
           addressCountry: 'FR',
         },
-        description: 'Service de déplacement dans toute la région Normandie'
+      },
+      performer: {
+        '@type': 'Person',
+        name: 'Cécile Devaux',
       },
       organizer: {
         '@type': 'Person',
         name: 'Cécile Devaux',
         email: 'penseeboheme76@gmail.com',
         telephone: '+33614643584',
+        url: 'https://pensee-boheme.fr',
       },
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/InStock',
-        price: 'Sur devis',
+        price: '0',
         priceCurrency: 'EUR',
-        description: 'Atelier créatif EVJF - minimum 4 participantes'
-      }
+        url: 'https://pensee-boheme.fr/ateliers-creatifs',
+        validFrom: '2025-01-01T00:00:00+01:00',
+        description: 'Atelier créatif EVJF - prix sur devis, minimum 4 participantes',
+      },
     }),
   ])
   // Breadcrumb Schema

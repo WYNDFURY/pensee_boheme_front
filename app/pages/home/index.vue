@@ -14,7 +14,13 @@
         <header
           class="hero-text-enter flex flex-1 text-pretty items-center justify-center text-center md:text-left font-semibold leading-tight md:my-auto md:w-1/2 px-28 xl:px-36 text-[4vh] md:text-[6vh] lg:text-[8vh] 2xl:text-[10vh] font-['cormorant_garamond']"
         >
-          <h1 id="hero-title" itemprop="name" class="hero-photo-text">
+          <h1
+            id="hero-title"
+            ref="heroTitle"
+            itemprop="name"
+            :class="['hero-photo-text', { paused: !heroVisible }]"
+            :style="{ backgroundPosition: `${50 + parallaxX}% ${50 + parallaxY}%` }"
+          >
             Chaque création, <br >
             est une ode à la beauté <br >
             de la nature et à l'imagination
@@ -187,10 +193,51 @@
 <script setup>
   useScrollReveal()
 
+  const parallaxX = ref(0)
+  const parallaxY = ref(0)
+  const heroTitle = ref(null)
+  const heroVisible = ref(true)
+
+  if (import.meta.client) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    let ticking = false
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY
+        parallaxX.value = scrollY * -0.01
+        parallaxY.value = scrollY * -0.05
+        ticking = false
+      })
+    }
+
+    onMounted(() => {
+      // Only enable parallax on desktop
+      if (!isMobile) {
+        window.addEventListener('scroll', onScroll, { passive: true })
+      }
+
+      // Pause hero animation when off-viewport
+      if (heroTitle.value) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            heroVisible.value = entry.isIntersecting
+          },
+          { threshold: 0 },
+        )
+        observer.observe(heroTitle.value)
+        onUnmounted(() => observer.disconnect())
+      }
+    })
+    onUnmounted(() => window.removeEventListener('scroll', onScroll))
+  }
+
   useSeoMeta({
-    title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Cécile Devaux',
+    title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie',
     description:
-      'Découvrez les créations florales éco-responsables de Cécile Devaux à Bec-de-Mortagne. Spécialisée dans les mariages, EVJF, ateliers fleurs séchées et décoration événementielle en Normandie.',
+      'Créations florales éco-responsables par Cécile Devaux à Bec-de-Mortagne. Mariages, EVJF, ateliers fleurs séchées et décoration en Normandie.',
     keywords:
       'fleuriste normandie, pensée bohème, cécile devaux, éco-responsable, fleurs séchées, mariage normandie, bec-de-mortagne, création florale, atelier fleurs, EVJF normandie, décoration mariage, engagement écologique',
 

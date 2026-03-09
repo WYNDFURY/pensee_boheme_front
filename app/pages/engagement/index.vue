@@ -151,9 +151,9 @@
   useScrollReveal()
 
   useSeoMeta({
-    title: 'Engagement Éco-responsable - Pensée Bohème Fleuriste Normandie | Cécile Devaux',
+    title: 'Engagement Éco-responsable - Pensée Bohème Normandie',
     description:
-      "Découvrez l'engagement éco-responsable de Pensée Bohème : 70% de fleurs locales, membre du Collectif de la Fleur Française, pratiques durables et respect de l'environnement pour vos créations florales en Normandie.",
+      'Engagement éco-responsable de Pensée Bohème : 70% de fleurs locales, membre du Collectif de la Fleur Française, pratiques durables en Normandie.',
     keywords:
       'fleuriste éco-responsable normandie, engagement écologique, fleurs locales normandie, collectif fleur française, développement durable floriculture, écologie fleurs, pensée bohème engagement, production raisonnée, fleurs de saison, beuzeville-la-grenier',
     ogTitle: 'Notre Engagement Éco-responsable - Pensée Bohème Fleuriste Normandie',

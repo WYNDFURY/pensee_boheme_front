@@ -5,7 +5,7 @@
     >
       <!-- Logo: Centered on mobile, left on desktop with fixed width -->
       <div class="lg:text-left lg:w-auto flex-shrink-0 text-center">
-        <NuxtLink to="/home">
+        <NuxtLink to="/home" aria-label="Accueil Pensée Bohème">
           <NuxtImg src="/logo.svg" alt="Pensée Bohème" class="h-14 px-4" />
         </NuxtLink>
       </div>
@@ -80,7 +80,7 @@
             />
           </svg>
         </button>
-        <NuxtLink to="/home" @click="mobileMenuOpen = false">
+        <NuxtLink to="/home" aria-label="Accueil Pensée Bohème" @click="mobileMenuOpen = false">
           <img src="/logo.svg" alt="Pensée Bohème" class="h-16 invert" >
         </NuxtLink>
       </div>
@@ -168,6 +168,10 @@
             to: '/univers/professionnels',
           },
         ],
+      },
+      {
+        label: 'Locations',
+        to: '/locations',
       },
       {
         label: 'Ateliers Créatifs',

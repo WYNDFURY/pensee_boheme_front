@@ -129,7 +129,7 @@
           <div class="flex items-center gap-2">
             <DeFacebookOriginal class="text-xl" aria-hidden="true" />
             <a
-              href="https://www.facebook.com/penseeboheme"
+              href="https://www.facebook.com/penseeboheme/"
               target="_blank"
               rel="noopener noreferrer"
               class="hover:text-accent-500 transition-colors"
@@ -164,9 +164,9 @@
   const { data } = getInstagramMedias()
 
   useSeoMeta({
-    title: 'Contact & Horaires - Pensée Bohème Fleuriste Bec-de-Mortagne | Cécile Devaux',
+    title: 'Contact & Horaires - Pensée Bohème Bec-de-Mortagne',
     description:
-      'Contactez Cécile Devaux pour vos projets floraux éco-responsables. Atelier ouvert sur rendez-vous du lundi au vendredi 9h-16h (fermé mercredi), samedi 9h-13h à Bec-de-Mortagne, Normandie.',
+      'Contactez Pensée Bohème pour vos projets floraux. Atelier sur rendez-vous : lun-ven 9h-16h (fermé mercredi), sam 9h-13h à Bec-de-Mortagne.',
     keywords:
       'contact pensée bohème, horaires fleuriste bec-de-mortagne, rendez-vous fleuriste normandie, atelier fleurs normandie, cécile devaux contact, fleuriste éco-responsable contact, penseeboheme76@gmail.com, 06 14 64 35 84',
 

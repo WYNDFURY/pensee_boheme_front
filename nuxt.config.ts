@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
+    '@nuxtjs/google-fonts',
     'nuxt-anchorscroll',
   ],
 
@@ -44,10 +45,28 @@ export default defineNuxtConfig({
     host: '0.0.0.0', // This allows connections from any IP
   },
 
+  googleFonts: {
+    families: {
+      'Josefin Slab': [300, 400, 600],
+      'Source Serif 4': {
+        wght: [400, 600],
+        ital: [400],
+      },
+      'Kumbh Sans': [400, 500, 600, 700],
+      'Cormorant Garamond': {
+        wght: [400, 500, 600, 700],
+        ital: [400, 500],
+      },
+    },
+    display: 'swap',
+    preload: true,
+    prefetch: true,
+  },
+
   app: {
     baseURL: '/',
     head: {
-      title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie | Bec-de-Mortagne',
+      title: 'Pensée Bohème - Fleuriste Éco-responsable Normandie',
       meta: [
         { name: 'author', content: 'Cécile Devaux - Pensée Bohème' },
         { name: 'geo.region', content: 'FR-NOR' },
@@ -56,34 +75,6 @@ export default defineNuxtConfig({
         { name: 'ICBM', content: '49.702988, 0.448245' },
         { property: 'og:locale', content: 'fr_FR' },
         { property: 'og:type', content: 'website' },
-      ],
-      link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: '',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;600&display=swap',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap',
-        },
       ],
     },
   },
@@ -100,7 +91,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     sources: ['/api/__sitemap__/urls'],
-    exclude: ['/admin/**', '/cgv', '/CGV'],
+    exclude: ['/admin/**', '/cgv'],
     defaults: {
       changefreq: 'monthly',
       priority: 0.5,
@@ -161,10 +152,15 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/home', '/galeries', '/engagement', '/infos-pratiques'],
+      routes: ['/home', '/galeries', '/engagement', '/infos-pratiques', '/univers/mariages', '/univers/accessoires-fleurs-sechees', '/univers/cadeaux-invites', '/univers/professionnels', '/ateliers-creatifs', '/locations'],
       crawlLinks: true,
       ignore: ['/admin/**'],
     },
+  },
+
+  image: {
+    quality: 80,
+    format: ['webp', 'jpg'],
   },
 
   compatibilityDate: '2024-11-27',
